@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Samarth Joshi</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/Screenshot_2023-09-24_214916-removebg-preview.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#Blog">Blog</a></li>
+                <i class="fas fa-times" onclick="closemenu()"></i>
+            </ul>
+            <i class="fas fa-bars" onclick="openmenu()"></i>
+            <div class="role-toggle" aria-label="Toggle professional role">
+                <span class="role-label active" data-role="ux">UX Engineer</span>
+                <label class="switch" aria-hidden="true">
+                    <input type="checkbox" id="roleSwitch" aria-label="Developer mode toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="role-label" data-role="dev">Developer</span>
+            </div>
+        </nav>
+        <div class="header-content">
+            <div class="header-image">
+                <img src="Images/life-of-a-ux-designer-800x600.gif" alt="UX Designer Illustration" class="header-illustration">
+            </div>
+            <div class="header-text">
+                <div class="text-typing">
+                <h1 id="introLine">Hi, I'm <span1>Samarth</span1></h1>
+                <h1 id="roleLine">
+                    I <span2>design intuitive experiences</span2>, <span3>bridge code & creativity</span3>,<br>
+                    <span4>research what users need</span4> & <span5>make technology feel effortless.</span5>
+                </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!----------------about------------------------------>
+<div id="About">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+            <img src="Images/About me.gif">
+            </div>
+            <div class="about-col-2">
+               <h1 class="subtitle">About Me</h1>
+               <p id="aboutDescription" class="about-intro"><br>I like making <b>technology</b> feel less like “technology” and more like something you just get. My background’s in Computer Engineering, but along the way I got hooked on the human side of things why some products feel effortless while others feel like a fight. That curiosity is what brought me to Saarland University, where I’m doing my MSc in Informatics and spending a lot of time exploring human–computer interaction.
+
+Most of my projects start the same way: a vague idea, a pile of data, or a problem that hasn’t been solved yet. I enjoy untangling all that, figuring out what really matters, and building something that’s clear, quick, and easy to use. No overcomplication, no fluff—just design and systems that quietly do their job, so people don’t have to think about the tech at all.</p>
+               <div class="tab-titles">
+                <p class="tab-links active-link"  onclick="opentab('Skills')" >Skills</p>
+                <p class="tab-links"onclick="opentab('Experience')">Experience</p>
+                <p class="tab-links" onclick="opentab('Education')">Education</p>
+
+               </div>
+               <div class="tab-contents active-tab"id='Skills'>
+                <div class="about-card" id="skillsCard">
+                    <h3 class="skills-role-heading" id="skillsRoleHeading">UX Engineer Skill Stack</h3>
+                    <div class="skills-section" id="skillsPrimary">
+                        <h4 class="skill-section-title">Core</h4>
+                        <div class="skills-grid" id="dynamicSkills"></div>
+                    </div>
+                    <div class="skills-section" id="skillsSecondary">
+                        <h4 class="skill-section-title">Supporting</h4>
+                        <div class="skills-grid subtle" id="secondarySkills"></div>
+                    </div>
+                    <div class="skills-legend">
+                        <span><span class="legend-dot level-advanced"></span>Advanced</span>
+                        <span><span class="legend-dot level-intermediate"></span>Intermediate</span>
+                        <span><span class="legend-dot level-basic"></span>Familiar</span>
+                    </div>
+                </div>
+               </div>
+
+                             <div class="tab-contents"id='Experience'>
+                                 <div class="about-card exp-card" id="experienceCard">
+                                        <h3 class="skills-role-heading" id="experienceHeading">Experience Snapshot</h3>
+                                        <div class="exp-timeline" id="experienceTimeline"></div>
+                                 </div>
+                             </div>
+                             <div class="tab-contents"id='Education'>
+                                 <div class="about-card edu-card" id="educationCard">
+                                        <h3 class="skills-role-heading">Education</h3>
+                                        <div class="edu-list" id="educationList"></div>
+                                 </div>
+                             </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------Portfolio----------------------->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="subtitle">My Work</h1>
+        <div class="project-filters" aria-label="Project filters" id="projectFilters">
+            <button class="filter-btn active" data-filter="uiux">Case Study</button>
+            <button class="filter-btn" data-filter="data">Design</button>
+        </div>
+    <div class="timeline project-timeline">
+            <div class="timeline-item" data-category="uiux" data-project>
+                <div class="work project-card">
+                    <img src="Images/Group 26.png" alt="Hotel Booking App UI">
+                    <div class="layer">
+                        <div class="project-tags"><span>UI/UX</span><span>Prototype</span><span>Mobile</span></div>
+                        <h3>Hotel Booking App</h3>
+                        <p>End‑to‑end booking flow prototype focusing on clarity, trust signals & quick comparison.</p>
+                        <div class="project-actions">
+                            <a href="https://www.figma.com/proto/8xJ8wW83caqCKeoZTjOXZr/Hotel?type=design&node-id=33-191&t=L8AiPZRct03u7omN-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=72%3A335&mode=design" target="_blank" aria-label="Open Hotel Booking App prototype"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item" data-category="uiux" data-project>
+                <div class="work project-card">
+                    <img src="Images/PantryPal.jpg" alt="Meditation App UI">
+                    <div class="layer">
+                        <div class="project-tags"><span>Wellness</span><span>UI/UX</span><span>Minimal</span></div>
+                        <h3>Meditation App</h3>
+                        <p>Calm, low‑distraction interface emphasizing routine streaks and guided session discovery.</p>
+                        <div class="project-actions">
+                            <a href="https://www.figma.com/proto/Tuli7DywD3AsdJmvYajWRR/Yoga-X?type=design&node-id=45-372&t=jBt9B0xJ7muewPkZ-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=45%3A372&mode=design" target="_blank" aria-label="Open Meditation App prototype"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item" data-category="uiux" data-project>
+                <div class="work project-card">
+                    <img src="Images/Group 28.png" alt="Travel Booking App UI">
+                    <div class="layer">
+                        <div class="project-tags"><span>Travel</span><span>UI/UX</span><span>Animations</span></div>
+                        <h3>Travel Booking App</h3>
+                        <p>Simplified itinerary builder with progressive disclosure for fares, filters & upsells.</p>
+                        <div class="project-actions">
+                            <a href="https://www.figma.com/proto/XybJur8tO2D9V8ZmimpcKU/Travel-website?type=design&node-id=10-212&t=4AFD6om51mF8ikL7-1&scaling=min-zoom&page-id=10%3A211&mode=design" target="_blank" aria-label="Open Travel Booking App prototype"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Data projects integrated here -->
+            <div class="timeline-item" data-category="data" data-project>
+                <div class="work project-card">
+                    <img src="Images/pexels-victor-freitas-841130.jpg" alt="Fitbit Data Project">
+                    <div class="layer">
+                        <div class="project-tags"><span>Data</span><span>EDA</span><span>Health</span></div>
+                        <h3>Quantified Self: Fitbit Data</h3>
+                        <p>Analyzing multi‑dimension tracker logs (activity / sleep / heart) to surface patterns & lifestyle insights.</p>
+                        <div class="project-actions">
+                            <a href="https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%208%20(%20Capstone%20project-%20Fitbit%20tracker%20application)" target="_blank" aria-label="Open Fitbit Data Project repository"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item" data-category="data" data-project>
+                <div class="work project-card">
+                    <img src="Images/HansRosling.png" alt="Hans Rosling Data Storytelling">
+                    <div class="layer">
+                        <div class="project-tags"><span>DataViz</span><span>Animation</span><span>Storytelling</span></div>
+                        <h3>Hans Rosling Visuals</h3>
+                        <p>Recreated animated bubble charts to communicate multi‑variable development progress with impact.</p>
+                        <div class="project-actions">
+                            <a href="https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%204%20(%20Advance%20Data%20visualization%20with%20animation%20in%20python%20(%20Hans%20rossling%20Tedex%20data%20visualization%20case%20study)" target="_blank" aria-label="Open Hans Rosling Data Storytelling repository"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item" data-category="data" data-project>
+                <div class="work project-card">
+                    <img src="Images/174092-clue-illustration.png" alt="SQL Sleuth Project">
+                    <div class="layer">
+                        <div class="project-tags"><span>SQL</span><span>Queries</span><span>Case</span></div>
+                        <h3>SQL Sleuth</h3>
+                        <p>Interactive detective‑style querying: uncovering anomalies, joins & relational patterns in datasets.</p>
+                        <div class="project-actions">
+                            <a href="https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%205(%20MySQL%20and%20Web%20Scraping)" target="_blank" aria-label="Open SQL Sleuth repository"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <a href="" class="btn">See more</a>
+    </div>
+</div>
+    </div>
+
+</div>
+
+<!--------------------Blog-------------------------------------------->
+<div id="Blog">
+    <div class="container">
+        <h1 class="subtitle">Blog</h1>
+        <div class="worklist1">
+
+            <div class="work1">
+              <img src="Images/1_QT7t9UlXrAoyfu_FBdVp7A.webp">
+                <div class="layer1">
+                    <h3><br>AI and UI: A beneficial ally for UI</h3>
+                    <p><br>How AI can be useful for UX designer</p>
+                    <a href="https://medium.com/@samarthjoshi1608/ai-and-ui-a-beneficial-ally-for-ui-14fa29f9d7f6" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+
+                  
+                </div>
+            </div>
+            
+            <div class="work1">
+         <img src="Images/1_ygLNnseZxXcMUCDJZlP22Q.webp">
+                <div class="layer1">
+                    <h3><br>Figma vs Adobe XD: A Design War</h3>
+                    <p><br>Comparsion between two most popular design tools</p>
+                    <a href="https://medium.com/@samarthjoshi1608/figma-vs-adobe-xd-a-design-war-c8dd481e9f0b" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                  
+                </div>
+            </div>
+            
+            <div class="work1">
+        <img src="Images/0_QxLrVeyHcqgtIvYl.jpg">
+                <div class="layer1">
+                    <h3><br>How UX has evolved over time</h3>
+                    <p><br>History of UI/UX</p>
+                    <a href="https://medium.com/@samarthjoshi1608/how-ux-has-evolved-over-time-274c6830c965" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                  
+                </div>
+            </div>
+
+        </div>
+        <a href="https://medium.com/@samarthjoshi1608" class="btn">See more</a>
+    </div>
+</div>
+
+<!-----------------Contact------------------------------------>
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="subtitle">Contact Me</h1>
+                <p><i class="fa fa-paper-plane" aria-hidden="true"></i> samarthjoshi1608@gmail.com</p>
+                <p><i class="fa fa-phone-square" aria-hidden="true"></i>+49 152 14041882</p>
+                <br>
+                <div class="social-icons">
+                    <a href=""><br><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/uidude_0816/" target="_blank"><br><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/uidude_0816/" target="_blank"><br><i class="fab fa-github"></i></a>
+                </div>
+                <a href="Images/my-cv.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email"placeholder="Your Email"required>
+                    <textarea name="Message" id="" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form> 
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+    <p>Copyright ©Samarth Joshi</p>
+    </div>
+</div>
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks)
+        {
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents)
+        {
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+<script>
+    var sidemenu= document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right= "0";
+    }
+
+    function closemenu(){
+        // Check screen width to use appropriate close position
+        if (window.innerWidth <= 600) {
+            sidemenu.style.right= "-250px";
+        } else {
+            sidemenu.style.right= "-300px";
+        }
+    }
+</script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzm1kVBFBYsK7bOjLw-GiNfV064TE55EIblt0Td_sFp7w3NfkiRDyka27ku7OjHH40k/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg=document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+<script>
+// Role toggle logic
+const headerEl=document.getElementById('header');
+const roleSwitch=document.getElementById('roleSwitch');
+const roleLabels=document.querySelectorAll('.role-toggle .role-label');
+const introLine=document.getElementById('introLine');
+const roleLine=document.getElementById('roleLine');
+// Dynamic skills elements
+const skillsRoleHeading=document.getElementById('skillsRoleHeading');
+const dynamicSkills=document.getElementById('dynamicSkills');
+const secondarySkills=document.getElementById('secondarySkills');
+const skillsCard=document.getElementById('skillsCard');
+
+const skillData={
+    ux:{
+        title:'UX Engineer Skill Stack',
+        primary:[
+            {name:'User Research',level:'advanced'},
+            {name:'Wireframing',level:'advanced'},
+            {name:'Prototyping',level:'advanced'},
+            {name:'Figma',level:'advanced'},
+            {name:'Interaction Design',level:'advanced'},
+            {name:'Accessibility (a11y)',level:'intermediate'},
+            {name:'Information Architecture',level:'intermediate'},
+            {name:'Usability Testing',level:'advanced'},
+            {name:'Design Systems',level:'intermediate'}
+        ],
+        secondary:[
+            {name:'Adobe XD',level:'advanced'},
+            {name:'Figma',level:'advanced'},
+            {name:'Sketch',level:'advanced'},
+            {name:'Miro',level:'advanced'},
+            {name:'Frontend (i.e React, Next, HTML, CSS..)',level:'advanced'}
+          
+        ]
+    },
+    dev:{
+        title:'Developer Skill Stack',
+        primary:[
+            {name:'React',level:'advanced'},
+            {name:'TypeScript',level:'advanced'},
+            {name:'Next.js',level:'advanced'},
+            {name:'Node.js',level:'advanced'},
+            {name:'Express.js',level:'advanced'},
+            {name:'MongoDB',level:'advanced'},
+            {name:'SQL',level:'intermediate'},
+            {name:'Python',level:'intermediate'},
+            {name:'Java',level:'intermediate'},
+            {name:'C/C++',level:'intermediate'},
+
+
+        ],
+        secondary:[
+            {name:'SDLC',level:'advanced'},
+            {name:'Data Analysis and Visualization',level:'advanced'},
+            {name:'Machine Learning and Data Science',level:'intermediate'},
+            {name:'Debugging',level:'advanced'},
+            {name:'Testing',level:'intermediate'},
+            {name:'Git',level:'intermediate'},
+            {name:'Agile Practices',level:'intermediate'},
+            {name:'System Design',level:'basic'}
+        ]
+    }
+};
+
+// Experience & Education data
+const experienceData={
+    ux:[
+      {period:'01/2024 – Present', role:'Research Assistant', company:'Universität des Saarlandes, Saarbrücken', desc:'Drove AI-in-Education research, built interactive dashboards, handled full stack dev, and led Data Visualization instruction—bridging research, teaching, and real-world impact.'},
+        {period:'09/2023 – 01/2024', role:'Data Analyst Intern', company:'PrepInsta Pvt Ltd, Delhi', desc:'Delivered actionable insights via Python and Tableau, boosting data-driven decisions and reducing stakeholder turnaround time by 25%.'},
+        {period:'08/2023 – 09/2023', role:'Software Developer Intern', company:'Huawei Technologies, Bangalore', desc:'Enhanced system reliability and performance through rigorous testing, bug fixes, and optimized code—cutting errors by 20%.'},
+        {period:'07/2022 – 08/2023', role:'System Engineer', company:'Tata Consultancy Services, Pune', desc:'Worked with British Telecom and global clients to resolve critical issues, reducing downtime by 35% and elevating system stability across multiple regions.'},
+        {period:'08/2023 – 09/2023', role:'UX Design and Research Intern', company:'Suven Consultants, Mumbai', desc:'Led usability testing with 150+ users, iterated on real feedback, and delivered UI improvements that boosted engagement and adaptability.'}
+    ],
+    dev:[
+        {period:'01/2024 – Present', role:'Research Assistant', company:'Universität des Saarlandes, Saarbrücken', desc:'Drove AI-in-Education research, built interactive dashboards, handled full stack dev, and led Data Visualization instruction—bridging research, teaching, and real-world impact.'},
+        {period:'09/2023 – 01/2024', role:'Data Analyst Intern', company:'PrepInsta Pvt Ltd, Delhi', desc:'Delivered actionable insights via Python and Tableau, boosting data-driven decisions and reducing stakeholder turnaround time by 25%.'},
+        {period:'08/2023 – 09/2023', role:'Software Developer Intern', company:'Huawei Technologies, Bangalore', desc:'Enhanced system reliability and performance through rigorous testing, bug fixes, and optimized code—cutting errors by 20%.'},
+        {period:'07/2022 – 08/2023', role:'System Engineer', company:'Tata Consultancy Services, Pune', desc:'Worked with British Telecom and global clients to resolve critical issues, reducing downtime by 35% and elevating system stability across multiple regions.'},
+        {period:'08/2023 – 09/2023', role:'UX Design and Research Intern', company:'Suven Consultants, Mumbai', desc:'Led usability testing with 150+ users, iterated on real feedback, and delivered UI improvements that boosted engagement and adaptability.'}
+    ]
+};
+const educationData=[
+    {degree:"M.S.C informatik/ Computer Science (Currently Pursuing)", inst:"Saarland University, Germany", detail:"Focus: HCI, Data Systems, Applied ML"},
+    {degree:"Bachelor of Engineering in Computer Engineering (1.32 GPA)", inst:"Savitribai Phule Pune University, India", detail:"Core CS + Project-based learning"},
+];
+
+const experienceTimeline=document.getElementById('experienceTimeline');
+const educationList=document.getElementById('educationList');
+
+function renderExperience(mode){
+    const list=experienceData[mode]||[];
+    experienceTimeline.innerHTML=list.map(item=>`
+        <div class="exp-item">
+            <h4 class="exp-role">${item.role} <span class="badge">${item.period}</span></h4>
+            <div class="exp-meta">${item.company}</div>
+            <div class="exp-desc">${item.desc}</div>
+        </div>`).join('');
+}
+
+function renderEducation(){
+    if(!educationList.innerHTML){
+        educationList.innerHTML=educationData.map(e=>`
+            <div class="edu-item">
+                <h4 class="edu-degree">${e.degree}</h4>
+                <div class="edu-meta">${e.inst}</div>
+                <div class="edu-extra">${e.detail}</div>
+            </div>`).join('');
+    }
+}
+renderEducation();
+
+function renderSkills(mode){
+    const data=skillData[mode];
+    if(!data) return;
+    skillsRoleHeading.textContent=data.title;
+    const pill=(s)=>`<span class="skill-pill level-${s.level}" data-level="${s.level}"><span class="dot"></span>${s.name}</span>`;
+    dynamicSkills.innerHTML=data.primary.map(pill).join('');
+    secondarySkills.innerHTML=data.secondary.map(pill).join('');
+    skillsCard.classList.remove('fade-update');
+    void skillsCard.offsetWidth; // reflow
+    skillsCard.classList.add('fade-update');
+}
+
+function updateProjectFilters(mode) {
+    const projectFilters = document.getElementById('projectFilters');
+    // preserve currently active filter token (if any)
+    const prevActive = projectFilters.querySelector('.filter-btn.active');
+    const prevToken = prevActive ? prevActive.getAttribute('data-filter') : null;
+
+    if (mode === 'dev') {
+        // developer mode -> show three filters: Full Stack, Frontend, Data
+        projectFilters.innerHTML = `
+            <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="data">Data Analysis</button>
+        `;
+    } else {
+        // ux mode -> two filters: Case Study, Design
+        projectFilters.innerHTML = `
+            <button class="filter-btn" data-filter="uiux">Case Study</button>
+            <button class="filter-btn" data-filter="data">Design</button>
+        `;
+    }
+
+    // restore previous active if still present, otherwise mark first as active
+    if (prevToken) {
+        const newActive = projectFilters.querySelector(`.filter-btn[data-filter="${prevToken}"]`);
+        if (newActive) newActive.classList.add('active');
+        else {
+            const f = projectFilters.querySelector('.filter-btn'); if (f) f.classList.add('active');
+        }
+    } else {
+        const f = projectFilters.querySelector('.filter-btn'); if (f) f.classList.add('active');
+    }
+
+    // if the filter wiring exists, rebind handlers
+    if (typeof refreshFilterButtons === 'function') refreshFilterButtons();
+}
+
+// Project data structure for different roles
+const projectData = {
+    ux: {
+        uiux: [
+            {
+                img: 'Images/Group 26.png',
+                alt: 'UX Case Study : MietMate – Tenant Rights & Rental Management App',
+                tags: ['UI/UX', 'LegalTech', 'UX Research','Case Study'],
+                title: 'UX Case Study : MietMate – Tenant Rights & Rental Management App',
+                description: 'A legal-tech solution that empowers tenants with accessible tools to manage rights, contracts, and disputes confidently.',
+                link: 'https://medium.com/@samarthjoshi1608/ux-case-study-mietmate-tenant-rights-rental-management-app-a4f1add4839e'
+            },
+            {
+                img: 'Images/PantryPal.jpg',
+                alt: 'UX Case Study : PantryPal – Cooking, Budgeting & Smart Recipe Assistant',
+                tags: ['UI/UX', 'FoodTech', 'Product Design','Gamified Budgeting and Cooking'],
+                title: 'UX Case Study : PantryPal – Cooking, Budgeting & Smart Recipe Assistant',
+                description: 'A food-tech app that helps users cook smarter, stay on budget, and reduce waste through guided recipes and gamified learning.',
+                link: 'https://medium.com/@samarthjoshi1608/ux-case-study-pantrypal-cooking-budgeting-smart-recipe-assistant-7d09d4a78a9b'
+            },
+            {
+                img: 'Images/Group 28.png',
+                alt: 'UX Case Study : Concert Booking App – Music & Event Discovery',
+                tags: ['UI/UX', 'Music & Ticketing', 'Travel Integration'],
+                title: 'UX Case Study : Concert Booking App – Music & Event Discovery',
+                description: 'An event-tech platform that simplifies concert discovery, ticket booking, and travel planning for music lovers.',
+                link: 'https://medium.com/@samarthjoshi1608/ux-case-study-concert-booking-app-c4a6dbf09ace'
+            }
+        ],
+        data: [
+            {
+                img: 'Images/preview.gif',
+                alt: 'Hotel X- stay booking platform UI Design Data Project',
+                tags: ['UI/UX', 'Booking Website', 'PMS'],
+                title: 'Hotel X- stay booking platform UI Design',
+                description: 'A hotel booking platform UI designed to streamline the reservation process, focusing on straightforward navigation and a user-friendly experience from browsing to booking confirmation.',
+                link: 'https://www.figma.com/proto/8xJ8wW83caqCKeoZTjOXZr/Hotel?type=design&node-id=33-191&t=L8AiPZRct03u7omN-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=72%3A335&mode=design)'
+            },
+            {
+                img: 'Images/deisgn2.gif',
+                alt: 'YogaX- Meditation App UI Design',
+                tags: ['UIUX', 'MeditationApp', 'Edtech'],
+                title: 'YogaX- Meditation App UI Design',
+                description: 'A wellbeing booking platform focused on meditation and yoga, offering a simple and calming experience for users.',
+                link: 'https://www.figma.com/proto/Tuli7DywD3AsdJmvYajWRR/Yoga-X?type=design&node-id=45-372&t=jBt9B0xJ7muewPkZ-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=45%3A372&mode=design)'
+            },
+            {
+                img: 'Images/okko_car_loop.gif',
+                alt: 'Travel X- Travel Website UI Design',
+                tags: ['UIUX', 'TravelWebsite', 'TravelTech'],
+                title: 'Travel X- Travel Website UI Design',
+                description: 'A travel website UI design project focused on delivering a smooth and visually appealing user experience.',
+                link: 'https://www.figma.com/proto/XybJur8tO2D9V8ZmimpcKU/Travel-website?type=design&node-id=10-212&t=4AFD6om51mF8ikL7-1&scaling=min-zoom&page-id=10%3A211&mode=design)'
+            }
+        ]
+    },
+    dev: {
+        fullstack: [
+            // Placeholder for Full Stack projects - replace with actual content
+            {
+                img: 'Images/how_to_trade.webp',
+                alt: 'Trade X- Trading Platform with AI Based recommendations',
+                tags: ['React', 'Node.js', 'MongoDB', 'Bootstrap', 'Express', 'Material UI','Gemini', 'AI'],
+                title: 'Trade X- Trading Platform with AI Based recommendations',
+                description: 'A full-stack trading platform featuring current market data, AI-powered recommendations, and an admin dashboard for managing users and trades.',
+                link: '#'
+            },
+            {
+                img: 'Images/Video.avif',
+                alt: 'Video X- Remote calling platform',
+                tags: ['React', 'Express', 'MongoDB', 'WebRTC','Node.js'],
+                title: 'Video X- Remote calling platform',
+                description: 'A real-time calling platform with features like video conferencing, screen sharing, and chat functionality.',
+                link: '#'
+            },
+            {
+                img: 'Images/Hotel.jpg',
+                alt: 'Hotel X- Hotel Booking platform',
+                tags: ['HTML', 'CSS','Bootstrap', 'EJS','Node.js','EJS','MongoDB','Tailwind CSS'],
+                title: 'HotelX- Hotel Booking platform',
+                description: 'A full-featured hotel booking platform where users can browse rooms, make reservations, manage bookings, and handle payments. Built with Node.js, EJS, and MongoDB, it includes an admin dashboard, user authentication, and a responsive, modern UI for seamless hotel management.',
+                link: '#'
+            }
+        ],
+        frontend: [
+            {
+                img: 'Images/Climate.png',
+                alt: 'Climate Simulator',
+                tags: ['TypeScript', 'React', 'Splash'],
+                title: 'Climate Simulator',
+                description: 'An interactive climate simulator that visualizes the impact of various factors on climate change.',
+                link: 'https://lambent-sunburst-0b9df2.netlify.app/'
+            },
+            {
+                img: 'Images/PantryPal1.png',
+                alt: 'Pantry Pal - AI based Cooking platform',
+                tags: ['React', 'Tailwind CSS', 'Swiper','AI'],
+                title: 'Pantry Pal - AI based Cooking platform',
+                description: 'A recipe application that helps users learn cooking, manage their pantry budget and suggests recipes based on available ingredients.',
+                link: 'https://illustrious-churros-8b11d3.netlify.app/#'
+            },
+            {
+                img: 'Images/174092-clue-illustration.png',
+                alt: 'Progressive Web App',
+                tags: ['PWA', 'Service Worker', 'IndexedDB'],
+                title: 'Progressive Web App',
+                description: 'Offline-first application with push notifications & background sync capabilities.',
+                link: '#'
+            }
+        ],
+        data: [
+            {
+                img: 'Images/pexels-victor-freitas-841130.jpg',
+                alt: 'Quantified Self: Fitbit Data',
+                tags: ['Data', 'EDA', 'Health'],
+                title: 'Quantified Self: Unveiling Insights from Fitbit Data',
+                description: 'This project delves into Fitbit tracker logs to uncover patterns, trends and correlations across activity, sleep and heart-rate data. The analysis surfaces actionable lifestyle insights and visual summaries for personalized wellness.',
+                link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%208%20(%20Capstone%20project-%20Fitbit%20tracker%20application)'
+            },
+            {
+                img: 'Images/HansRosling.png',
+                alt: 'Data Storytelling: Hans Rosling visuals',
+                tags: ['DataViz', 'Animation', 'Storytelling'],
+                title: "Data Storytelling: Unveiling the Power of Statistics through Hans Rosling's Legacy",
+                description: "Recreated Hans Rosling‑style animated visuals to communicate multi‑variable development trends and show how data storytelling can correct misconceptions and build intuition.",
+                link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%204%20(%20Advance%20Data%20visualization%20with%20animation%20in%20python%20(%20Hans%20rossling%20Tedex%20data%20visualization%20case%20study)'
+            },
+            {
+                img: 'Images/174092-clue-illustration.png',
+                alt: 'SQL Sleuth: detective-style queries',
+                tags: ['SQL', 'Queries', 'Case Study'],
+                title: 'SQL Sleuth: The Detective Game of Data Queries',
+                description: 'An interactive, detective‑style exploration using SQL to find anomalies, joins and business insights across relational datasets — practice cases include fraud detection and customer behavior analysis.',
+                link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%205(%20MySQL%20and%20Web%20Scraping)'
+            }
+        ]
+    }
+};
+
+function renderProjects(mode) {
+    const timeline = document.querySelector('.project-timeline');
+    const currentProjects = projectData[mode] || {};
+    let projectHTML = '';
+
+    if (mode === 'dev') {
+        // fullstack
+        (currentProjects.fullstack || []).forEach(project => {
+            projectHTML += buildProjectHTML('fullstack', project);
+        });
+        // frontend
+        (currentProjects.frontend || []).forEach(project => {
+            projectHTML += buildProjectHTML('frontend', project);
+        });
+        // data
+        (currentProjects.data || []).forEach(project => {
+            projectHTML += buildProjectHTML('data', project);
+        });
+    } else {
+        // UX mode
+        (currentProjects.uiux || []).forEach(project => {
+            projectHTML += buildProjectHTML('uiux', project);
+        });
+        (currentProjects.data || []).forEach(project => {
+            projectHTML += buildProjectHTML('data', project);
+        });
+    }
+
+    timeline.innerHTML = projectHTML;
+
+    // Re-initialize project items and apply current filter
+    window.projectItems = document.querySelectorAll('.timeline-item[data-project]');
+
+    // Apply current active filter to new projects
+    const activeFilterBtn = document.querySelector('.filter-btn.active');
+    if (activeFilterBtn) {
+        const currentFilter = activeFilterBtn.getAttribute('data-filter');
+        applyFilter(currentFilter);
+    }
+
+    // Re-initialize/refine intersection observer for new projects
+    if (window.projectObserver) window.projectObserver.disconnect();
+    window.projectObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                window.projectObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.25 });
+    window.projectItems.forEach(item => window.projectObserver.observe(item));
+}
+
+// small helper to build project HTML to avoid repetition
+function buildProjectHTML(cat, project){
+    return `
+        <div class="timeline-item" data-category="${cat}" data-project>
+            <div class="work project-card">
+                <img src="${project.img}" alt="${project.alt}">
+                <div class="layer">
+                    <div class="project-tags">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="project-actions">
+                        <a href="${project.link}" target="_blank" aria-label="Open ${project.title}"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function setRole(mode){
+    if(mode==='dev'){
+        headerEl.classList.add('developer-mode');
+        headerEl.classList.remove('ux-mode');
+        introLine.innerHTML="Hi, I'm <span1>Samarth</span1>";
+        roleLine.innerHTML='I <span3>Code</span3>, build <span2>Products</span2><br>optimize <span5>Systems</span5> & Ship <span4>Features</span4>.';
+        renderSkills('dev');
+        renderExperience('dev');
+        updateProjectFilters('dev');
+        renderProjects('dev'); // This now properly applies filters
+    } else {
+        headerEl.classList.add('ux-mode');
+        headerEl.classList.remove('developer-mode');
+        introLine.innerHTML="Hi, I'm <span1>Samarth</span1>";
+        roleLine.innerHTML='I <span2>design</span2>, <span3>bridge code & creativity</span3>,<br><span4>research</span4> & <span5>simplify tech.</span5>';
+        renderSkills('ux');
+        renderExperience('ux');
+        updateProjectFilters('ux');
+        renderProjects('ux'); // This now properly applies filters
+    }
+    // refresh typing animation
+    [introLine, roleLine].forEach(el=>{
+        el.classList.remove('typing-restart');
+        void el.offsetWidth;
+        el.classList.add('typing-restart');
+    });
+    roleLabels.forEach(l=>l.classList.toggle('active', (l.dataset.role===(mode==='dev'?'dev':'ux'))));
+}
+
+roleSwitch.addEventListener('change',()=>{
+    setRole(roleSwitch.checked?'dev':'ux');
+});
+
+// Initial state
+headerEl.classList.add('ux-mode');
+setRole('ux');
+</script>
+<script>
+// Project filter & reveal (UI/UX & Data only)
+const filterButtons=document.querySelectorAll('.filter-btn');
+let projectItems=document.querySelectorAll('.timeline-item[data-project]');
+
+function applyFilter(f){
+    // Re-select project items in case they were dynamically updated
+    projectItems=document.querySelectorAll('.timeline-item[data-project]');
+    
+    projectItems.forEach(item=>{
+        const cats=item.getAttribute('data-category');
+        if(cats.split(/\s+/).includes(f)){
+            item.classList.remove('filtered-out');
+        } else {
+            item.classList.add('filtered-out');
+        }
+    });
+    fixTimelineAlternation();
+}
+
+function fixTimelineAlternation() {
+    const visibleItems = document.querySelectorAll('.timeline-item[data-project]:not(.filtered-out)');
+    visibleItems.forEach((item, index) => {
+        // Remove any existing alternation classes
+        item.classList.remove('force-left', 'force-right');
+        
+        // Apply consistent alternation: even index = left, odd index = right
+        if (index % 2 === 0) {
+            item.classList.add('force-left');
+        } else {
+            item.classList.add('force-right');
+        }
+    });
+}
+
+filterButtons.forEach(btn=>btn.addEventListener('click',()=>{
+    const f=btn.getAttribute('data-filter');
+    filterButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilter(f);
+}));
+// helper to (re)bind filter button events after DOM changes
+function refreshFilterButtons(){
+    // reselect filter buttons
+    window.filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+    window.filterButtons.forEach(btn=>{
+        btn.onclick = ()=>{
+            const f = btn.getAttribute('data-filter');
+            window.filterButtons.forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilter(f);
+        };
+    });
+    // apply currently active filter
+    const initialBtn=document.querySelector('.filter-btn.active');
+    if(initialBtn){applyFilter(initialBtn.getAttribute('data-filter'));}
+}
+
+// initial binding
+refreshFilterButtons();
+
+// initial intersection observer setup for existing items
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}})},{threshold:0.25});
+projectItems.forEach(i=>observer.observe(i));
+</script>
+    </body>
+</html>
