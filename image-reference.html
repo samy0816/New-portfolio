@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Image Replacement Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .icon {
+            font-size: 2.5rem;
+        }
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        .section-name {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .filename {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #e83e8c;
+            margin: 8px 0;
+            display: inline-block;
+        }
+        .description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .search-term {
+            background: #fff3cd;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .count {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .section-header {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .total {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            color: #e83e8c;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 20px;
+            }
+            h1 {
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Quick Image Replacement Reference</h1>
+        
+        <div class="section-header">
+            <div class="total">18</div>
+            <p style="font-size: 1.2rem; color: #666; margin-top: 10px;">Total Images to Replace</p>
+        </div>
+
+        <div class="grid">
+            <!-- Card Sorting -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🗂️</div>
+                    <div>
+                        <div class="card-title">Card Sorting</div>
+                        <span class="count">1 image</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Card Sorting Results</div>
+                <div class="filename">card-sorting-results.png</div>
+                <p class="description">Your card sorting exercise diagram showing how users grouped the 12 task cards</p>
+                <div class="search-term">Search: card-sorting-placeholder</div>
+            </div>
+
+            <!-- Low-Fi 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📱</div>
+                    <div>
+                        <div class="card-title">Home Wireframe</div>
+                        <span class="count">Low-Fi #1</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Low-Fidelity Prototypes</div>
+                <div class="filename">wireframe-home.png</div>
+                <p class="description">Low-fidelity wireframe showing home screen layout with language selection</p>
+                <div class="search-term">Search: wireframe-placeholder (1st)</div>
+            </div>
+
+            <!-- Low-Fi 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📝</div>
+                    <div>
+                        <div class="card-title">Booking Wireframe</div>
+                        <span class="count">Low-Fi #2</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Low-Fidelity Prototypes</div>
+                <div class="filename">wireframe-booking.png</div>
+                <p class="description">Step-by-step booking flow wireframe with progress indicator</p>
+                <div class="search-term">Search: wireframe-placeholder (2nd)</div>
+            </div>
+
+            <!-- Low-Fi 3 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">💬</div>
+                    <div>
+                        <div class="card-title">Translation Wireframe</div>
+                        <span class="count">Low-Fi #3</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Low-Fidelity Prototypes</div>
+                <div class="filename">wireframe-translation.png</div>
+                <p class="description">Live translation interface wireframe with voice input</p>
+                <div class="search-term">Search: wireframe-placeholder (3rd)</div>
+            </div>
+
+            <!-- Low-Fi 4 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📅</div>
+                    <div>
+                        <div class="card-title">Appointments Wireframe</div>
+                        <span class="count">Low-Fi #4</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Low-Fidelity Prototypes</div>
+                <div class="filename">wireframe-appointments.png</div>
+                <p class="description">Calendar view with upcoming appointments and reminders</p>
+                <div class="search-term">Search: wireframe-placeholder (4th)</div>
+            </div>
+
+            <!-- Hi-Fi 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🎨</div>
+                    <div>
+                        <div class="card-title">Home Dashboard</div>
+                        <span class="count">Hi-Fi #1</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-home.png</div>
+                <p class="description">Fully designed home dashboard with branding and colors</p>
+                <div class="search-term">Search: hifi-placeholder (large)</div>
+            </div>
+
+            <!-- Hi-Fi 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📋</div>
+                    <div>
+                        <div class="card-title">Service Selection</div>
+                        <span class="count">Hi-Fi #2</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-service-selection.png</div>
+                <p class="description">Service selection screen with City Registration, ID Card, etc.</p>
+                <div class="search-term">Search: hifi-placeholder (1st row)</div>
+            </div>
+
+            <!-- Hi-Fi 3 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📄</div>
+                    <div>
+                        <div class="card-title">Document Checklist</div>
+                        <span class="count">Hi-Fi #3</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-documents.png</div>
+                <p class="description">Document checklist showing required papers</p>
+                <div class="search-term">Search: hifi-placeholder (2nd row)</div>
+            </div>
+
+            <!-- Hi-Fi 4 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📅</div>
+                    <div>
+                        <div class="card-title">Date Selection</div>
+                        <span class="count">Hi-Fi #4</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-date.png</div>
+                <p class="description">Calendar date picker for appointment scheduling</p>
+                <div class="search-term">Search: hifi-placeholder (3rd row)</div>
+            </div>
+
+            <!-- Hi-Fi 5 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">✅</div>
+                    <div>
+                        <div class="card-title">Confirmation</div>
+                        <span class="count">Hi-Fi #5</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-confirmation.png</div>
+                <p class="description">Success confirmation screen after booking</p>
+                <div class="search-term">Search: hifi-placeholder (4th row)</div>
+            </div>
+
+            <!-- Hi-Fi 6 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🗓️</div>
+                    <div>
+                        <div class="card-title">My Appointments</div>
+                        <span class="count">Hi-Fi #6</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-appointments.png</div>
+                <p class="description">List view of upcoming appointments</p>
+                <div class="search-term">Search: hifi-placeholder (5th row)</div>
+            </div>
+
+            <!-- Hi-Fi 7 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">💬</div>
+                    <div>
+                        <div class="card-title">Live Translation</div>
+                        <span class="count">Hi-Fi #7</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: High-Fidelity Prototypes</div>
+                <div class="filename">hifi-translation.png</div>
+                <p class="description">Translation interface with chat bubbles</p>
+                <div class="search-term">Search: hifi-placeholder (6th row)</div>
+            </div>
+
+            <!-- Additional 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🔐</div>
+                    <div>
+                        <div class="card-title">Onboarding</div>
+                        <span class="count">Extra #1</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Additional Screens</div>
+                <div class="filename">screen-onboarding.png</div>
+                <p class="description">Welcome and onboarding flow for new users</p>
+                <div class="search-term">Search: additional-placeholder (1st)</div>
+            </div>
+
+            <!-- Additional 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">👤</div>
+                    <div>
+                        <div class="card-title">User Profile</div>
+                        <span class="count">Extra #2</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Additional Screens</div>
+                <div class="filename">screen-profile.png</div>
+                <p class="description">User profile with personal info and saved docs</p>
+                <div class="search-term">Search: additional-placeholder (2nd)</div>
+            </div>
+
+            <!-- Additional 3 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🔔</div>
+                    <div>
+                        <div class="card-title">Notifications</div>
+                        <span class="count">Extra #3</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Additional Screens</div>
+                <div class="filename">screen-notifications.png</div>
+                <p class="description">Notification center with reminders and alerts</p>
+                <div class="search-term">Search: additional-placeholder (3rd)</div>
+            </div>
+
+            <!-- Additional 4 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">📚</div>
+                    <div>
+                        <div class="card-title">Help & Resources</div>
+                        <span class="count">Extra #4</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Additional Screens</div>
+                <div class="filename">screen-help.png</div>
+                <p class="description">Help, FAQs, and tutorial resources</p>
+                <div class="search-term">Search: additional-placeholder (4th)</div>
+            </div>
+
+            <!-- Additional 5 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">🗺️</div>
+                    <div>
+                        <div class="card-title">Office Locator</div>
+                        <span class="count">Extra #5</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Additional Screens</div>
+                <div class="filename">screen-map.png</div>
+                <p class="description">Map showing Bürgeramt office locations</p>
+                <div class="search-term">Search: additional-placeholder (5th)</div>
+            </div>
+
+            <!-- Additional 6 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">⚙️</div>
+                    <div>
+                        <div class="card-title">Settings</div>
+                        <span class="count">Extra #6</span>
+                    </div>
+                </div>
+                <div class="section-name">Section: Additional Screens</div>
+                <div class="filename">screen-settings.png</div>
+                <p class="description">App settings and user preferences</p>
+                <div class="search-term">Search: additional-placeholder (6th)</div>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 30px; margin-top: 40px; text-align: center;">
+            <h2 style="color: #667eea; margin-bottom: 15px;">📝 Quick Replacement Template</h2>
+            <p style="color: #666; margin-bottom: 20px;">Use this HTML to replace each placeholder:</p>
+            <code style="display: block; padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: left;">
+                &lt;img src="images/YOUR-FILENAME.png" alt="Description" class="case-study-image"&gt;
+            </code>
+        </div>
+    </div>
+</body>
+</html>

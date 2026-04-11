@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyBürger - UX Case Study</title>
+    <link rel="stylesheet" href="case-study.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="main-title">EasyBürger</h1>
+                <p class="subtitle">Making Bürgeramt appointments simple and multilingual for newcomers in Germany</p>
+                <div class="hero-meta">
+                    <span class="meta-item">UX Case Study</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">Samarth Joshi</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">Mobile First</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">3 Weeks</span>
+                </div>
+                <div class="hero-tools">
+                    <span class="tool-badge">Figma</span>
+                    <span class="tool-badge">Miro</span>
+                    <span class="tool-badge">Wirebox</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="section overview-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <!-- Hero row: Problem + Goal -->
+            <div class="overview-hero-row">
+                <div class="overview-card overview-card--problem fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="overview-eyebrow">The Challenge</span>
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Problem Statement</h3>
+                    <p>For newcomers arriving in Germany, registering at the Bürgeramt isn't just confusing — it's a wall. Everything is in German. The booking flow is opaque. One wrong step means a missed slot and weeks of delay. People are navigating one of the most critical bureaucratic processes of their new life with zero guidance.</p>
+                    <div class="overview-card-decor">"</div>
+                </div>
+                <div class="overview-card overview-card--goal fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="overview-eyebrow">The Vision</span>
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+                    </div>
+                    <h3>Goal</h3>
+                    <p>Build a mobile-first experience that removes the fear from bureaucracy. Step-by-step guidance, multilingual support, and real-time translation — so every newcomer can book, prepare, and walk into their appointment with confidence, regardless of German proficiency.</p>
+                    <div class="overview-card-decor">→</div>
+                </div>
+            </div>
+            <!-- Support row: Role + Timeline -->
+            <div class="overview-support-row">
+                <div class="overview-card overview-card--role fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>My Role</h3>
+                    <p>End-to-End Product Designer — research, user flows, wireframing, prototyping, and usability testing.</p>
+                </div>
+                <div class="overview-card overview-card--timeline fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Timeline</h3>
+                    <p>3 weeks from discovery to tested design</p>
+                    <div class="overview-badge">3 Weeks Sprint</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section problem-section">
+        <div class="container">
+            <div class="content-wrapper fade-in-up">
+                <h2 class="section-title">Process</h2>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="process-icon">🔍</div>
+                        <h3>Discover</h3>
+                        <p>User interviews & research</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">📝</div>
+                        <h3>Define</h3>
+                        <p>Personas & pain points</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">💡</div>
+                        <h3>Ideate</h3>
+                        <p>Solutions & features</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">🎨</div>
+                        <h3>Design</h3>
+                        <p>Wireframes & prototypes</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">✅</div>
+                        <h3>Test</h3>
+                        <p>Usability validation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Research -->
+    <section class="section research-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">User Research</h2>
+                <p class="section-subtitle">Understanding International Students & Newcomers</p>
+            </div>
+            <div class="research-content">
+                <div class="research-method fade-in-up">
+                    <h3>Research Methods</h3>
+                    <ul class="method-list">
+                        <li>10 international student interviews (India, Brazil, Turkey, Vietnam)</li>
+                        <li>Studied real Bürgeramt booking experiences across 4 cities</li>
+                        <li>Quantitative survey responses</li>
+                        <li>Competitor analysis of existing platforms</li>
+                    </ul>
+                    <h3 style="margin-top: 30px;">Target Users</h3>
+                    <p style="color: #666; line-height: 1.7; margin-top: 10px;">New international students and non-German speakers who need to navigate the German bureaucracy system for registrations, appointments, and documentation.</p>
+                </div>
+                <div class="key-findings fade-in-up">
+                    <h3>Quantitative Research</h3>
+                    <div class="findings-grid">
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">70%</div>
+                            <p>Couldn't understand German websites, translations felt robotic</p>
+                        </div>
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">40%</div>
+                            <p>Booked at wrong office and lost time</p>
+                        </div>
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">80%</div>
+                            <p>No awareness about availability of multiple offices</p>
+                        </div>
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">60%</div>
+                            <p>Didn't know which exact documents they needed</p>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 40px;">User Needs</h3>
+                    <div class="needs-list">
+                        <div class="need-item">✓ Step-by-step guidance through the booking process</div>
+                        <div class="need-item">✓ Multilingual support for navigating booking process</div>
+                        <div class="need-item">✓ Reassurance and assistance during the process</div>
+                        <div class="need-item">✓ Felt anxious communicating with officers due to language barrier</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Competitor Analysis -->
+    <section class="section wireframes-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Competitor Analysis</h2>
+                <p class="section-subtitle">Understanding the Current Landscape</p>
+            </div>
+            <div class="competitor-grid">
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.1s;">
+                    <h3>Saarbrucken.de</h3>
+                    <div class="competitor-tag">Competitor 1</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>Official, citywide coverage</li>
+                            <li>Comprehensive appointment booking</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>Only available in German</li>
+                            <li>Hard to understand what to choose exactly</li>
+                            <li>Quickly overwhelming for new users</li>
+                            <li>Poor mobile usability</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.2s;">
+                    <h3>Service.Bund.de</h3>
+                    <div class="competitor-tag">Competitor 2</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>Centralized government information</li>
+                            <li>Wide range of services</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>Hard for first-timers to navigate</li>
+                            <li>Difficult to understand exact terminology</li>
+                            <li>No step-by-step guidance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.3s;">
+                    <h3>Relocation Agencies</h3>
+                    <div class="competitor-tag">Competitor 3</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>Personalized support for newcomers</li>
+                            <li>Human assistance available</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>Expensive services</li>
+                            <li>Not accessible to students</li>
+                            <li>Limited availability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Personas -->
+    <section class="section personas-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">User Persona</h2>
+            </div>
+            <div class="persona-main-card fade-in-up">
+                <div class="persona-header-large">
+                    <div class="persona-avatar-large">👩‍🎓</div>
+                    <div class="persona-info-large">
+                        <h2>Priya</h2>
+                        <p class="persona-subtitle-large">International Student</p>
+                        <p class="persona-location">24 • Saarbrucken • MBA Student</p>
+                    </div>
+                </div>
+                <div class="persona-main-content">
+                    <div class="persona-section">
+                        <h3>About</h3>
+                        <p>24 years old, recently moved from India to Saarbrücken for her master's degree. Speaks English, and currently beginner in learning German. Needs to register her address to open a bank account and get health insurance.</p>
+                    </div>
+                    <div class="persona-grid-sections">
+                        <div class="persona-section">
+                            <h3>Pain Points</h3>
+                            <ul>
+                                <li>Needs assistance and easy-to-understand source for booking appointments</li>
+                                <li>Navigating German bureaucracy system is overwhelming</li>
+                                <li>Feels anxious and unsure what to do</li>
+                                <li>Language barrier makes everything more difficult</li>
+                            </ul>
+                        </div>
+                        <div class="persona-section">
+                            <h3>Values</h3>
+                            <ul>
+                                <li>Clarity</li>
+                                <li>Efficiency</li>
+                                <li>Independence</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <div class="quote-mark">“</div>
+                        <p>I just landed here and everything is already so overwhelming. I wish booking this appointment was easy as ordering food — simple, fast and easy to navigate.</p>
+                        <div class="quote-mark">”</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Sorting & Taskflows -->
+    <section class="section journey-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Card Sorting</h2>
+                <p class="section-subtitle">Defining Navigation Hierarchy</p>
+            </div>
+            <div class="card-sorting-info fade-in-up">
+                <p class="large-text">Performed open card sorting using 12 task cards to define EasyBürger's navigation hierarchy.</p>
+            </div>
+            <div class="card-sorting-visual fade-in-up">
+                <div class="image-placeholder card-sorting-placeholder">
+                    <div class="placeholder-icon">🗂️</div>
+                    <p class="placeholder-text">Card Sorting Results</p>
+                   <img src="images/Card sorting.jpg" alt="Description" class="case-study-image">
+                </div>
+            </div>
+            <div class="card-sorting-results fade-in-up">
+                <h3>Key Insights from Card Sorting</h3>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-icon">📱</div>
+                        <h4>Clear Grouping</h4>
+                        <p>Users treat documents as a core part of the appointment process, grouping form preparation and uploads into a single documents module.</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">🔍</div>
+                        <h4>Expected Categories</h4>
+                        <p>Users clearly separate functional language assistance from system settings, showing that translation/help is a feature, not just a preference.</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">📊</div>
+                        <h4>Priority Features</h4>
+                        <p>Users see all appointment-related tasks as one unified workflow, meaning booking, checking, canceling, and rescheduling naturally belong together.</p>
+                    </div>
+                </div>
+            </div>
+
+           
+         
+            </div>
+        </div>
+    </section>
+
+  
+
+
+     <!-- Key Features -->
+    <section class="section features-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Proposed Features & Functionalities</h2>
+                <p class="section-subtitle">To Resolve User Needs</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multilingual Support</h3>
+                    <p>Complete app translation in multiple languages with easy language switching at any time during the user journey</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">📝</div>
+                    <h3>Step-by-Step Appointment Booking</h3>
+                    <p>Guided process with clear instructions, document checklists, and progress indicators to reduce confusion and errors</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="feature-icon">📅</div>
+                    <h3>Calendar Sync & Deadline Reminders</h3>
+                    <p>Automatic calendar integration with smart reminders for appointments and document preparation deadlines</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Live Voice/Language Translation Support</h3>
+                    <p>Real-time translation during appointments to help students communicate confidently with Bürgeramt officers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="section journey-section">
+        <div class="container">
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">User Taskflows</h2>
+                <p class="section-subtitle">Mapping User Journeys</p>
+            </div>
+            <div class="taskflows-wrapper">
+                <h3 class="taskflow-title fade-in-up">Scenario 1: Appointment Booking</h3>
+                <div class="journey-timeline fade-in-up taskflow">
+                    <div class="journey-step">
+                        <div class="step-number">1</div>
+                        <h4>Main Screen</h4>
+                        <p>User lands on home screen</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">2</div>
+                        <h4>Language & Role</h4>
+                        <p>Select language and role (e.g., student)</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">3</div>
+                        <h4>Select Service</h4>
+                        <p>Choose desired service (e.g., city registration)</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">4</div>
+                        <h4>Step-by-Step</h4>
+                        <p>Follow step-by-step process to book</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">5</div>
+                        <h4>Success</h4>
+                        <p>Successful appointment booking</p>
+                        <span class="emotion positive">🎉 Done</span>
+                    </div>
+                </div>
+                <h3 class="taskflow-title fade-in-up" style="margin-top: 60px;">Scenario 2: On-site Help</h3>
+                <div class="journey-timeline fade-in-up taskflow">
+                    <div class="journey-step">
+                        <div class="step-number">1</div>
+                        <h4>Main Screen</h4>
+                        <p>Open app at Bürgeramt</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">2</div>
+                        <h4>Check Time</h4>
+                        <p>View appointment time and expected wait</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">3</div>
+                        <h4>Prepare</h4>
+                        <p>(Optional) Revise common German phrases</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">4</div>
+                        <h4>Live Translation</h4>
+                        <p>Use real-time translation while talking to officer</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">5</div>
+                        <h4>Submit Docs</h4>
+                        <p>Present documents and complete appointment</p>
+                        <span class="emotion positive">✅ Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+      <!-- Low-Fidelity Prototypes -->
+    <section class="section wireframes-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Low-Fidelity Prototypes</h2>
+                <p class="section-subtitle">Early Sketches & Wireframes</p>
+            </div>
+            <div class="lofi-intro fade-in-up">
+                <p class="large-text">Started with paper sketches and digital wireframes to quickly iterate on concepts and test basic user flows without investing in detailed design.</p>
+            </div>
+            <div class="wireframes-gallery">
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.1s;">
+                    <img src="EasyBurger(Images)/Lowfi/Sketch 3.png" alt="Low-Fidelity Wireframe" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.2s;">
+                    <img src="EasyBurger(Images)/Lowfi/Sketch 1.png" alt="Low-Fidelity Wireframe" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.3s;">
+                    <img src="EasyBurger(Images)/Lowfi/Sketch 2.png" alt="Low-Fidelity Wireframe" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.4s;">
+                    <img src="EasyBurger(Images)/Lowfi/Sketch 4.png" alt="Low-Fidelity Wireframe" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.5s;">
+                    <img src="EasyBurger(Images)/Lowfi/Sketch 5.png" alt="Low-Fidelity Wireframe" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.6s;">
+                    <img src="EasyBurger(Images)/Lowfi/Sketch 6.png" alt="Low-Fidelity Wireframe" class="case-study-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design & Color Palette -->
+    <section class="section final-designs-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Design System</h2>
+                <p class="section-subtitle">Typography & Color Palette</p>
+            </div>
+            <div class="design-system-grid fade-in-up">
+                <div class="design-system-card">
+                    <h3>Color Palette</h3>
+                    <p class="design-system-desc">Deep neutrals + civic blue = trustworthy, official, calm</p>
+                    <div class="color-palette">
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #2563EB;"></div>
+                            <span>Primary Blue</span>
+                            <code>#2563EB</code>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #1E293B;"></div>
+                            <span>Deep Neutral</span>
+                            <code>#1E293B</code>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #64748B;"></div>
+                            <span>Medium Gray</span>
+                            <code>#64748B</code>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #F8FAFC;"></div>
+                            <span>Background</span>
+                            <code>#F8FAFC</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="design-system-card">
+                    <h3>Typography</h3>
+                    <p class="design-system-desc">Public Sans → Government-friendly and highly readable<br>Goal: Balance clarity with inclusivity</p>
+                    <div class="typography-samples">
+                        <div class="type-sample">
+                            <h1 style="font-family: 'Public Sans', sans-serif; font-size: 2.5rem; font-weight: 700; margin: 0;">Heading</h1>
+                            <p style="font-size: 0.9rem; color: #64748B; margin: 5px 0 0 0;">Public Sans Bold</p>
+                        </div>
+                        <div class="type-sample">
+                            <p style="font-family: 'Public Sans', sans-serif; font-size: 1.1rem; margin: 0;">Body text for clarity and readability</p>
+                            <p style="font-size: 0.9rem; color: #64748B; margin: 5px 0 0 0;">Public Sans Regular</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Major Screens</h2>
+            </div>
+
+            <!-- Home Screen -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">Home Screen</h3>
+                <div class="major-screen-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 40 (2).png" alt="Home Screen" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="major-screen-description">
+                        <p><strong>Multilingual Support & Role Selection</strong></p>
+                        <p>A welcoming entry point designed to instantly reduce cognitive load. The interface prioritizes language selection and user role identification, ensuring that international students feel understood and guided from the very first interaction.</p>
+                        <div class="design-thought">
+                            <h4>Design Thought</h4>
+                            <p>By placing language and role selection at the forefront, we eliminate the initial friction often associated with government portals. This 'user-first' approach establishes trust and ensures that subsequent content is relevant and accessible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">Dashboard</h3>
+                <div class="major-screen-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 39.png" alt="Dashboard" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="major-screen-description">
+                        <p><strong>Smart Dashboard & Status Tracking</strong></p>
+                        <p>A centralized command center that provides a clear, real-time overview of appointment status and upcoming deadlines. The dashboard transforms complex bureaucratic timelines into actionable, bite-sized tasks.</p>
+                        <div class="design-thought">
+                            <h4>Design Thought</h4>
+                            <p>The dashboard was conceived as an anxiety-reduction tool. By visualizing the process and breaking it down into manageable steps with clear status indicators, we empower users to stay on top of their obligations without feeling overwhelmed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step by step appointment booking -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">Step-by-Step Appointment Booking</h3>
+                <div class="major-screen-description" style="margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p>A linear, guided booking flow that demystifies the appointment process. Each step is clearly defined, with progress indicators and contextual help to prevent errors and ensure all necessary requirements are met.</p>
+                    <div class="design-thought">
+                        <h4>Design Thought</h4>
+                        <p>We moved away from long, intimidating forms in favor of a stepped progression. This 'chunking' strategy reduces cognitive effort and allows for immediate validation, ensuring users feel supported throughout the entire booking journey.</p>
+                    </div>
+                </div>
+                <div class="major-screen-three-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 35.png" alt="Appointment Booking Step 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 34.png" alt="Appointment Booking Step 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 36.png" alt="Appointment Booking Step 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live translation bot -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">Live translation bot</h3>
+                <div class="major-screen-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 42.png" alt="Live Translation Bot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="major-screen-description">
+                        <p><strong>AI-Powered Live Translation</strong></p>
+                        <p>An AI-powered real-time translation assistant that bridges the communication gap during in-person appointments. This feature empowers students to express themselves confidently in their native language while ensuring accurate communication with officials.</p>
+                        <div class="design-thought">
+                            <h4>Design Thought</h4>
+                            <p>Recognizing that the language barrier is most acute during face-to-face interactions, we integrated a live translation tool directly into the app. This feature acts as a digital safety net, transforming a potentially stressful encounter into a manageable conversation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">High-Fidelity Screens</h2>
+                <p class="section-subtitle">Final Design Mockups</p>
+            </div>
+            <div class="wireframes-gallery">
+                 <div class="wireframe-item fade-in-up" style="animation-delay: 0.7s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 40.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.8s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 39.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.9s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 35.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.1s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 32.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.2s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 41.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.3s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 34.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.5s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 36.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.6s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 37.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+               
+                <div class="wireframe-item fade-in-up" style="animation-delay: 1.0s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 42.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Impact & Results -->
+    <section class="section impact-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Accessibility Considerations</h2>
+            </div>
+            <div class="wireframes-gallery" style="grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); justify-content: center;">
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.2s;">
+                    <img src="EasyBurger(Images)/Hifi/iPhone 11 Pro Max - 44.png" alt="High-Fidelity Screen" class="case-study-image">
+                </div>
+            </div>
+            <div class="accessibility-grid fade-in-up">
+                <div class="access-item">
+                    <div class="access-icon">🎨</div>
+                    <h4>High Contrast Colors</h4>
+                    <p>Color palette optimized for visibility and readability</p>
+                </div>
+                <div class="access-item">
+                    <div class="access-icon">👆</div>
+                    <h4>Large Tap Targets</h4>
+                    <p>Large tap targets for easy interaction</p>
+                </div>
+        
+                <div class="access-item">
+                    <div class="access-icon">🏷️</div>
+                    <h4>Icon Labels</h4>
+                    <p>All icons accompanied by clear text labels</p>
+                </div>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Interactive Prototype</h2>
+                <p class="section-subtitle">Try it yourself</p>
+            </div>
+            <div class="prototype-embed fade-in-up">
+                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/W8bCzTVgowVYrhEFpVCInL/EasyBurger?node-id=3-20&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A20&embed-host=share" allowfullscreen></iframe>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Usability Testing & Results</h2>
+            </div>
+            <div class="testing-info fade-in-up">
+                <p class="large-text">I ran simulated usability testing with 10 target users (international students). 5 tests were in-person, 5 remote screen-share. All users used their own mobile phones to reflect real-life context. Tasks were time-tracked, and I observed navigation patterns and error points. Debrief interviews captured emotional feedback (confidence, clarity, anxiety levels).</p>
+                <div class="test-scenario">
+                    <h3>Scenario:</h3>
+                    <p>"You just arrived and need to book Bürgeramt appointment."</p>
+                </div>
+            </div>
+            <div class="impact-grid" style="margin-top: 40px;">
+                <div class="impact-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="impact-number">10/10</div>
+                    <p>Users completed the task successfully</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="impact-number">94%</div>
+                    <p>Successful first-time booking</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="impact-number">4:10</div>
+                    <p>Average Completion time :<br>vs 25 min on Saarbrucken.de)<br>Average 15-20 minutes saved per booking</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="impact-number">4.8/5</div>
+                    <p>Average satisfaction rating</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="impact-number">10%</div>
+                    <p>Error rate: Reduced from 55%</p>
+                </div>
+            </div>
+
+            <div class="user-quotes-section fade-in-up" style="margin-top: 60px;">
+                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 40px; color: #1a1a1a;">User Quotes</h3>
+                <div class="quotes-grid">
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <p>"Feels like Duolingo for German bureaucracy."</p>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <p>"It actually tells me what to do — Saarbrücken site just throws everything at you."</p>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <p>"Love the checklist and progress bar — makes me feel in control."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Potential Impact</h2>
+            </div>
+            <div class="potential-impact fade-in-up">
+                <p class="large-text">Based on user testing metrics, if rolled out citywide (average 40,000 newcomers yearly in big cities like Berlin), EasyBürger could save:</p>
+                <div class="impact-stats-large">
+                    <div class="impact-stat-large">
+                        <h3>110,000+<br>hours</h3>
+                        <p>Saved annually</p>
+                    </div>
+                    <div class="impact-stat-large">
+                        <h3>50%<br>fewer</h3>
+                        <p>Failed appointments</p>
+                    </div>
+                    <div class="impact-stat-large">
+                        <h3>4×<br>faster</h3>
+                        <p>Booking process</p>
+                    </div>
+                    <div class="impact-stat-large">
+                        <h3>Improved</h3>
+                        <p>Confidence and independence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learnings -->
+    <section class="section learnings-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Improvements Suggested</h2>
+                <p class="section-subtitle">Based on User Feedback</p>
+            </div>
+            <div class="learnings-content fade-in-up">
+                <div class="learning-item">
+                    <h3>Clear Confirmation Screen</h3>
+                    <p>Added clear confirmation screen with appointment details to give users peace of mind and allow them to review all information before finalizing.</p>
+                </div>
+                <div class="learning-item">
+                    <h3>Next Available Slots Display</h3>
+                    <p>Displayed next available slots directly on main screen to save time and reduce back-and-forth navigation between screens.</p>
+                </div>
+                <div class="learning-item">
+                    <h3>Tooltips for German Terms</h3>
+                    <p>Introduced tooltips for German legal terms to aid understanding while maintaining official terminology (e.g., “Anmeldung” with English explanation).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Realism & Constraints -->
+    <section class="section next-steps-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Realism & Constraints</h2>
+            </div>
+            <div class="constraints-content fade-in-up">
+                <div class="constraint-grid">
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🔌</div>
+                        <h4>Official API Access Required</h4>
+                        <p>Requires official Bürgeramt API access for real-time appointment availability</p>
+                    </div>
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🌐</div>
+                        <h4>Stable Internet Needed</h4>
+                        <p>Translation needs stable internet connection (paid API possible for offline mode)</p>
+                    </div>
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🔒</div>
+                        <h4>GDPR Compliance</h4>
+                        <p>Must ensure GDPR compliance and end-to-end encryption for user data</p>
+                    </div>
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🇩🇪</div>
+                        <h4>Legal Terms Preservation</h4>
+                        <p>Keep legal terms (Anmeldung) unchanged across languages for official accuracy</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Future Expansion</h2>
+            </div>
+            <div class="next-steps-content fade-in-up">
+                <ul class="steps-list">
+                    <li>Integrate official Bürgeramt APIs for real-time data</li>
+                    <li>Add 5 more languages (Turkish, Arabic, Spanish, French, Polish)</li>
+                    <li>Provide downloadable document templates</li>
+                    <li>Expand to desktop version for accessibility</li>
+                    <li>Partner with universities for student onboarding</li>
+                </ul>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Reflection</h2>
+            </div>
+            <div class="reflection-content fade-in-up">
+                <p class="large-text">This project challenged me to think beyond just visual design and step into the shoes of a true end-to-end product designer. From understanding the deeply human pain points to mapping system-level user flows, I learned how much impact small design choices can have on someone's confidence and independence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Thank You</h2>
+            <p style="color: #aaa; font-size: 1.2rem;">For Reading</p>
+            <p style="color: #666; margin-top: 30px;">© 2024 EasyBürger Case Study • Samarth Joshi</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        ↑
+    </button>
+
+    <script src="case-study.js"></script>
+</body>
+</html>
