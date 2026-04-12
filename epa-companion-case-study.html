@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePA Companion - UX Case Study</title>
+    <link rel="stylesheet" href="case-study.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        /* ePA-specific overrides */
+        :root {
+            --primary-color: #1B6B4A;
+            --secondary-color: #145239;
+            --accent-color: #4A9B6F;
+        }
+        .main-title {
+            background: linear-gradient(135deg, #1B6B4A, #2A8A63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title::after {
+            background: linear-gradient(90deg, #1B6B4A, #4A9B6F);
+        }
+        .overview-card--problem {
+            background: linear-gradient(140deg, #001a0e 0%, #003d1f 60%, #006b38 100%);
+            box-shadow: 0 20px 60px rgba(0, 107, 56, 0.35), 0 4px 16px rgba(0,0,0,0.2);
+        }
+        .overview-card--problem:hover {
+            box-shadow: 0 28px 72px rgba(0, 107, 56, 0.45), 0 8px 24px rgba(0,0,0,0.25);
+        }
+        .overview-card--problem .overview-eyebrow {
+            background: rgba(100, 255, 150, 0.15);
+            color: #90ffc0;
+            border: 1px solid rgba(100, 255, 150, 0.25);
+        }
+        .overview-card--goal {
+            background: linear-gradient(140deg, #020c1b 0%, #0d2a6b 60%, #1a4fc4 100%);
+        }
+        .overview-card--role   { border-left: 5px solid #1B6B4A; }
+        .overview-card--timeline { border-left: 5px solid #1B6B4A; }
+        .overview-card--role    .overview-icon { background: #E8F5EE; color: #1B6B4A; }
+        .overview-card--timeline .overview-icon { background: #E8F5EE; color: #1B6B4A; }
+        .overview-badge { background: #E8F5EE; color: #1B6B4A; }
+        .ai-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 12px; border-radius: 20px;
+            background: #EEF2FF; color: #1B4FD8;
+            font-size: 0.78rem; font-weight: 600;
+            border: 1px solid #C7D9FF; letter-spacing: 0.04em;
+        }
+        .not-medical {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 12px; border-radius: 20px;
+            background: #FFF8EC; color: #92400E;
+            font-size: 0.78rem; font-weight: 600;
+            border: 1px solid #F5DFA0;
+        }
+        .ai-state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px; margin-top: 30px;
+        }
+        .ai-state-card {
+            padding: 28px; border-radius: 16px;
+            border: 1px solid #E2E8F0;
+            text-align: center;
+        }
+        .ai-state-card.success { background: #E8F5EE; border-color: #4A9B6F; }
+        .ai-state-card.loading { background: #EEF2FF; border-color: #C7D9FF; }
+        .ai-state-card.partial { background: #FFF8EC; border-color: #F5DFA0; }
+        .ai-state-card.error   { background: #FEF2F2; border-color: #FEE2E2; }
+        .ai-state-card .state-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .ai-state-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+        .ai-state-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.5; margin: 0; }
+        .jtbd-block {
+            background: #F8FAFC; border-left: 4px solid var(--primary-color);
+            padding: 28px 32px; border-radius: 0 16px 16px 0;
+            margin: 20px 0; position: relative;
+        }
+        .jtbd-block::before {
+            content: 'JOB TO BE DONE';
+            display: block; font-size: 0.68rem; letter-spacing: 0.15em;
+            font-weight: 700; color: var(--primary-color); margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .jtbd-block .jtbd-persona {
+            font-size: 0.82rem; color: var(--text-light);
+            letter-spacing: 0.05em; text-transform: uppercase;
+            margin-bottom: 8px; font-weight: 600;
+        }
+        .jtbd-block p { font-size: 1.1rem; color: var(--text-dark); font-style: italic; line-height: 1.7; margin: 0; }
+        .interview-card {
+            background: #ffffff; border: 1px solid #F1F5F9;
+            border-radius: 16px; padding: 36px;
+            box-shadow: var(--shadow-sm); margin-bottom: 24px;
+            transition: var(--transition-smooth);
+        }
+        .interview-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .interview-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #F1F5F9;
+        }
+        .interview-participant strong { display: block; font-size: 1rem; color: var(--text-dark); margin-bottom: 3px; }
+        .interview-participant span { font-size: 0.875rem; color: var(--text-light); }
+        .interview-num { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.1em; font-weight: 600; }
+        .qa-block { margin-bottom: 18px; }
+        .qa-q { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 6px; }
+        .qa-a { font-size: 1.05rem; color: var(--text-dark); font-style: italic; line-height: 1.6; }
+        .key-insight-inline {
+            background: #E8F5EE; border-left: 3px solid var(--primary-color);
+            padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 16px;
+        }
+        .key-insight-inline .ki-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-color); margin-bottom: 4px; }
+        .key-insight-inline p { font-size: 0.9rem; color: var(--text-dark); margin: 0; }
+        .screens-all-image { width: 100%; border-radius: 16px; box-shadow: var(--shadow-lg); margin-top: 40px; display: block; }
+        .hero { background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('Epa/ePA.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+        /* Fix: phone mockup images start from top, not center */
+        .screen-content img { object-position: top; }
+        /* Fix: gallery hifi screenshots — equal height, scrollable to explore full image */
+        .wireframes-gallery { grid-template-columns: repeat(3, 1fr); }
+        .wireframe-item {
+            height: 640px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            align-items: flex-start;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            scroll-behavior: smooth;
+            background: #fff;
+        }
+        .wireframe-item img, .wireframe-item .case-study-image {
+            width: 100%;
+            height: auto;
+            object-fit: unset;
+            border-radius: 0;
+            box-shadow: none;
+            margin: 0;
+            display: block;
+        }
+        /* Thin branded scrollbar */
+        .wireframe-item::-webkit-scrollbar { width: 4px; }
+        .wireframe-item::-webkit-scrollbar-track { background: transparent; }
+        .wireframe-item::-webkit-scrollbar-thumb { background: rgba(27,107,74,0.35); border-radius: 2px; }
+        .wireframe-item::-webkit-scrollbar-thumb:hover { background: rgba(27,107,74,0.65); }
+        body, p, li, span, div { font-family: 'Lora', Georgia, 'Times New Roman', serif; }
+        h1, h2, h3, h4, h5, h6, .main-title, .section-title, .major-screen-title, .taskflow-title { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
+        .main-title { font-style: italic; }
+        .tool-badge, .meta-item, .overview-eyebrow, .competitor-tag, .interview-num, .qa-q, .ki-label, .overview-badge, code { font-family: 'Lora', Georgia, serif; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="main-title">EpaBuddy</h1>
+                <p class="subtitle">An AI-powered health companion that helps Germans understand their electronic patient record — not just store it</p>
+                <div class="hero-meta">
+                    <span class="meta-item">UX Case Study</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">Samarth Joshi</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">Mobile First — iOS</span>
+                    <span class="meta-divider">•</span>
+                    <span class="meta-item">6 Weeks</span>
+                </div>
+                <div class="hero-tools">
+                    <span class="tool-badge">Figma</span>
+                    <span class="tool-badge">Miro</span>
+                    <span class="tool-badge">AI UX Design</span>
+                    <span class="tool-badge">German Healthcare</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="section overview-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="overview-hero-row">
+                <div class="overview-card overview-card--problem fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="overview-eyebrow">The Challenge</span>
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Problem Statement</h3>
+                    <p>Germany gave every statutory insurance holder an electronic patient record in 2025. By early 2026, nearly 60% of Germans were aware they had one. Almost none of them were using it. Not because they didn't care about their health — but because opening the app meant staring at a list of PDF filenames in medical German with zero guidance, no context, and no way to understand what any of it meant. The ePA was technically live. Experientially, it was dead.</p>
+                    <div class="overview-card-decor">+</div>
+                </div>
+                <div class="overview-card overview-card--goal fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="overview-eyebrow">The Vision</span>
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+                    </div>
+                    <h3>Goal</h3>
+                    <p>Design a mobile app that helps people make sense of documents already in their ePA — without needing medical literacy or German fluency. Research showed the barrier wasn't data access, it was interpretation. Every major decision in this project — the AI summary structure, the confidence states, the multilingual layer, the onboarding flow — traces directly back to one of four research clusters: comprehension, trust, language, and passivity.</p>
+                    <div class="overview-card-decor">→</div>
+                </div>
+            </div>
+            <div class="overview-support-row">
+                <div class="overview-card overview-card--role fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>My Role</h3>
+                    <p>End-to-End Product Designer — research, competitive analysis, personas, user flows, wireframing, AI interaction design, high-fidelity screens, and usability testing.</p>
+                </div>
+                <div class="overview-card overview-card--timeline fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="overview-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Timeline</h3>
+                    <p>6 weeks from discovery to tested design</p>
+                    <div class="overview-badge">6 Week Sprint</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section problem-section">
+        <div class="container">
+            <div class="content-wrapper fade-in-up">
+                <h2 class="section-title">Process</h2>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="process-icon">🔍</div>
+                        <h3>Discover</h3>
+                        <p>User interviews & competitor audit</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">📝</div>
+                        <h3>Define</h3>
+                        <p>Personas, JTBD & affinity mapping</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">💡</div>
+                        <h3>Ideate</h3>
+                        <p>AI interaction model & features</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">🎨</div>
+                        <h3>Design</h3>
+                        <p>Wireframes & hi-fi screens</p>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="process-icon">✅</div>
+                        <h3>Test</h3>
+                        <p>Usability validation & iteration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Research -->
+    <section class="section research-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">User Research</h2>
+                <p class="section-subtitle">Understanding ePA Users Across Germany</p>
+            </div>
+            <div class="research-content">
+                <div class="research-method fade-in-up">
+                    <h3>Research Methods</h3>
+                    <ul class="method-list">
+                        <li>5 in-depth interviews (German nationals + international residents)</li>
+                        <li>Competitive audit of TK App, AOK App, Ada Health, Vivy</li>
+                        <li>Secondary research into GEMEINSAM DIGITAL 2026 strategy</li>
+                        <li>EU AI Act health provisions review</li>
+                    </ul>
+                    <h3 style="margin-top: 30px;">Target Users</h3>
+                    <p style="color: #666; line-height: 1.7; margin-top: 10px;">Germans and international residents with statutory health insurance who have ePA access but cannot meaningfully understand, act on, or trust the health data stored in it.</p>
+                </div>
+                <div class="key-findings fade-in-up">
+                    <h3>Quantitative Research</h3>
+                    <div class="findings-grid">
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">&lt;1%</div>
+                            <p>ePA active usage rate before opt-out rollout</p>
+                        </div>
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">73M</div>
+                            <p>Germans now eligible for ePA under opt-out system</p>
+                        </div>
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">0</div>
+                            <p>Incumbent insurance apps with AI explanation layer</p>
+                        </div>
+                        <div class="finding-card stats-card">
+                            <div class="finding-icon stat-big">15M+</div>
+                            <p>Germans with migration backgrounds excluded by German-only health apps</p>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 40px;">Core User Needs</h3>
+                    <div class="needs-list">
+                        <div class="need-item">✓ Plain-language explanation of medical documents and lab results</div>
+                        <div class="need-item">✓ Transparency about when AI is speaking and what its limits are</div>
+                        <div class="need-item">✓ Multilingual support — medical German is inaccessible to many</div>
+                        <div class="need-item">✓ Proactive prompts to engage with health data, not passive storage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitor Analysis -->
+    <section class="section wireframes-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Competitor Analysis</h2>
+                <p class="section-subtitle">Understanding the Current Landscape</p>
+            </div>
+            <div class="competitor-grid">
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.1s;">
+                    <h3>🥇 TK App <span style="font-size: 0.75rem; font-weight: 400;">(Techniker Krankenkasse)</span></h3>
+                    <div class="competitor-tag">Competitor 1 — Most Used</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>One of Germany's largest insurers (~11M+ members)</li>
+                            <li>Official ePA integration (TK-Safe)</li>
+                            <li>High trust due to institutional backing</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>ePA features are not prominently surfaced (multi-step navigation)</li>
+                            <li>Medical documents presented with low interpretability (file-based view)</li>
+                            <li>No intelligent explanation layer (no AI or guided insights)</li>
+                            <li>Primarily German-language interface, limiting accessibility</li>
+                        </ul>
+                    </div>
+                    <div class="key-insight-inline" style="margin-top: 16px;">
+                        <div class="ki-label">Key Insight</div>
+                        <p>Strong on infrastructure, weak on usability + comprehension</p>
+                    </div>
+                </div>
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.2s;">
+                    <h3>🥈 AOK App</h3>
+                    <div class="competitor-tag">Competitor 2</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>Largest public insurer group in Germany (tens of millions covered)</li>
+                            <li>Broad service ecosystem (appointments, claims, records)</li>
+                            <li>ePA access integrated across regional apps</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>Functions largely as a passive document repository</li>
+                            <li>Limited guidance or interpretation of medical data</li>
+                            <li>Sharing/access workflows can be fragmented or non-intuitive</li>
+                            <li>UX perceived as functional but outdated (based on user reviews)</li>
+                        </ul>
+                    </div>
+                    <div class="key-insight-inline" style="margin-top: 16px;">
+                        <div class="ki-label">Key Insight</div>
+                        <p>High reach, but low engagement due to passive experience</p>
+                    </div>
+                </div>
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.3s;">
+                    <h3>🥉 Ada Health</h3>
+                    <div class="competitor-tag">Competitor 3 — AI Leader</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>Globally recognized AI symptom checker</li>
+                            <li>Strong trust framing and clinical credibility</li>
+                            <li>Multilingual, consumer-friendly UX</li>
+                            <li>High engagement due to interactive flow</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>No native ePA integration</li>
+                            <li>Does not analyze or interpret existing medical documents</li>
+                            <li>Focused on new assessments, not longitudinal records</li>
+                        </ul>
+                    </div>
+                    <div class="key-insight-inline" style="margin-top: 16px;">
+                        <div class="ki-label">Key Insight</div>
+                        <p>Excellent at answering "What could this be?" — not designed for "What does my record mean?"</p>
+                    </div>
+                </div>
+                <div class="competitor-card fade-in-up" style="animation-delay: 0.4s;">
+                    <h3>🪦 Vivy</h3>
+                    <div class="competitor-tag">Competitor 4 — Shut Down 2023</div>
+                    <div class="competitor-pros">
+                        <h4>✓ Strengths</h4>
+                        <ul>
+                            <li>Early leader in centralized health record access</li>
+                            <li>Clean, modern UX compared to insurer apps</li>
+                            <li>Multi-insurer collaboration model</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-cons">
+                        <h4>✗ Weaknesses</h4>
+                        <ul>
+                            <li>Struggled with user retention and sustained engagement</li>
+                            <li>Value proposition unclear beyond document storage</li>
+                            <li>Increasing overlap with insurer-led ePA solutions</li>
+                            <li>No strong interpretation or AI-driven insights layer</li>
+                        </ul>
+                    </div>
+                    <div class="key-insight-inline" style="margin-top: 16px;">
+                        <div class="ki-label">Key Insight</div>
+                        <p>Solved aggregation, but not user motivation or understanding</p>
+                    </div>
+                </div>
+            </div>
+            <div class="learning-item fade-in-up" style="margin-top: 40px; border-left: 4px solid var(--primary-color);">
+                <h3 style="color: var(--primary-color);">The Gap</h3>
+                <p>No existing product combines ePA data access with an AI explanation layer, multilingual support, and a trust-first flow. The opportunity isn't technical — the insurance apps already have the data. The gap is that none of them treat document comprehension as the primary use case, which is where this project focused.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Personas -->
+    <section class="section personas-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">User Personas</h2>
+            </div>
+            <div class="persona-main-card fade-in-up">
+                <div class="persona-header-large">
+                    <div class="persona-avatar-large">🎓</div>
+                    <div class="persona-info-large">
+                        <h2>Asel</h2>
+                        <p class="persona-subtitle-large">International Master's Student</p>
+                        <p class="persona-location">26 • Munich • TK Insurance • A2 German</p>
+                    </div>
+                </div>
+                <div class="persona-main-content">
+                    <div class="persona-section">
+                        <h3>About</h3>
+                        <p>Moved from Kazakhstan 8 months ago for a Computer Science Master's. English fluent, German A2. Has received the ePA opt-out notification and ignored it. Has a follow-up blood test coming up and doesn't know what the results will mean.</p>
+                    </div>
+                    <div class="persona-grid-sections">
+                        <div class="persona-section">
+                            <h3>Pain Points</h3>
+                            <ul>
+                                <li>Opened TK app once, saw German filenames, closed it immediately</li>
+                                <li>Doesn't know the difference between Befund, Rezept, Überweisung</li>
+                                <li>Anxious about doctor visits due to language barrier</li>
+                                <li>Googles symptoms instead of consulting her own records</li>
+                            </ul>
+                        </div>
+                        <div class="persona-section">
+                            <h3>Values</h3>
+                            <ul>
+                                <li>Plain language over medical jargon</li>
+                                <li>Multilingual accessibility</li>
+                                <li>Reassurance, not anxiety</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <div class="quote-mark">"</div>
+                        <p>I have the app but I don't really know what's in it or if it matters. I just get nervous when I see all those German words.</p>
+                        <div class="quote-mark">"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="persona-main-card fade-in-up" style="margin-top: 40px;">
+                <div class="persona-header-large">
+                    <div class="persona-avatar-large" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">💼</div>
+                    <div class="persona-info-large">
+                        <h2>Jonas</h2>
+                        <p class="persona-subtitle-large">UX Designer — Health-Conscious German</p>
+                        <p class="persona-location">34 • Berlin • AOK Insurance • Native German</p>
+                    </div>
+                </div>
+                <div class="persona-main-content">
+                    <div class="persona-section">
+                        <h3>About</h3>
+                        <p>Works at a Berlin agency, goes to the gym, tracks nutrition, considers himself health-literate but not medically trained. Proactively opted into ePA. Has 11 documents in his record. Has opened 3. Wants to be a proactive patient, not a passive one.</p>
+                    </div>
+                    <div class="persona-grid-sections">
+                        <div class="persona-section">
+                            <h3>Pain Points</h3>
+                            <ul>
+                                <li>Lab results show numbers with no ranges or context</li>
+                                <li>Saw a value flagged red — didn't know if it was critical</li>
+                                <li>Sharing records with a new specialist requires a phone call</li>
+                                <li>Nothing creates a reason to open the app again</li>
+                            </ul>
+                        </div>
+                        <div class="persona-section">
+                            <h3>Values</h3>
+                            <ul>
+                                <li>Proactive health management</li>
+                                <li>Prepared doctor appointments</li>
+                                <li>Data transparency & control</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <div class="quote-mark">"</div>
+                        <p>I know my data is there. I just can't do anything useful with it. It's like a drawer I throw things into but never open.</p>
+                        <div class="quote-mark">"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Interviews -->
+    <section class="section journey-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">User Interviews</h2>
+                <p class="section-subtitle">Five Conversations, One Consistent Truth</p>
+            </div>
+            <div class="card-sorting-info fade-in-up">
+                <p class="large-text">I spoke with 5 participants across Germany — an international student from India, a German software engineer, a nurse with clinical context, a Syrian undergraduate, and a German marketing manager. Every participant had tried their health insurance app. Every participant had stopped using it.</p>
+            </div>
+
+            <div class="interview-card fade-in-up">
+                <div class="interview-header">
+                    <div class="interview-participant">
+                        <strong>P1 — F, 24, Exchange Student from India</strong>
+                        <span>Munich · TK Insurance · A2 German</span>
+                    </div>
+                    <div class="interview-num">INT / 01</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: Have you ever opened your health insurance app to look at your records?</div>
+                    <div class="qa-a">"Yes once. I saw some files but they were all in German and I had no idea what they were. I just closed it."</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: What would make you not trust an AI health explanation?</div>
+                    <div class="qa-a">"If it sounded too confident. If it said 'you have this condition' I would be scared. But if it says 'this number is slightly low, worth asking your doctor' that feels okay."</div>
+                </div>
+                <div class="key-insight-inline">
+                    <div class="ki-label">Key Insight</div>
+                    <p>Users want hedged, conversational AI tone — not diagnostic, not robotic. The framing of certainty directly shapes emotional response.</p>
+                </div>
+            </div>
+
+            <div class="interview-card fade-in-up">
+                <div class="interview-header">
+                    <div class="interview-participant">
+                        <strong>P2 — M, 31, Software Engineer (German)</strong>
+                        <span>Berlin · AOK Insurance · Native German</span>
+                    </div>
+                    <div class="interview-num">INT / 02</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: When did you last open your ePA?</div>
+                    <div class="qa-a">"Maybe six months ago. There was a PDF from a specialist. I couldn't tell if it was a diagnosis or just notes from the visit."</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: Would you want AI to summarize your documents?</div>
+                    <div class="qa-a">"Yes but I'd want to know it's AI. I don't want to think I'm reading a doctor's summary and then find out it was generated."</div>
+                </div>
+                <div class="key-insight-inline">
+                    <div class="ki-label">Key Insight</div>
+                    <p>Transparency about AI authorship is non-negotiable. Users don't resist AI — they resist AI that conceals itself.</p>
+                </div>
+            </div>
+
+            <div class="interview-card fade-in-up">
+                <div class="interview-header">
+                    <div class="interview-participant">
+                        <strong>P3 — F, 29, Nurse</strong>
+                        <span>Hamburg · Clinical context · Native German</span>
+                    </div>
+                    <div class="interview-num">INT / 03</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: What do your patients struggle with around digital health records?</div>
+                    <div class="qa-a">"They get a Befund after a specialist visit and have no idea what it says. If they had something that explained it simply, we'd get fewer anxious calls."</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: Any concerns about AI explaining health data?</div>
+                    <div class="qa-a">"The explanation has to be clearly not a diagnosis. If an AI says 'your iron is low' some patients immediately think cancer. Framing matters enormously."</div>
+                </div>
+                <div class="key-insight-inline">
+                    <div class="ki-label">Key Insight</div>
+                    <p>The "Not medical advice" label isn't legal cover — it actively manages user emotional response. Design it as a first-class UI element, not a footnote.</p>
+                </div>
+            </div>
+
+            <div class="interview-card fade-in-up">
+                <div class="interview-header">
+                    <div class="interview-participant">
+                        <strong>P4 — M, 22, Undergraduate Student from Syria</strong>
+                        <span>Saarbrücken · AOK Insurance · B1 German</span>
+                    </div>
+                    <div class="interview-num">INT / 04</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: Have you ever needed to share health records with a new doctor?</div>
+                    <div class="qa-a">"Yes when I changed GP. They asked for my previous records. I didn't know how to get them so I just said I don't have them."</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: What language do you want health information in?</div>
+                    <div class="qa-a">"Arabic or English. My German isn't good enough for medical stuff."</div>
+                </div>
+                <div class="key-insight-inline">
+                    <div class="ki-label">Key Insight</div>
+                    <p>Language barriers cause users to abandon health interactions entirely. Multilingual design isn't a feature addition — it's accessibility.</p>
+                </div>
+            </div>
+
+            <div class="interview-card fade-in-up">
+                <div class="interview-header">
+                    <div class="interview-participant">
+                        <strong>P5 — F, 38, Marketing Manager (German)</strong>
+                        <span>Frankfurt · TK Insurance · Health-conscious</span>
+                    </div>
+                    <div class="interview-num">INT / 05</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: Have you ever looked at a lab result in the app?</div>
+                    <div class="qa-a">"I tried. There was a table of numbers and some were flagged in red. I didn't know if red was serious or just a formatting thing. I closed it."</div>
+                </div>
+                <div class="qa-block">
+                    <div class="qa-q">Q: What would a good experience look like?</div>
+                    <div class="qa-a">"Like how banking apps say 'you spent more than usual this month.' Just tell me what I need to know."</div>
+                </div>
+                <div class="key-insight-inline">
+                    <div class="ki-label">Key Insight</div>
+                    <p>Users want proactive surfacing of relevant information, not passive storage. The mental model is a smart assistant, not a filing cabinet.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Define: Affinity Mapping + JTBD -->
+    <section class="section features-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Define</h2>
+                <p class="section-subtitle">From Interviews to Design Direction</p>
+            </div>
+
+            <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--text-dark); margin-bottom: 30px;">Affinity Mapping</h3>
+            <div class="fade-in-up" style="margin-bottom: 40px;">
+                <img src="Epa/Comprehension.png" alt="Affinity Diagram — Comprehension Clusters" style="width: 100%; border-radius: 16px; box-shadow: var(--shadow-lg); display: block;">
+            </div>
+            <div class="insights-grid fade-in-up">
+                <div class="insight-card">
+                    <div class="insight-icon">📖</div>
+                    <h4>Cluster A — Comprehension</h4>
+                    <p>Users cannot understand what their health documents say. Medical terminology, German-only content, and raw PDFs make data meaningless.</p>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-color); font-weight: 600;">→ AI Document Reader</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">🔒</div>
+                    <h4>Cluster B — Trust</h4>
+                    <p>Users are open to AI assistance but need to know when AI is speaking and what its limits are before they can rely on it.</p>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-color); font-weight: 600;">→ Transparency badges + Confidence states</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">🌍</div>
+                    <h4>Cluster C — Language</h4>
+                    <p>Even users with B2 German describe feeling illiterate when reading their own medical records. Language is a hard wall.</p>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-color); font-weight: 600;">→ Multilingual support + Tooltips</p>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon">🔔</div>
+                    <h4>Cluster D — Passivity</h4>
+                    <p>The app has no voice, no agency. No notification when a document arrives. Nothing creates a reason to return.</p>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-color); font-weight: 600;">→ Proactive timeline + Smart notifications</p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--text-dark); margin: 60px 0 20px;">Jobs To Be Done</h3>
+            <div class="jtbd-block fade-in-up">
+                <div class="jtbd-persona">Asel — International Student</div>
+                <p>"When my doctor adds something to my record, I want to understand what it means without medical knowledge, so I don't feel anxious and uninformed about my own health."</p>
+            </div>
+            <div class="jtbd-block fade-in-up">
+                <div class="jtbd-persona">Jonas — Health-Conscious German</div>
+                <p>"When I'm about to see a specialist for the first time, I want to quickly surface the relevant parts of my health history, so I walk in prepared instead of starting from zero."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section wireframes-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Proposed Features & Functionalities</h2>
+                <p class="section-subtitle">Screens scoped to the four research clusters: comprehension, trust, language, and engagement.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Trust-First Onboarding</h3>
+                    <p>3-step explainer answering the question Vivy never did: "Why should I give you access?" Insurance connection flow designed to earn trust before asking for data.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.15s;">
+                    <div class="feature-icon">📋</div>
+                    <h3>Health Timeline</h3>
+                    <p>Chronological living feed of all health events. Proactive AI nudge cards. Filter by type. The ePA as a narrative, not a file drawer.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Document Reader</h3>
+                    <p>Plain-language AI summary with transparency badge, confidence indicator, and "Not medical advice" label. Four designed states: loading, success, low confidence, fallback.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.25s;">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Lab Results View</h3>
+                    <p>Visual range indicators per result. Tap any value for AI contextual explanation. Separate from document reader — structured data deserves structured UI treatment.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="feature-icon">📅</div>
+                    <h3>Pre-Visit Prep</h3>
+                    <p>AI surfaces relevant records before a doctor appointment and suggests questions to ask. One-tap record sharing with the upcoming provider.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.35s;">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Consent & Sharing</h3>
+                    <p>Who has access to what, with per-provider toggle controls. GDPR-respectful, transparent, genuinely simple. No phone calls required.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="feature-icon">💊</div>
+                    <h3>Medication View</h3>
+                    <p>Active and past prescriptions. AI plain-language explanation of each medication's purpose and common side effects. Refill reminder toggles.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.45s;">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Language & Settings</h3>
+                    <p>Language selector (DE / EN / TR / AR), AI explanation preferences, per-event notification controls. Language is a core feature, not a preference.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="feature-icon">✦</div>
+                    <h3>Empty State</h3>
+                    <p>The screen most designers forget. Designed to reassure, explain, and convert — not just display a "no data" message.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Taskflows -->
+    <section class="section journey-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">User Taskflows</h2>
+                <p class="section-subtitle">Mapping the Core User Journeys</p>
+            </div>
+            <div class="taskflows-wrapper">
+                <h3 class="taskflow-title fade-in-up">Scenario 1: Understanding a Health Document</h3>
+                <div class="journey-timeline fade-in-up taskflow">
+                    <div class="journey-step">
+                        <div class="step-number">1</div>
+                        <h4>Notification</h4>
+                        <p>AI nudge: "Your GP added a document 2 days ago"</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">2</div>
+                        <h4>Health Timeline</h4>
+                        <p>User taps the new document card in the timeline</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">3</div>
+                        <h4>AI Reader Loading</h4>
+                        <p>"Reading your document..." — AI processes the file</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">4</div>
+                        <h4>Plain-Language Summary</h4>
+                        <p>AI summary with transparency badge + "Not medical advice" label</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">5</div>
+                        <h4>Understood</h4>
+                        <p>User taps feedback chip: "Was this helpful? Yes"</p>
+                        <span class="emotion positive">✅ Informed</span>
+                    </div>
+                </div>
+
+                <h3 class="taskflow-title fade-in-up" style="margin-top: 60px;">Scenario 2: Pre-Visit Preparation</h3>
+                <div class="journey-timeline fade-in-up taskflow">
+                    <div class="journey-step">
+                        <div class="step-number">1</div>
+                        <h4>Upcoming Appointment</h4>
+                        <p>Appointment card surfaces on home screen</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">2</div>
+                        <h4>Pre-Visit Prep</h4>
+                        <p>AI curates 2–3 relevant records for this visit type</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">3</div>
+                        <h4>Questions Suggested</h4>
+                        <p>AI proposes questions to ask based on recent records</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">4</div>
+                        <h4>Share Records</h4>
+                        <p>One-tap send selected records to upcoming doctor</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">5</div>
+                        <h4>Prepared</h4>
+                        <p>User walks into appointment with context</p>
+                        <span class="emotion positive">🎯 Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Low-Fidelity Prototypes -->
+    <section class="section wireframes-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Low-Fidelity Prototypes</h2>
+                <p class="section-subtitle">Early Sketches & Wireframes</p>
+            </div>
+            <div class="lofi-intro fade-in-up">
+                <p class="large-text">Before opening Figma, I sketched the three core user flows on paper to quickly validate information architecture decisions — focusing on hierarchy, flow logic, and where the AI should speak versus stay silent.</p>
+            </div>
+            <div class="fade-in-up">
+                <img src="Epa/Lowfi.jpeg" alt="Low-Fidelity Wireframes" style="width: 100%; border-radius: 16px; box-shadow: var(--shadow-lg); display: block;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Design System -->
+    <section class="section final-designs-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Design System</h2>
+                <p class="section-subtitle">Typography & Color Palette</p>
+            </div>
+            <div class="design-system-grid fade-in-up">
+                <div class="design-system-card">
+                    <h3>Color Palette</h3>
+                    <p class="design-system-desc">Warm off-white base + deep forest green = trust, calm, health — without the cold clinical feeling of traditional healthcare apps</p>
+                    <div class="color-palette">
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #1B6B4A;"></div>
+                            <span>Primary Green</span>
+                            <code>#1B6B4A</code>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #1A1814;"></div>
+                            <span>Deep Ink</span>
+                            <code>#1A1814</code>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #E8F5EE;"></div>
+                            <span>Soft Green</span>
+                            <code>#E8F5EE</code>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch" style="background: #F7F4EF; border: 1px solid #E2DDD6;"></div>
+                            <span>Warm White</span>
+                            <code>#F7F4EF</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="design-system-card">
+                    <h3>AI States</h3>
+                    <p class="design-system-desc">Every AI output has four designed states — the most critical UI work in the entire project</p>
+                    <div class="ai-state-grid">
+                        <div class="ai-state-card loading">
+                            <div class="state-icon">⏳</div>
+                            <h4>Loading</h4>
+                            <p>Reading your document...</p>
+                        </div>
+                        <div class="ai-state-card success">
+                            <div class="state-icon">✓</div>
+                            <h4>Success</h4>
+                            <p>Full summary + transparency badge</p>
+                        </div>
+                        <div class="ai-state-card partial">
+                            <div class="state-icon">◑</div>
+                            <h4>Low Confidence</h4>
+                            <p>Partial summary + original linked</p>
+                        </div>
+                        <div class="ai-state-card error">
+                            <div class="state-icon">○</div>
+                            <h4>Fallback</h4>
+                            <p>Can't read this type → original PDF</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Screens -->
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Major Screens</h2>
+            </div>
+
+            <!-- Onboarding -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">Onboarding — Trust Setup</h3>
+                <div class="major-screen-description" style="margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p><strong>Trust-First Entry Point</strong></p>
+                    <p>A 3-step explainer that answers the question Vivy never answered: "Why should I give you access to my data?" The interface explains what the ePA is, what the AI does, and critically — what it does not do — before asking for any permissions.</p>
+                    <div class="design-thought">
+                        <h4>Design Thought</h4>
+                        <p>Two interview participants described declining to connect health apps to their insurance data because they didn't understand what the app would do with it. That grounded the decision to replace a standard permission prompt with a 3-step explainer. Each step answers a specific question that came up during interviews: what the ePA actually is, what the AI does with the data, and — critically — what it cannot do. The copy went through 3 rounds of revision; the biggest change was removing phrases like "AI-powered" which caused participants to skim rather than read, replacing them with plain-language explanations of the benefit.</p>
+                    </div>
+                </div>
+                <div class="major-screen-three-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/Onboarding%20%26%20Trust%20Setup.png" alt="Onboarding Step 1" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/Onboarding%20%26%20Trust%20Setup-1.png" alt="Onboarding Step 2" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/Onboarding%20%26%20Trust%20Setup-2.png" alt="Onboarding Step 3" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Document Reader -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">AI Document Reader — The Centrepiece</h3>
+                <div class="major-screen-description" style="margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p>The most important screen in the product. Instead of a raw PDF, the user sees a plain-language AI summary with a transparency badge, confidence indicator, and a clearly visible "Not medical advice" label. Four designed states ensure the experience never breaks — even when AI can't fully process a document.</p>
+                    <div class="design-thought">
+                        <h4>Design Thought</h4>
+                        <p>In early wireframes, the "Not medical advice" label sat at the bottom of the summary as a small footer — a pattern inherited from how most health apps treat disclaimers. P3 (nurse) was explicit: patients who see a concerning result will emotionally anchor on the AI interpretation before reading any caveat at the bottom of the screen. That feedback moved the label to immediately below the summary header, at the same visual prominence as the content. It's a design decision informed by research, and it also aligns with EU AI Act Article 13 requirements for high-risk AI — disclosure at point of use, not hidden in settings.</p>
+                    </div>
+                </div>
+                <div class="major-screen-three-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/AI%20Reader_%20Document%20Summary%20(High%20confident).png" alt="AI Reader — High Confidence" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/AI%20Reader_%20Document%20Summary(medium%20confident).png" alt="AI Reader — Medium Confidence" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/AI%20Reader_%20Document%20Summary%20(Low%20confidence).png" alt="AI Reader — Low Confidence" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-Visit Prep -->
+            <div class="major-screen-section fade-in-up">
+                <h3 class="major-screen-title">Pre-Visit Prep</h3>
+                <div class="major-screen-layout">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screen-content">
+                                <img src="Epa/Hifi/Pre-Visit%20Prep.png" alt="Pre-Visit Prep" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="major-screen-description">
+                        <p><strong>Never Walk In Unprepared Again</strong></p>
+                        <p>Before a doctor appointment, the AI surfaces the 2–3 most relevant records for that visit type and suggests questions to consider asking based on recent health data. One-tap sharing sends selected records to the upcoming provider.</p>
+                        <div class="design-thought">
+                            <h4>Design Thought</h4>
+                            <p>Jonas's JTBD was "walk in prepared, not starting from zero." After testing, I reduced the default record list from "all relevant records" to the AI-curated 2–3 most relevant — because 3 users felt overwhelmed by the full list and didn't know where to start.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Screens -->
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">High-Fidelity Screens</h2>
+                <p class="section-subtitle">Final Design Mockups</p>
+            </div>
+            <div class="wireframes-gallery" style="margin-top: 40px;">
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.1s;">
+                    <img src="Epa/Hifi/Home%20Health%20Timeline.png" alt="Home — Health Timeline" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.2s;">
+                    <img src="Epa/Hifi/My%20documents.png" alt="My Documents" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.3s;">
+                    <img src="Epa/Hifi/Consent%20%26%20Sharing.png" alt="Consent & Sharing" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.4s;">
+                    <img src="Epa/Hifi/Consent%20%26%20Sharing-1.png" alt="Consent & Sharing Detail" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.5s;">
+                    <img src="Epa/Hifi/Medication%20View.png" alt="Medication View" class="case-study-image">
+                </div>
+                <div class="wireframe-item fade-in-up" style="animation-delay: 0.6s;">
+                    <img src="Epa/Hifi/Language.png" alt="Language & Settings" class="case-study-image">
+                </div>
+            </div>
+
+            <!-- Interactive Prototype -->
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Interactive Prototype</h2>
+            </div>
+            <div class="prototype-embed fade-in-up" style="margin-top: 30px;">
+                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 16px; width: 100%;" height="550" src="https://embed.figma.com/proto/v1VSkppznjcRLeAoy6hXxF/Untitled?node-id=27-2&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A2000&embed-host=share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usability Testing -->
+    <section class="section impact-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Usability Testing & Results</h2>
+            </div>
+            <div class="testing-info fade-in-up">
+                <p class="large-text">I ran 5 task-based usability tests — 3 in-person, 2 remote via screen share. All participants used their own mobile phones to reflect real-life context. Tasks were time-tracked, and I observed navigation patterns, hesitation points, and error moments. Debrief interviews captured emotional feedback on confidence, clarity, and trust in the AI explanations.</p>
+                <div class="test-scenario">
+                    <h3>Primary Scenario:</h3>
+                    <p>"Your doctor just added a blood test result to your record. Find out what it means and decide whether you need to follow up."</p>
+                </div>
+                <div class="test-scenario" style="margin-top: 20px;">
+                    <h3>Secondary Scenario:</h3>
+                    <p>"You have a specialist appointment tomorrow. Use the app to prepare and share the relevant records with your doctor."</p>
+                </div>
+            </div>
+
+            <div class="impact-grid" style="margin-top: 40px;">
+                <div class="impact-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="impact-number">5/5</div>
+                    <p>Users completed the primary task successfully</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="impact-number">3:40</div>
+                    <p>Average time to locate and read AI summary</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="impact-number">4.7/5</div>
+                    <p>Average trust rating of AI explanation</p>
+                </div>
+                <div class="impact-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="impact-number">4/5</div>
+                    <p>Users identified AI authorship without prompting</p>
+                </div>
+            </div>
+
+            <div class="user-quotes-section fade-in-up" style="margin-top: 60px;">
+                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 40px; color: #1a1a1a;">User Quotes</h3>
+                <div class="quotes-grid">
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <p>"This is the first time I actually understood what a lab result meant. The 'slightly below normal' framing didn't scare me — it informed me."</p>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <p>"I knew it was AI before I even saw the badge. The tone gave it away — and I mean that as a compliment. It felt helpful, not authoritative."</p>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <p>"The pre-visit prep screen is the feature I didn't know I needed. I walked into my last appointment completely blind. This would change that."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Potential Impact</h2>
+            </div>
+            <div class="potential-impact fade-in-up">
+                <p class="large-text">From 5-participant task-based testing — directional, not statistically conclusive, but consistent with the secondary research context at population scale:</p>
+                <div class="impact-stats-large">
+                    <div class="impact-stat-large">
+                        <h3>4/5</h3>
+                        <p>Test users completed the document task without re-reading or help — every participant described abandoning or failing the same task in their existing insurance app</p>
+                    </div>
+                    <div class="impact-stat-large">
+                        <h3>3/5</h3>
+                        <p>Users spontaneously described feeling less anxious or more in control after reading the AI summary — the tone and framing mattered more than the information itself</p>
+                    </div>
+                    <div class="impact-stat-large">
+                        <h3>15M+</h3>
+                        <p>Germans with migration backgrounds currently excluded by German-only insurance apps — the multilingual layer was a primary scoping decision, not a stretch feature</p>
+                    </div>
+                    <div class="impact-stat-large">
+                        <h3>Art. 13</h3>
+                        <p>EU AI Act Article 13 (high-risk AI transparency) used as a design brief for all AI disclosure elements — compliance shaped the interaction model rather than being added afterwards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improvements / Iteration -->
+    <section class="section learnings-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Improvements After Testing</h2>
+                <p class="section-subtitle">Based on User Feedback — 2 Rounds of Iteration</p>
+            </div>
+            <div class="learnings-content fade-in-up">
+                <div class="learning-item">
+                    <h3>AI Confidence Indicator Redesign</h3>
+                    <p>Originally colour-only (green/amber/red). 2 of 5 users didn't notice it at all. Redesigned as colour + icon + short text label ("High confidence · Based on structured data"). Now impossible to miss and actually communicates meaning.</p>
+                </div>
+                <div class="learning-item">
+                    <h3>"Not Medical Advice" Label Position</h3>
+                    <p>Originally appeared only at the bottom of the summary — users scrolled past it without reading. Moved to immediately below the AI summary header, the first thing a user sees after the explanation title. Always in view, always first.</p>
+                </div>
+                <div class="learning-item">
+                    <h3>Pre-Visit Record Curation</h3>
+                    <p>Originally showed all relevant records by default. 3 users felt overwhelmed and didn't know where to start. AI now surfaces only the 2–3 most relevant records for the specific appointment type. Full list available via "See all records."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Realism & Constraints -->
+    <section class="section next-steps-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Realism & Constraints</h2>
+            </div>
+            <div class="constraints-content fade-in-up">
+                <div class="constraint-grid">
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🔌</div>
+                        <h4>Insurance API Access Required</h4>
+                        <p>Requires official TK/AOK ePA API integration and GesundheitsID authentication for real patient data access</p>
+                    </div>
+                    <div class="constraint-item">
+                        <div class="constraint-icon">⚖️</div>
+                        <h4>EU AI Act Compliance</h4>
+                        <p>Health AI is classified high-risk under the EU AI Act — all transparency, confidence, and override design decisions were made with this in mind</p>
+                    </div>
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🔒</div>
+                        <h4>DSGVO / GDPR</h4>
+                        <p>Must ensure end-to-end encryption, minimal data collection, and explicit per-provider consent for all health data shared through the app</p>
+                    </div>
+                    <div class="constraint-item">
+                        <div class="constraint-icon">🏥</div>
+                        <h4>Medical Accuracy</h4>
+                        <p>AI explanation copy must be reviewed by medical professionals. The "not medical advice" framing must be legally watertight, not just typographically clear</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Future Expansion</h2>
+            </div>
+            <div class="next-steps-content fade-in-up">
+                <ul class="steps-list">
+                    <li>Integrate official insurance APIs (TK, AOK, Barmer) for real-time live ePA data</li>
+                    <li>Expand language support to Turkish, Arabic, Spanish, French, and Polish</li>
+                    <li>Build out the AI feedback loop — user corrections improve explanation quality over time</li>
+                    <li>Partner with university health services for international student onboarding</li>
+                    <li>Medication interaction checker using prescription data from ePA</li>
+                </ul>
+            </div>
+
+            <div class="section-header fade-in-up" style="margin-top: 80px;">
+                <h2 class="section-title">Reflection</h2>
+            </div>
+            <div class="reflection-content fade-in-up">
+                <p class="large-text">This project forced me to design at the intersection of two genuinely difficult problems: making complex health data accessible, and making AI assistance trustworthy. Those two problems reinforce each other — the more useful the AI is, the more important it is that users understand its limits.</p>
+                <p style="margin-top: 20px; font-size: 1.1rem; color: var(--text-light); line-height: 1.8;">The thing I learned most concretely: designing AI states is not a detail. It is the product. The loading state, the low-confidence state, the error state — these are the moments where trust is built or broken. Most health apps don't design these moments at all. That is the gap this project is designed to close.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h2 style="color: white; font-size: 2.5rem; margin-bottom: 20px;">Thank You</h2>
+            <p style="color: #aaa; font-size: 1.2rem;">For Reading</p>
+            <p style="color: #666; margin-top: 30px;">© 2026 ePA Companion Case Study • Samarth Joshi</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="case-study.js"></script>
+</body>
+</html>
