@@ -158,8 +158,23 @@
         }
         .decision-block p { font-size: 0.95rem; color: var(--text-dark); margin: 0; font-style: italic; line-height: 1.65; }
 
-        /* Competitor grid: always 2 columns so 4th card is never orphaned left */
-        .competitor-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        /* Competitor grid: 2 per row, equal-height cards */
+        .competitor-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 24px !important;
+            margin-top: 32px;
+            align-items: stretch !important;
+        }
+        .competitor-card {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+            box-sizing: border-box;
+        }
+        .competitor-card .key-insight-inline {
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
@@ -336,7 +351,7 @@
                 <h2 class="section-title">Competitor Analysis</h2>
                 <p class="section-subtitle">Understanding the Current Landscape</p>
             </div>
-            <div class="competitor-grid">
+            <div class="competitor-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:32px;align-items:stretch;">
                 <div class="competitor-card fade-in-up" style="animation-delay: 0.1s;">
                     <h3>🗺️ Google Maps</h3>
                     <div class="competitor-tag">Competitor 1 — Most Used</div>
@@ -357,7 +372,8 @@
                             <li>Multiple options presented without recommendation</li>
                         </ul>
                     </div>
-                    
+                    <div class="key-insight-inline" style="margin-top:auto;">
+                        <div class="ki-label">Key Insight</div>
                         <p>Excellent for routing. Silent on ticket selection — leaves the hardest decision to the user.</p>
                     </div>
                 </div>
@@ -381,7 +397,8 @@
                             <li>Onboarding does not address first-time city scenarios</li>
                         </ul>
                     </div>
-                    
+                    <div class="key-insight-inline" style="margin-top:auto;">
+                        <div class="ki-label">Key Insight</div>
                         <p>Great for regular city users — not designed for the first-time traveler who doesn't know the system.</p>
                     </div>
                 </div>
@@ -405,7 +422,8 @@
                             <li>No reassurance layer for unfamiliar travelers</li>
                         </ul>
                     </div>
-                    
+                    <div class="key-insight-inline" style="margin-top:auto;">
+                        <div class="ki-label">Key Insight</div>
                         <p>Useful mid-journey, but doesn't solve the pre-purchase decision problem.</p>
                     </div>
                 </div>
@@ -429,7 +447,8 @@
                             <li>No real-time data or step-by-step boarding guidance</li>
                         </ul>
                     </div>
-                    
+                    <div class="key-insight-inline" style="margin-top:auto;">
+                        <div class="ki-label">Key Insight</div>
                         <p>Solves getting between cities — not getting around within them.</p>
                     </div>
                 </div>
