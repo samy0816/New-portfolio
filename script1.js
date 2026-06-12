@@ -107,7 +107,7 @@ const data = {
                 title: 'AskAnyone — UX Research Helper',
                 desc: 'A UX research companion that helps designers gather user insights, run studies, and make data-informed design decisions.',
                 thumb: 'UX Tool',
-                img: 'Images/Project1.png',
+                img: 'Images/AskAnyone.png',
                 badge: 'UX Research · SaaS',
                 link: 'https://askanyone.netlify.app/',
                 deployed: true
