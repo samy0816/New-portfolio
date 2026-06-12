@@ -2,7 +2,7 @@
 
 const data = {
     designer: {
-        heroRole: 'UX Designer',
+        heroRole: 'Product Designer',
         roleDescriptor: 'research what users need & make technology feel effortless.',
         floatingElements: [
             { char: '✏️',  angle: 0,   radius: 130 },
@@ -19,7 +19,7 @@ const data = {
             'Wireframing', 'Prototyping', 'User Research', 'Usability Testing',
             'Interaction Design', 'Design Systems', 'Accessibility (a11y)'
         ],
-        filters: ['Case Studies', 'Design Projects'],
+        filters: ['Case Studies', 'UX Tools', 'Design Projects'],
         projects: [
             {
                 category: 'Case Studies',
@@ -101,6 +101,16 @@ const data = {
                 img: 'Images/travel-x.gif',
                 badge: 'Travel · TravelTech',
                 link: 'https://www.figma.com/proto/XybJur8tO2D9V8ZmimpcKU/Travel-website?type=design&node-id=10-212&t=4AFD6om51mF8ikL7-1&scaling=min-zoom&page-id=10%3A211&mode=design'
+            },
+            {
+                category: 'UX Tools',
+                title: 'AskAnyone — UX Research Helper',
+                desc: 'A UX research companion that helps designers gather user insights, run studies, and make data-informed design decisions.',
+                thumb: 'UX Tool',
+                img: 'Images/Project1.png',
+                badge: 'UX Research · SaaS',
+                link: 'https://askanyone.netlify.app/',
+                deployed: true
             }
         ]
     },
@@ -131,7 +141,8 @@ const data = {
                 thumb: 'Full Stack',
                 img: 'Images/proconnect.webp',
                 badge: 'Next.js · Node · MongoDB · AI',
-                link: 'https://proconnectdemo.netlify.app/'
+                link: 'https://proconnectdemo.netlify.app/',
+                deployed: true
             },
             {
                 category: 'Full Stack',
@@ -140,7 +151,8 @@ const data = {
                 thumb: 'Full Stack',
                 img: 'Images/trade-x.webp',
                 badge: 'React · Node · MongoDB · AI',
-                link: 'https://steady-genie-711707.netlify.app/'
+                link: 'https://steady-genie-711707.netlify.app/',
+                deployed: true
             },
             {
                 category: 'Full Stack',
@@ -149,7 +161,8 @@ const data = {
                 thumb: 'Full Stack',
                 img: 'Images/video-x.avif',
                 badge: 'React · WebRTC · AI',
-                link: 'https://videoxplatform.netlify.app/'
+                link: 'https://videoxplatform.netlify.app/',
+                deployed: true
             },
             {
                 category: 'Full Stack',
@@ -429,11 +442,13 @@ function renderProjects(role, filter) {
             ? `<img src="${p.img}" alt="${p.title}" class="project-card-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                <span class="thumb-placeholder" style="display:none;">${p.thumb}</span>`
             : `<span class="thumb-placeholder">${p.thumb}</span>`;
+        const liveBadge = p.deployed ? '<span class="project-live-badge">Live Demo</span>' : '';
         return `
-        <a href="${p.link || '#'}" target="_blank" class="project-card reveal-scale${hidden ? ' project-hidden' : ''}">
+        <a href="${p.link || '#'}" target="_blank" class="project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
             <div class="project-card-thumb">
                 ${thumbContent}
             </div>
+            ${liveBadge}
             <span class="project-card-badge">${p.badge}</span>
             <h3>${p.title}</h3>
             <p>${p.desc}</p>
