@@ -169,6 +169,7 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
 
 .toggle-label {
@@ -215,6 +216,34 @@ a:hover {
 
 .toggle-switch.dev .toggle-knob {
     transform: translateX(20px);
+}
+
+/* ===== TOGGLE TOOLTIP ===== */
+.toggle-switch::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--text);
+    color: var(--bg);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    padding: 7px 12px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 10;
+}
+
+.toggle-switch:hover::after,
+.toggle-switch:focus-visible::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* ===== CURSOR TRAIL ===== */
