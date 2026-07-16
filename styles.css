@@ -37,6 +37,144 @@ body {
     overflow-x: hidden;
 }
 
+/* ===== PORTFOLIO CHOOSER OVERLAY ===== */
+.portfolio-chooser {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    cursor: auto;
+}
+
+.portfolio-chooser.visible {
+    opacity: 1;
+}
+
+.portfolio-chooser.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+.chooser-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+}
+
+.chooser-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 24px;
+    max-width: 520px;
+    width: 100%;
+}
+
+.chooser-greeting {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--text-quiet);
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: chooserFadeUp 0.6s 0.15s ease forwards;
+}
+
+.chooser-question {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: chooserFadeUp 0.6s 0.25s ease forwards;
+}
+
+.chooser-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.chooser-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 28px 24px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.chooser-option:nth-child(1) {
+    animation: chooserFadeUp 0.6s 0.4s ease forwards;
+}
+
+.chooser-option:nth-child(2) {
+    animation: chooserFadeUp 0.6s 0.5s ease forwards;
+}
+
+.chooser-option:hover {
+    border-color: var(--text);
+    background: rgba(0, 0, 0, 0.02);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.chooser-option-icon {
+    font-size: 24px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.chooser-option:hover .chooser-option-icon {
+    color: var(--text);
+}
+
+.chooser-option-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.3px;
+}
+
+.chooser-option-desc {
+    font-size: 12px;
+    color: var(--text-quiet);
+    letter-spacing: 0.2px;
+}
+
+.chooser-hint {
+    font-size: 11px;
+    color: var(--text-quiet);
+    letter-spacing: 0.3px;
+    opacity: 0;
+    animation: chooserFadeUp 0.6s 0.65s ease forwards;
+}
+
+@keyframes chooserFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Restore cursor on interactive elements */
 a, button, input, textarea, .project-card, .filter-tab, .toggle-switch, .toggle-label, .blog-card {
     cursor: none;
@@ -1724,6 +1862,27 @@ a:hover {
 
     .nav-links {
         top: 60px;
+    }
+
+    .chooser-greeting {
+        font-size: 22px;
+    }
+
+    .chooser-question {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
+    .chooser-option {
+        padding: 22px 18px;
+    }
+
+    .chooser-option-label {
+        font-size: 14px;
+    }
+
+    .chooser-option-desc {
+        font-size: 11px;
     }
 
     .logo {

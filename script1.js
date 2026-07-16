@@ -609,10 +609,44 @@ window.addEventListener('keydown', (e) => {
 });
 
 // =============================================
+//  PORTFOLIO CHOOSER — first visit overlay
+// =============================================
+(function() {
+    const chooser = document.getElementById('portfolioChooser');
+    if (!chooser) return;
+
+    const saved = localStorage.getItem('portfolioPreference');
+
+    if (saved) {
+        // Returning visitor — skip overlay, go straight to preference
+        chooser.remove();
+        switchRole(saved);
+        return;
+    }
+
+    // First visit — show chooser after tiny delay for smooth render
+    setTimeout(() => chooser.classList.add('visible'), 100);
+
+    const options = chooser.querySelectorAll('.chooser-option');
+    options.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const choice = btn.dataset.choice;
+            localStorage.setItem('portfolioPreference', choice);
+            chooser.classList.add('fade-out');
+            switchRole(choice);
+            setTimeout(() => chooser.remove(), 800);
+        });
+    });
+})();
+
+// =============================================
 //  INIT
 // =============================================
 animateCursor();
-switchRole('designer');
+// Default role only set if no chooser preference; chooser handles its own init
+if (!localStorage.getItem('portfolioPreference')) {
+    switchRole('designer');
+}
 
 // Add reveal classes on DOM ready
 function initRevealClasses() {

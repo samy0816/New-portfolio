@@ -10,6 +10,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- FIRST-VISIT PORTFOLIO CHOOSER OVERLAY -->
+    <div class="portfolio-chooser" id="portfolioChooser">
+        <div class="chooser-bg"></div>
+        <div class="chooser-content">
+            <p class="chooser-greeting">Hello.</p>
+            <h2 class="chooser-question">What would you like to see?</h2>
+            <div class="chooser-options">
+                <button class="chooser-option" data-choice="designer">
+                    <span class="chooser-option-icon">◉</span>
+                    <span class="chooser-option-label">Designer Portfolio</span>
+                    <span class="chooser-option-desc">Case studies, UX research, visual design</span>
+                </button>
+                <button class="chooser-option" data-choice="developer">
+                    <span class="chooser-option-icon">{ }</span>
+                    <span class="chooser-option-label">Developer Portfolio</span>
+                    <span class="chooser-option-desc">Full-stack apps, AI platforms, live products</span>
+                </button>
+            </div>
+            <p class="chooser-hint">You can always switch later using the toggle.</p>
+        </div>
+    </div>
+
     <!-- FEATURED BANNER -->
     <div class="featured-banner">
         <a href="https://askanyone.netlify.app/" target="_blank" class="featured-banner-link">
