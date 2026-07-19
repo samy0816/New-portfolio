@@ -175,6 +175,58 @@
         .competitor-card .key-insight-inline {
             margin-top: auto;
         }
+
+        /* Persona avatar images */
+        .persona-avatar-large {
+            overflow: hidden;
+        }
+        .persona-avatar-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Core Product Decisions — readable structure */
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        .feature-example {
+            background: #F8FAFC;
+            border-left: 3px solid #94A3B8;
+            padding: 12px 16px;
+            margin: 12px 0 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.92rem;
+            font-style: italic;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .feature-why {
+            background: #EFF6FF;
+            border-left: 3px solid #1D4ED8;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 8px;
+        }
+        .feature-why-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #1D4ED8;
+            margin-bottom: 6px;
+        }
+        .feature-why p {
+            font-size: 0.9rem;
+            color: #334155;
+            margin: 0;
+            font-style: italic;
+            line-height: 1.65;
+        }
     </style>
 </head>
 <body>
@@ -221,7 +273,7 @@
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
                     <h3>Problem Statement</h3>
-                    <p>First-time travelers often struggle to understand unfamiliar transit systems — leading to wrong ticket purchases, delays, and unnecessary stress during arrival.</p>
+                    <p>Public transit onboarding varies significantly across European cities. Different ticket types, zone systems, and validation rules create unnecessary friction for travelers who are unfamiliar with the local system.</p>
                     <p style="margin-top: 14px; font-size: 0.95rem; opacity: 0.85;"><strong style="color:#c4b5fd;">Problem:</strong> Transit onboarding varies across cities, creating confusion during ticket selection and boarding.</p>
                     <div class="overview-card-decor">?</div>
                 </div>
@@ -231,8 +283,7 @@
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
                     </div>
                     <h3>Goal</h3>
-                    <p>Design a guided transit experience that simplifies ticket selection and helps travelers confidently navigate from arrival to boarding.</p>
-                    <p style="margin-top: 14px; font-size: 0.95rem; opacity: 0.85;"><strong style="color:#93c5fd;">Solution:</strong> A decision-first experience focused on reducing cognitive load during high-stress arrival moments.</p>
+                    <p>Design a guided transit experience that simplifies ticket selection and supports travelers from arrival through boarding while reducing cognitive load during high-stress moments.</p>
                     <div class="overview-card-decor">→</div>
                 </div>
             </div>
@@ -242,7 +293,7 @@
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
                     <h3>My Role</h3>
-                    <p>Product Designer (End-to-End UX/UI) — research, synthesis, interaction design, prototyping, visual design, and usability testing.</p>
+                    <p>Product Designer (End-to-End UX/UI) — Responsible for research, synthesis, interaction design, wireframing, prototyping, visual design, and usability testing.</p>
                 </div>
                 <div class="overview-card overview-card--timeline fade-in-up" style="animation-delay: 0.4s;">
                     <div class="overview-icon">
@@ -456,7 +507,11 @@
             
 <div class="learning-item fade-in-up" style="margin-top: 40px; border-left: 4px solid var(--primary-color);">
     <h3 style="color: var(--primary-color);">Key Product Opportunity</h3>
-    <p>Existing transit apps optimize route planning, but none reduce uncertainty around ticket decisions and onboarding for first-time travelers.</p>
+    <p>The competitive analysis revealed a consistent gap.
+
+Existing transit products focus on helping users determine where to go, but few help them understand what ticket to buy, how to use it, and whether they're doing the right thing.
+
+This opportunity shaped the direction of EuroVoyage: a decision-first experience designed to reduce uncertainty throughout transit onboarding.</p>
 </div>
 
         </div>
@@ -597,7 +652,7 @@
             <!-- Persona 1 -->
             <div class="persona-main-card fade-in-up">
                 <div class="persona-header-large">
-                    <div class="persona-avatar-large">🎒</div>
+                    <div class="persona-avatar-large"><img src="Images/portfolio girl.jpg" alt="Maya persona"></div>
                     <div class="persona-info-large">
                         <h2>Maya</h2>
                         <p class="persona-subtitle-large">Solo Budget Traveler · First-Time Visitor</p>
@@ -639,7 +694,7 @@
             <!-- Persona 2 -->
             <div class="persona-main-card fade-in-up" style="margin-top: 40px;">
                 <div class="persona-header-large">
-                    <div class="persona-avatar-large" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">💼</div>
+                    <div class="persona-avatar-large"><img src="Images/man portfolio.avif" alt="Daniel persona"></div>
                     <div class="persona-info-large">
                         <h2>Daniel</h2>
                         <p class="persona-subtitle-large">Frequent Business Traveler · Time-Pressured</p>
@@ -699,50 +754,7 @@
             </div>
         </div>
     </section>
-
-    <!-- ================================================
-         PROPOSED FEATURES
-         ================================================ -->
-    <section class="section wireframes-section">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2 class="section-title">Core Product Decisions</h2>
-                <p class="section-subtitle">Screens scoped to the four research clusters: decision overload, confidence gap, app fragmentation, and zone opacity.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="feature-icon">📍</div>
-                    <h3>City Detection & Onboarding</h3>
-                    <p>Auto-detects the user's current city on first open. Introduces the local transit system in one sentence and confirms it's ready to help — no setup required.</p>
-                </div>
-                <div class="feature-card fade-in-up" style="animation-delay: 0.15s;">
-                    <div class="feature-icon">🎟️</div>
-                    <h3>Smart Ticket Recommendation</h3>
-                    <p>Single recommended ticket, clearly labelled, with one-line reasoning ("This covers your entire route and any transfers"). No comparison grid, no zone math.</p>
-                </div>
-                <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Confidence Reassurance Layer</h3>
-                    <p>Persistent messaging at each step confirming the ticket is valid: "Don't worry about the zones, we've handled the math." Reduces hesitation at purchase and at boarding.</p>
-                </div>
-                <div class="feature-card fade-in-up" style="animation-delay: 0.25s;">
-                    <div class="feature-icon">🚇</div>
-                    <h3>Step-by-Step Boarding Guide</h3>
-                    <p>After ticket selection: which platform, what to look for, how to validate. Real-time guidance through the transit system, not just to it.</p>
-                </div>
-                
-                <div class="feature-card fade-in-up" style="animation-delay: 0.35s;">
-                    <div class="feature-icon">🔁</div>
-                    <h3>Alternative Options (Collapsed)</h3>
-                    <p>Other ticket options available — but collapsed by default. Users who want to compare can expand; users who want to act don't need to engage with it at all.</p>
-                </div>
-                
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================
+       <!-- ================================================
          USER JOURNEY MAP
          ================================================ -->
     <section class="section journey-section">
@@ -761,6 +773,69 @@
         </div>
     </section>
 
+
+    <!-- ================================================
+         PROPOSED FEATURES
+         ================================================ -->
+    <section class="section wireframes-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Core Product Decisions</h2>
+                <p class="section-subtitle">Screens scoped to the four research clusters: decision overload, confidence gap, app fragmentation, and zone opacity.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">📍</div>
+                    <h3>City Detection & Onboarding</h3>
+                    <p>Instead of asking users to configure the app or select their location manually, the experience detects the current city and immediately introduces the local transit system.</p>
+                    <div class="feature-why">
+                        <span class="feature-why-label">Why</span>
+                        <p>Research showed users wanted to begin solving their journey immediately — not spend time setting up an app. Eliminating onboarding reduced initial friction and helped users transition directly from arrival to action.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.15s;">
+                    <div class="feature-icon">🎟️</div>
+                    <h3>Smart Ticket Recommendation</h3>
+                    <p>Rather than presenting a list of unfamiliar ticket types, the interface recommends a single ticket supported by a short explanation.</p>
+                    <div class="feature-example">"This ticket covers your entire journey, including transfers."</div>
+                    <div class="feature-why">
+                        <span class="feature-why-label">Why</span>
+                        <p>Interview participants consistently described guessing when selecting tickets. Instead of expecting users to understand fare structures, the product makes a recommendation based on their journey, removing unnecessary comparison.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Confidence Reassurance Layer</h3>
+                    <p>Throughout the purchase flow, the interface reassures users that the selected ticket is valid, reducing uncertainty before it becomes hesitation.</p>
+                    <div class="feature-example">"Don't worry about the zones — we've handled that for you."</div>
+                    <div class="feature-why">
+                        <span class="feature-why-label">Why</span>
+                        <p>Research showed that anxiety continued even after users purchased a ticket. Confidence therefore became part of the interaction itself rather than something users had to infer.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.25s;">
+                    <div class="feature-icon">🚇</div>
+                    <h3>Step-by-Step Boarding Guide</h3>
+                    <p>After purchase, the experience shifts from transaction to navigation. Users receive guidance on which platform to use, how to validate the ticket, what to expect before boarding, and what to do next.</p>
+                    <div class="feature-why">
+                        <span class="feature-why-label">Why</span>
+                        <p>Existing products often end support after payment. Interviews revealed that uncertainty actually peaks between buying the ticket and boarding, making this one of the most critical moments to support users.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.35s;">
+                    <div class="feature-icon">🔁</div>
+                    <h3>Alternative Options (Collapsed)</h3>
+                    <p>Alternative ticket options remain available but hidden behind a collapsed section. Users who want to compare can expand it, while everyone else continues without interruption.</p>
+                    <div class="feature-why">
+                        <span class="feature-why-label">Why</span>
+                        <p>Removing alternatives entirely limits flexibility. Showing every option by default recreates the same decision overload identified during research. Progressive disclosure balances simplicity with user control.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
     <!-- ================================================
          USER FLOW
          ================================================ -->
