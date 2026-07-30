@@ -1378,7 +1378,7 @@ a:hover {
 
 /* Hidden project cards (show more) */
 .project-hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Show more button */
@@ -1396,6 +1396,340 @@ a:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.35s ease;
+}
+
+.show-more-wrap {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.show-more-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+/* ===== DEVELOPER PROJECT CARD — REDESIGNED ===== */
+.dev-project-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    /* Border on the element itself renders on top of image content */
+    border: 2px solid rgba(0, 0, 0, 0.75);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.dev-project-card:hover {
+    border-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* ::before only provides the card body background gradient */
+.dev-project-card::before {
+    background: linear-gradient(180deg, #f0f4f8 0%, #e8eef5 50%, #e2eaf4 100%);
+    border: none;
+    inset: 0;
+    border-radius: 5px;
+    box-shadow: none;
+    filter: none !important;
+}
+
+.dev-project-card:hover::before {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.dev-project-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Thumbnail — shorter, with a category pill overlay */
+.dev-card-thumb {
+    height: 160px !important;
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+    position: relative;
+    border: none !important;
+    border-bottom: 1px solid rgba(160, 185, 210, 0.4) !important;
+}
+
+.dev-card-type-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(30, 60, 100, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 4px 10px;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* Card body */
+.dev-card-body {
+    padding: 20px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0;
+}
+
+/* Meta row: badge + live */
+.dev-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dev-card-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #4a6fa0;
+    background: rgba(74, 111, 160, 0.1);
+    border: 1px solid rgba(74, 111, 160, 0.2);
+    padding: 3px 9px;
+    border-radius: 3px;
+}
+
+/* Override live-badge position inside dev card */
+.dev-project-card .project-live-badge {
+    margin-bottom: 0;
+    font-size: 10px;
+    padding: 4px 10px;
+}
+
+/* Title */
+.dev-card-title {
+    font-family: var(--font-body) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.2px !important;
+    color: #1a2a3a !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+}
+
+/* Description */
+.dev-card-desc {
+    font-size: 13.5px;
+    color: #4a5a6a;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+/* Tech stack chips */
+.dev-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.dev-tech-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #2d5a8a;
+    background: rgba(45, 90, 138, 0.07);
+    border: 1px solid rgba(45, 90, 138, 0.18);
+    padding: 3px 10px;
+    border-radius: 20px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.dev-project-card:hover .dev-tech-tag {
+    background: rgba(45, 90, 138, 0.13);
+    border-color: rgba(45, 90, 138, 0.3);
+}
+
+/* CTA hint */
+.dev-card-cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #4a6fa0;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.dev-project-card:hover .dev-card-cta {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===== DESIGNER PROJECT CARD — REDESIGNED ===== */
+.des-project-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    /* Border on the element itself renders on top of image content */
+    border: 2px solid rgba(0, 0, 0, 0.75);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.des-project-card:hover {
+    border-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* ::before only provides the card body background gradient */
+.des-project-card::before {
+    background: linear-gradient(180deg, #f7f1e5 0%, #f2e9d7 50%, #efe5d0 100%);
+    border: none;
+    inset: 0;
+    border-radius: 3px;
+    box-shadow: none;
+    filter: none !important;
+}
+
+.des-project-card:hover::before {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.des-project-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Thumbnail */
+.des-card-thumb {
+    height: 160px !important;
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+    position: relative;
+    border: none !important;
+    border-bottom: 1px solid rgba(180, 155, 110, 0.3) !important;
+}
+
+.des-card-type-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(90, 60, 20, 0.68);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 4px 10px;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* Card body */
+.des-card-body {
+    padding: 20px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0;
+}
+
+/* Meta row */
+.des-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Override live-badge position inside des card */
+.des-project-card .project-live-badge {
+    margin-bottom: 0;
+    font-size: 10px;
+    padding: 4px 10px;
+}
+
+/* Title */
+.des-card-title {
+    font-family: var(--font-display) !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.2px !important;
+    color: #3a3224 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+}
+
+/* Description */
+.des-card-desc {
+    font-size: 13.5px;
+    color: #6b5e48;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+/* Methods / tools chips */
+.des-methods-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.des-method-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #7a5c2e;
+    background: rgba(160, 120, 60, 0.08);
+    border: 1px solid rgba(160, 120, 60, 0.22);
+    padding: 3px 10px;
+    border-radius: 20px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.des-project-card:hover .des-method-tag {
+    background: rgba(160, 120, 60, 0.14);
+    border-color: rgba(160, 120, 60, 0.35);
+}
+
+/* CTA hint */
+.des-card-cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #8b6c3a;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.des-project-card:hover .des-card-cta {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* ===== BLOGS ===== */

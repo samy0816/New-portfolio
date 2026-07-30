@@ -24,91 +24,101 @@ const data = {
             {
                 category: 'Case Studies',
                 title: 'EuroVoyage — European Travel Buddy',
-                desc: 'A companion app helping users navigate travel across Europe with confidence and ease.',
+                desc: 'End-to-end UX design of a travel companion app helping expats and tourists navigate Europe — covering trip planning, local transport, and cultural tips.',
                 thumb: 'Case Study',
                 img: 'Images/EuroVoyage.png',
                 badge: 'Travel · UX Research',
+                methods: ['User Research', 'Journey Mapping', 'Wireframing', 'Prototyping', 'Figma'],
                 link: 'eurovoyage-case-study (1).html'
             },
             {
                 category: 'Case Studies',
                 title: 'EPA Buddy — Electronic Patient Record',
-                desc: 'A companion app helping users navigate Germany\'s electronic patient record (ePA) system with clarity.',
+                desc: 'Designed a companion app that demystifies Germany\'s ePA system, helping patients understand, manage, and share medical records with confidence.',
                 thumb: 'Case Study',
                 img: 'Images/EpaBuddy.png',
                 badge: 'HealthTech · UX Research',
+                methods: ['User Interviews', 'Affinity Mapping', 'Prototyping', 'Usability Testing', 'Figma'],
                 link: 'epa-companion-case-study.html'
             },
             {
                 category: 'Case Studies',
                 title: 'EasyBürger — Bürgeramt Appointments',
-                desc: 'Simplifying Bürgeramt appointments for newcomers to Germany with a student-friendly solution.',
+                desc: 'Tackled Germany\'s notoriously painful Bürgeramt booking experience — designing a student-friendly solution that reduces appointment anxiety and wait-time confusion.',
                 thumb: 'Case Study',
                 img: 'Images/Easyburger.png',
                 badge: 'GovTech · UX Research',
+                methods: ['User Research', 'Service Design', 'Wireframing', 'Prototyping', 'Figma'],
                 link: 'case-study.html'
             },
             {
                 category: 'Case Studies',
                 title: 'MietMate — Tenant Rights & Rental',
-                desc: 'A legal-tech solution empowering tenants with accessible tools to manage rights, contracts, and disputes.',
+                desc: 'A legal-tech solution giving tenants in Germany clear, accessible tools to understand lease terms, track disputes, and assert their rights without needing a lawyer.',
                 thumb: 'Case Study',
                 img: 'Images/Mietmate.png',
                 badge: 'LegalTech · UX Research',
+                methods: ['UX Research', 'Information Architecture', 'Interaction Design', 'Figma'],
                 link: 'https://www.behance.net/gallery/236267301/UX-Case-Study-Mietmate'
             },
             {
                 category: 'Case Studies',
                 title: 'PantryPal — Smart Recipe Assistant',
-                desc: 'A food-tech app helping users cook smarter, stay on budget, and reduce waste through gamified learning.',
+                desc: 'A gamified food-tech app designed to help users cook smarter with what they already have, manage grocery budgets, and reduce household food waste.',
                 thumb: 'Case Study',
                 img: 'Images/PantryPal.png',
                 badge: 'FoodTech · Product Design',
+                methods: ['Gamification Design', 'User Research', 'Wireframing', 'Prototyping', 'Figma'],
                 link: 'https://medium.com/@samarthjoshi1608/ux-case-study-pantrypal-cooking-budgeting-smart-recipe-assistant-7d09d4a78a9b'
             },
             {
                 category: 'Case Studies',
                 title: 'Concert Booking App — Music Discovery',
-                desc: 'An event-tech platform simplifying concert discovery, ticket booking, and travel planning for music lovers.',
+                desc: 'Simplified the end-to-end concert experience — from discovering live events and booking tickets to planning travel logistics, all in one music-first platform.',
                 thumb: 'Case Study',
                 img: 'Images/concert-booking.jfif',
                 badge: 'Music · Ticketing',
+                methods: ['User Research', 'Information Architecture', 'Prototyping', 'Usability Testing', 'Figma'],
                 link: 'https://medium.com/@samarthjoshi1608/ux-case-study-concert-booking-app-c4a6dbf09ace'
             },
             {
                 category: 'Design Projects',
                 title: 'Hotel X — Stay Booking Platform',
-                desc: 'A hotel booking platform UI designed to streamline reservations with straightforward navigation.',
+                desc: 'High-fidelity UI for a hotel booking platform — clean listing pages, a frictionless checkout flow, and an intuitive property management dashboard.',
                 thumb: 'UI Design',
                 img: 'Images/hotel-x.gif',
                 badge: 'Booking · PMS',
+                methods: ['UI Design', 'Interaction Design', 'Design Systems', 'Figma'],
                 link: 'https://www.figma.com/proto/8xJ8wW83caqCKeoZTjOXZr/Hotel?type=design&node-id=33-191&t=L8AiPZRct03u7omN-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=72%3A335&mode=design'
             },
             {
                 category: 'Design Projects',
                 title: 'YogaX — Meditation App UI',
-                desc: 'A wellbeing booking platform focused on meditation and yoga with a calming user experience.',
+                desc: 'A calming, minimal UI for a wellness app covering guided meditation, yoga session booking, and mindfulness tracking — designed to reduce cognitive load.',
                 thumb: 'UI Design',
                 img: 'Images/yoga-1.webp',
                 badge: 'Wellness · EdTech',
+                methods: ['UI Design', 'Motion Design', 'Color Theory', 'Figma'],
                 link: 'https://www.figma.com/proto/Tuli7DywD3AsdJmvYajWRR/Yoga-X?type=design&node-id=45-372&t=jBt9B0xJ7muewPkZ-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=45%3A372&mode=design'
             },
             {
                 category: 'Design Projects',
                 title: 'Travel X — Travel Website UI',
-                desc: 'A travel website UI design delivering a smooth and visually appealing user experience.',
+                desc: 'A visually immersive travel website UI with full-screen hero imagery, smooth scroll transitions, and a destination-first browsing experience.',
                 thumb: 'UI Design',
                 img: 'Images/travel-x.gif',
                 badge: 'Travel · TravelTech',
+                methods: ['UI Design', 'Visual Design', 'Responsive Layout', 'Figma'],
                 link: 'https://www.figma.com/proto/XybJur8tO2D9V8ZmimpcKU/Travel-website?type=design&node-id=10-212&t=4AFD6om51mF8ikL7-1&scaling=min-zoom&page-id=10%3A211&mode=design'
             },
             {
                 category: 'UX Tools',
                 title: 'AskAnyone — UX Research Helper',
-                desc: 'A UX research companion that helps designers gather user insights, run studies, and make data-informed design decisions.',
+                desc: 'Built and designed an AI-powered UX research platform that conducts smart user interviews, synthesises responses, and surfaces actionable insights automatically.',
                 thumb: 'UX Tool',
                 img: 'Images/AskAnyone.png',
                 badge: 'UX Research · SaaS',
+                methods: ['Product Design', 'UX Research', 'AI Integration', 'Design Systems', 'Figma'],
                 link: 'https://askanyone.netlify.app/',
                 deployed: true
             }
@@ -137,85 +147,94 @@ const data = {
             {
                 category: 'Full Stack',
                 title: 'Proconnect — AI Networking Platform',
-                desc: 'A modern full-stack professional networking platform inspired by LinkedIn with AI-powered post and comment generation.',
+                desc: 'A modern full-stack professional networking platform inspired by LinkedIn. Features AI-powered post and comment generation, user auth, real-time feed, and connection management.',
                 thumb: 'Full Stack',
                 img: 'Images/proconnect.webp',
-                badge: 'Next.js · Node · MongoDB · AI',
+                badge: 'Full Stack · AI',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'OpenAI', 'Tailwind CSS', 'JWT'],
                 link: 'https://proconnectdemo.netlify.app/',
                 deployed: true
             },
             {
                 category: 'Full Stack',
                 title: 'Trade X — AI Trading Platform',
-                desc: 'A powerful full-stack trading platform with RAG AI for smart portfolio management and real-time insights.',
+                desc: 'A full-stack trading dashboard with RAG-based AI for portfolio Q&A, real-time market insights, watchlist management, and interactive charting.',
                 thumb: 'Full Stack',
                 img: 'Images/trade-x.webp',
-                badge: 'React · Node · MongoDB · AI',
+                badge: 'Full Stack · AI',
+                tech: ['React', 'Node.js', 'MongoDB', 'RAG / LLM', 'Chart.js', 'REST API'],
                 link: 'https://steady-genie-711707.netlify.app/',
                 deployed: true
             },
             {
                 category: 'Full Stack',
                 title: 'Video X — Remote Calling Platform',
-                desc: 'Real-time video conferencing with screen sharing, chat, and smart AI meeting assistant.',
+                desc: 'Real-time video conferencing platform with screen sharing, in-call chat, room management, and an AI meeting assistant that summarises calls.',
                 thumb: 'Full Stack',
                 img: 'Images/video-x.avif',
-                badge: 'React · WebRTC · AI',
+                badge: 'Full Stack · WebRTC',
+                tech: ['React', 'WebRTC', 'Socket.io', 'Node.js', 'OpenAI', 'Express'],
                 link: 'https://videoxplatform.netlify.app/',
                 deployed: true
             },
             {
                 category: 'Full Stack',
                 title: 'Nomad Nest — Hotel Booking',
-                desc: 'Full-featured hotel booking platform with admin dashboard, auth, and responsive modern UI.',
+                desc: 'Full-featured hotel booking platform with listing creation, image uploads, map integration, user auth, reviews, and a responsive admin dashboard.',
                 thumb: 'Full Stack',
                 img: 'Images/nomad-nest.jpg',
-                badge: 'Node.js · EJS · MongoDB',
+                badge: 'Full Stack · MVC',
+                tech: ['Node.js', 'Express', 'MongoDB', 'EJS', 'Passport.js', 'Cloudinary'],
                 link: 'https://nomad-nest-dzm5.onrender.com/listings'
             },
             {
                 category: 'Frontend',
                 title: 'Climate Simulator',
-                desc: 'Interactive climate simulator visualizing the impact of various factors on climate change.',
+                desc: 'Interactive data-driven simulator that lets users adjust variables (emissions, deforestation, energy mix) and visualises their projected climate impact in real time.',
                 thumb: 'Frontend',
                 img: 'Images/Climate.png',
-                badge: 'TypeScript · React',
+                badge: 'Frontend · DataViz',
+                tech: ['TypeScript', 'React', 'D3.js', 'CSS Modules'],
                 link: 'https://lambent-sunburst-0b9df2.netlify.app/'
             },
             {
                 category: 'Frontend',
                 title: 'Pantry Pal — AI Cooking Platform',
-                desc: 'Recipe app helping users learn cooking, manage pantry budget, and get ingredient-based suggestions.',
+                desc: 'Recipe discovery app where users input available ingredients and get AI-generated meal suggestions, nutritional info, and a grocery budget tracker.',
                 thumb: 'Frontend',
                 img: 'Images/PantryPal1.png',
-                badge: 'React · Tailwind · AI',
+                badge: 'Frontend · AI',
+                tech: ['React', 'Tailwind CSS', 'OpenAI API', 'Vite', 'LocalStorage'],
                 link: 'https://illustrious-churros-8b11d3.netlify.app/#'
             },
             {
                 category: 'Data',
                 title: 'Quantified Self: Fitbit Data',
-                desc: 'Analyzing multi-dimension tracker logs (activity/sleep/heart) to surface patterns & lifestyle insights.',
+                desc: 'End-to-end EDA on multi-dimensional Fitbit logs (activity, sleep, heart rate) to surface behavioural patterns, anomalies, and personalised lifestyle insights.',
                 thumb: 'Data',
                 img: 'Images/fitbit-data.jpg',
-                badge: 'Python · EDA · Health',
+                badge: 'Data · EDA',
+                tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
                 link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%208%20(%20Capstone%20project-%20Fitbit%20tracker%20application)'
             },
             {
                 category: 'Data',
                 title: 'Hans Rosling — Data Storytelling',
-                desc: 'Recreated animated bubble charts to communicate multi-variable development progress with impact.',
+                desc: 'Recreated Rosling\'s famous animated bubble charts in Python to communicate multi-variable global development progress across decades with narrative impact.',
                 thumb: 'Data',
                 img: 'Images/hans-rosling.png',
-                badge: 'DataViz · Animation · Python',
+                badge: 'Data · Animation',
+                tech: ['Python', 'Matplotlib', 'NumPy', 'Pandas', 'FuncAnimation'],
                 link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%204%20(%20Advance%20Data%20visualization%20with%20animation%20in%20python%20(%20Hans%20rossling%20Tedex%20data%20visualization%20case%20study)'
             },
             {
                 category: 'Data',
                 title: 'SQL Sleuth — Detective Queries',
-                desc: 'Interactive detective-style querying uncovering anomalies, joins & relational patterns in datasets.',
+                desc: 'Interactive detective-themed SQL challenge uncovering anomalies, multi-table joins, and relational patterns across mystery datasets — documented as a case study.',
                 thumb: 'Data',
                 img: 'Images/174092-clue-illustration.png',
-                badge: 'SQL · Queries · Case Study',
+                badge: 'Data · SQL',
+                tech: ['MySQL', 'SQL Joins', 'Subqueries', 'Aggregations', 'Web Scraping'],
                 link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%205(%20MySQL%20and%20Web%20Scraping)'
             }
         ]
@@ -442,7 +461,56 @@ function renderProjects(role, filter) {
             ? `<img src="${p.img}" alt="${p.title}" class="project-card-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                <span class="thumb-placeholder" style="display:none;">${p.thumb}</span>`
             : `<span class="thumb-placeholder">${p.thumb}</span>`;
-        const liveBadge = p.deployed ? '<span class="project-live-badge">Live Demo</span>' : '';
+        const liveBadge = p.deployed ? '<span class="project-live-badge">⬤ Live Demo</span>' : '';
+
+        if (role === 'developer') {
+            const techTags = (p.tech || []).map(t => `<span class="dev-tech-tag">${t}</span>`).join('');
+            return `
+            <a href="${p.link || '#'}" target="_blank" class="project-card dev-project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
+                <div class="project-card-thumb dev-card-thumb">
+                    ${thumbContent}
+                    <span class="dev-card-type-overlay">${p.category}</span>
+                </div>
+                <div class="dev-card-body">
+                    <div class="dev-card-meta">
+                        <span class="dev-card-badge">${p.badge}</span>
+                        ${liveBadge}
+                    </div>
+                    <h3 class="dev-card-title">${p.title}</h3>
+                    <p class="dev-card-desc">${p.desc}</p>
+                    <div class="dev-tech-stack">
+                        ${techTags}
+                    </div>
+                    <span class="dev-card-cta">View project →</span>
+                </div>
+            </a>
+        `;
+        }
+
+        if (role === 'designer') {
+            const methodTags = (p.methods || []).map(m => `<span class="des-method-tag">${m}</span>`).join('');
+            return `
+            <a href="${p.link || '#'}" target="_blank" class="project-card des-project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
+                <div class="project-card-thumb des-card-thumb">
+                    ${thumbContent}
+                    <span class="des-card-type-overlay">${p.category}</span>
+                </div>
+                <div class="des-card-body">
+                    <div class="des-card-meta">
+                        <span class="project-card-badge">${p.badge}</span>
+                        ${liveBadge}
+                    </div>
+                    <h3 class="des-card-title">${p.title}</h3>
+                    <p class="des-card-desc">${p.desc}</p>
+                    <div class="des-methods-stack">
+                        ${methodTags}
+                    </div>
+                    <span class="des-card-cta">View project →</span>
+                </div>
+            </a>
+        `;
+        }
+
         return `
         <a href="${p.link || '#'}" target="_blank" class="project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
             <div class="project-card-thumb">
