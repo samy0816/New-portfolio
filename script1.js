@@ -151,7 +151,7 @@ const data = {
                 thumb: 'Full Stack',
                 img: 'Images/proconnect.webp',
                 badge: 'Full Stack · AI',
-                tech: ['Next.js', 'Node.js', 'MongoDB', 'OpenAI', 'Tailwind CSS', 'JWT'],
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'HuggingFace', 'Tailwind CSS', 'JWT'],
                 link: 'https://proconnectdemo.netlify.app/',
                 deployed: true
             },
