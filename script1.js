@@ -123,17 +123,7 @@ const data = {
     decor: '◎',
     link: 'https://www.behance.net/gallery/253857111/MindFlow-AI-Wellness-App-UIUX-Design'
             },
-            {
-                category: 'Design Projects',
-                title: 'YogaX — Meditation App UI',
-                desc: 'A calming, minimal UI for a wellness app covering guided meditation, yoga session booking, and mindfulness tracking — designed to reduce cognitive load.',
-                thumb: 'UI Design',
-                img: 'Images/yoga-1.webp',
-                badge: 'Wellness · EdTech',
-                methods: ['UI Design', 'Motion Design', 'Color Theory', 'Figma'],
-                color: '#FEAF26', decor: '✦',
-                link: 'https://www.figma.com/proto/Tuli7DywD3AsdJmvYajWRR/Yoga-X?type=design&node-id=45-372&t=jBt9B0xJ7muewPkZ-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=45%3A372&mode=design'
-            },
+     
             {
                 category: 'Design Projects',
     title: 'FinCore — Finance Dashboard',
@@ -162,6 +152,17 @@ const data = {
                 color: '#1e5fa8', decor: '◉',
                 link: 'https://askanyone.netlify.app/',
                 deployed: true
+            },
+                   {
+                category: 'Design Projects',
+                title: 'YogaX — Meditation App UI',
+                desc: 'A calming, minimal UI for a wellness app covering guided meditation, yoga session booking, and mindfulness tracking — designed to reduce cognitive load.',
+                thumb: 'UI Design',
+                img: 'Images/yoga-1.webp',
+                badge: 'EdTech',
+                methods: ['UI Design', 'Motion Design', 'Color Theory', 'Figma'],
+                color: '#FEAF26', decor: '✦',
+                link: 'https://www.figma.com/proto/Tuli7DywD3AsdJmvYajWRR/Yoga-X?type=design&node-id=45-372&t=jBt9B0xJ7muewPkZ-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=45%3A372&mode=design'
             }
         ]
     },
