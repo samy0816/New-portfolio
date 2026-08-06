@@ -1,3 +1,22 @@
+// Per-project colors: set `color` (hex) and optionally `decor` on each project in the data below.
+// bg, border, and chip tints are auto-derived from the single hex.
+function themeFromColor(hex, decor) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    const mix = (c) => Math.round(c * 0.13 + 255 * 0.87);
+    const dark = (c) => Math.round(c * 0.72);
+    return {
+        bg:         `rgb(${mix(r)},${mix(g)},${mix(b)})`,
+        border:     `rgba(${r},${g},${b},0.28)`,
+        accent:     hex,
+        chipBg:     `rgba(${r},${g},${b},0.09)`,
+        chipBorder: `rgba(${r},${g},${b},0.22)`,
+        chipColor:  `rgb(${dark(r)},${dark(g)},${dark(b)})`,
+        decor:      decor || '◎',
+    };
+}
+
 // ===== DATA =====
 
 const data = {
@@ -29,6 +48,7 @@ const data = {
                 img: 'Images/EuroVoyage.png',
                 badge: 'Travel · UX Research',
                 methods: ['User Research', 'Journey Mapping', 'Wireframing', 'Prototyping', 'Figma'],
+                color: '#2563a8', decor: '◎',
                 link: 'eurovoyage-case-study (1).html'
             },
             {
@@ -39,6 +59,7 @@ const data = {
                 img: 'Images/EpaBuddy.png',
                 badge: 'HealthTech · UX Research',
                 methods: ['User Interviews', 'Affinity Mapping', 'Prototyping', 'Usability Testing', 'Figma'],
+                color: '#1d7a54', decor: '✦',
                 link: 'epa-companion-case-study.html'
             },
             {
@@ -49,6 +70,7 @@ const data = {
                 img: 'Images/Easyburger.png',
                 badge: 'GovTech · UX Research',
                 methods: ['User Research', 'Service Design', 'Wireframing', 'Prototyping', 'Figma'],
+                color: '#b05c14', decor: '◈',
                 link: 'case-study.html'
             },
             {
@@ -59,6 +81,7 @@ const data = {
                 img: 'Images/Mietmate.png',
                 badge: 'LegalTech · UX Research',
                 methods: ['UX Research', 'Information Architecture', 'Interaction Design', 'Figma'],
+                color: '#7c2d8a', decor: '◉',
                 link: 'https://www.behance.net/gallery/236267301/UX-Case-Study-Mietmate'
             },
             {
@@ -69,6 +92,7 @@ const data = {
                 img: 'Images/PantryPal.png',
                 badge: 'FoodTech · Product Design',
                 methods: ['Gamification Design', 'User Research', 'Wireframing', 'Prototyping', 'Figma'],
+                color: '#c05218', decor: '✿',
                 link: 'https://medium.com/@samarthjoshi1608/ux-case-study-pantrypal-cooking-budgeting-smart-recipe-assistant-7d09d4a78a9b'
             },
             {
@@ -79,17 +103,19 @@ const data = {
                 img: 'Images/concert-booking.jfif',
                 badge: 'Music · Ticketing',
                 methods: ['User Research', 'Information Architecture', 'Prototyping', 'Usability Testing', 'Figma'],
+                color: '#6b2d9a', decor: '⬡',
                 link: 'https://medium.com/@samarthjoshi1608/ux-case-study-concert-booking-app-c4a6dbf09ace'
             },
             {
                 category: 'Design Projects',
-                title: 'Hotel X — Stay Booking Platform',
+                title: 'Mindflow — Mental Wellness App',
                 desc: 'High-fidelity UI for a hotel booking platform — clean listing pages, a frictionless checkout flow, and an intuitive property management dashboard.',
                 thumb: 'UI Design',
-                img: 'Images/hotel-x.gif',
+                img: 'Images/Mindflow.png',
                 badge: 'Booking · PMS',
                 methods: ['UI Design', 'Interaction Design', 'Design Systems', 'Figma'],
-                link: 'https://www.figma.com/proto/8xJ8wW83caqCKeoZTjOXZr/Hotel?type=design&node-id=33-191&t=L8AiPZRct03u7omN-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=72%3A335&mode=design'
+                color: '#1D55D3', decor: '◎',
+                link: 'https://www.behance.net/gallery/253857111/MindFlow-AI-Wellness-App-UIUX-Design'
             },
             {
                 category: 'Design Projects',
@@ -99,17 +125,19 @@ const data = {
                 img: 'Images/yoga-1.webp',
                 badge: 'Wellness · EdTech',
                 methods: ['UI Design', 'Motion Design', 'Color Theory', 'Figma'],
+                color: '#FEAF26', decor: '✦',
                 link: 'https://www.figma.com/proto/Tuli7DywD3AsdJmvYajWRR/Yoga-X?type=design&node-id=45-372&t=jBt9B0xJ7muewPkZ-1&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=45%3A372&mode=design'
             },
             {
                 category: 'Design Projects',
-                title: 'Travel X — Travel Website UI',
+                title: 'Fincore — Finance Dashboard',
                 desc: 'A visually immersive travel website UI with full-screen hero imagery, smooth scroll transitions, and a destination-first browsing experience.',
                 thumb: 'UI Design',
-                img: 'Images/travel-x.gif',
+                img: 'Images/Fincore.png',
                 badge: 'Travel · TravelTech',
                 methods: ['UI Design', 'Visual Design', 'Responsive Layout', 'Figma'],
-                link: 'https://www.figma.com/proto/XybJur8tO2D9V8ZmimpcKU/Travel-website?type=design&node-id=10-212&t=4AFD6om51mF8ikL7-1&scaling=min-zoom&page-id=10%3A211&mode=design'
+                color: '#8934F6', decor: '◈',
+                link: 'https://www.behance.net/gallery/253727867/FinCore-Modern-Finance-Dashboard-UIUX-Design'
             },
             {
                 category: 'UX Tools',
@@ -119,6 +147,7 @@ const data = {
                 img: 'Images/AskAnyone.png',
                 badge: 'UX Research · SaaS',
                 methods: ['Product Design', 'UX Research', 'AI Integration', 'Design Systems', 'Figma'],
+                color: '#1e5fa8', decor: '◉',
                 link: 'https://askanyone.netlify.app/',
                 deployed: true
             }
@@ -152,6 +181,7 @@ const data = {
                 img: 'Images/proconnect.webp',
                 badge: 'Full Stack · AI',
                 tech: ['Next.js', 'Node.js', 'MongoDB', 'HuggingFace', 'Tailwind CSS', 'JWT'],
+                color: '#1c50a0', decor: '◎',
                 link: 'https://proconnectdemo.netlify.app/',
                 deployed: true
             },
@@ -163,6 +193,7 @@ const data = {
                 img: 'Images/trade-x.webp',
                 badge: 'Full Stack · AI',
                 tech: ['React', 'Node.js', 'MongoDB', 'RAG / LLM', 'Chart.js', 'REST API'],
+                color: '#167644', decor: '✦',
                 link: 'https://steady-genie-711707.netlify.app/',
                 deployed: true
             },
@@ -174,6 +205,7 @@ const data = {
                 img: 'Images/video-x.avif',
                 badge: 'Full Stack · WebRTC',
                 tech: ['React', 'WebRTC', 'Socket.io', 'Node.js', 'OpenAI', 'Express'],
+                color: '#7a1a6a', decor: '◈',
                 link: 'https://videoxplatform.netlify.app/',
                 deployed: true
             },
@@ -185,6 +217,7 @@ const data = {
                 img: 'Images/nomad-nest.jpg',
                 badge: 'Full Stack · MVC',
                 tech: ['Node.js', 'Express', 'MongoDB', 'EJS', 'Passport.js', 'Cloudinary'],
+                color: '#8a4a18', decor: '◉',
                 link: 'https://nomad-nest-dzm5.onrender.com/listings'
             },
             {
@@ -195,6 +228,7 @@ const data = {
                 img: 'Images/Climate.png',
                 badge: 'Frontend · DataViz',
                 tech: ['TypeScript', 'React', 'D3.js', 'CSS Modules'],
+                color: '#1a6a78', decor: '✿',
                 link: 'https://lambent-sunburst-0b9df2.netlify.app/'
             },
             {
@@ -205,6 +239,7 @@ const data = {
                 img: 'Images/PantryPal1.png',
                 badge: 'Frontend · AI',
                 tech: ['React', 'Tailwind CSS', 'OpenAI API', 'Vite', 'LocalStorage'],
+                color: '#b05218', decor: '⬡',
                 link: 'https://illustrious-churros-8b11d3.netlify.app/#'
             },
             {
@@ -215,6 +250,7 @@ const data = {
                 img: 'Images/fitbit-data.jpg',
                 badge: 'Data · EDA',
                 tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
+                color: '#8a1a2a', decor: '◎',
                 link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%208%20(%20Capstone%20project-%20Fitbit%20tracker%20application)'
             },
             {
@@ -225,6 +261,7 @@ const data = {
                 img: 'Images/hans-rosling.png',
                 badge: 'Data · Animation',
                 tech: ['Python', 'Matplotlib', 'NumPy', 'Pandas', 'FuncAnimation'],
+                color: '#1a3878', decor: '✦',
                 link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%204%20(%20Advance%20Data%20visualization%20with%20animation%20in%20python%20(%20Hans%20rossling%20Tedex%20data%20visualization%20case%20study)'
             },
             {
@@ -235,6 +272,7 @@ const data = {
                 img: 'Images/174092-clue-illustration.png',
                 badge: 'Data · SQL',
                 tech: ['MySQL', 'SQL Joins', 'Subqueries', 'Aggregations', 'Web Scraping'],
+                color: '#3c1a7a', decor: '◈',
                 link: 'https://github.com/samy0816/PrepInsta_Winter_Internship/tree/main/Week%205(%20MySQL%20and%20Web%20Scraping)'
             }
         ]
@@ -456,76 +494,51 @@ function renderProjects(role, filter) {
 
     projectsExpanded = false;
 
-    const buildCard = (p, hidden) => {
-        const thumbContent = p.img
-            ? `<img src="${p.img}" alt="${p.title}" class="project-card-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-               <span class="thumb-placeholder" style="display:none;">${p.thumb}</span>`
-            : `<span class="thumb-placeholder">${p.thumb}</span>`;
-        const liveBadge = p.deployed ? '<span class="project-live-badge">⬤ Live Demo</span>' : '';
-
-        if (role === 'developer') {
-            const techTags = (p.tech || []).map(t => `<span class="dev-tech-tag">${t}</span>`).join('');
-            return `
-            <a href="${p.link || '#'}" target="_blank" class="project-card dev-project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
-                <div class="project-card-thumb dev-card-thumb">
-                    ${thumbContent}
-                    <span class="dev-card-type-overlay">${p.category}</span>
-                </div>
-                <div class="dev-card-body">
-                    <div class="dev-card-meta">
-                        <span class="dev-card-badge">${p.badge}</span>
-                        ${liveBadge}
-                    </div>
-                    <h3 class="dev-card-title">${p.title}</h3>
-                    <p class="dev-card-desc">${p.desc}</p>
-                    <div class="dev-tech-stack">
-                        ${techTags}
-                    </div>
-                    <span class="dev-card-cta">View project →</span>
-                </div>
-            </a>
-        `;
-        }
-
-        if (role === 'designer') {
-            const methodTags = (p.methods || []).map(m => `<span class="des-method-tag">${m}</span>`).join('');
-            return `
-            <a href="${p.link || '#'}" target="_blank" class="project-card des-project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
-                <div class="project-card-thumb des-card-thumb">
-                    ${thumbContent}
-                    <span class="des-card-type-overlay">${p.category}</span>
-                </div>
-                <div class="des-card-body">
-                    <div class="des-card-meta">
-                        <span class="project-card-badge">${p.badge}</span>
-                        ${liveBadge}
-                    </div>
-                    <h3 class="des-card-title">${p.title}</h3>
-                    <p class="des-card-desc">${p.desc}</p>
-                    <div class="des-methods-stack">
-                        ${methodTags}
-                    </div>
-                    <span class="des-card-cta">View project →</span>
-                </div>
-            </a>
-        `;
-        }
+    const buildCard = (p, hidden, idx) => {
+        const theme = themeFromColor(p.color || '#555555', p.decor);
+        const num = String(idx + 1).padStart(2, '0');
+        const [mainTitle, subTitle] = p.title.includes(' — ') ? p.title.split(' — ') : [p.title, ''];
+        const chips = (role === 'developer' ? (p.tech || []) : (p.methods || []));
+        const ctaLabel = role === 'developer' ? 'View project' : 'View case study';
+        const imgContent = p.img
+            ? `<img src="${p.img}" alt="${p.title}" class="pc-img" loading="lazy" onerror="this.style.display='none'">`
+            : `<div class="pc-img-placeholder">${p.thumb}</div>`;
+        const liveBadge = p.deployed
+            ? `<span class="pc-live-badge">⬤ Live</span>`
+            : '';
 
         return `
-        <a href="${p.link || '#'}" target="_blank" class="project-card reveal-scale${hidden ? ' project-hidden' : ''}${p.deployed ? ' project-live' : ''}">
-            <div class="project-card-thumb">
-                ${thumbContent}
+        <a href="${p.link || '#'}" target="_blank"
+           class="project-card portfolio-card reveal-scale${hidden ? ' project-hidden' : ''}"
+           style="--pc-bg:${theme.bg};--pc-border:${theme.border};--pc-accent:${theme.accent};--pc-chip-bg:${theme.chipBg};--pc-chip-border:${theme.chipBorder};--pc-chip-color:${theme.chipColor};">
+            <span class="pc-num">${num}</span>
+            <div class="pc-image-wrap">${imgContent}</div>
+            <div class="pc-content">
+                <div class="pc-top-row">
+                    <span class="pc-badge">${p.badge}</span>
+                    ${liveBadge}
+                </div>
+                <div class="pc-heading">
+                    <h3 class="pc-title">${mainTitle}</h3>
+                    ${subTitle ? `<p class="pc-subtitle">${subTitle}</p>` : ''}
+                </div>
+                <p class="pc-desc">${p.desc}</p>
+                <div class="pc-chips">
+                    ${chips.map(c => `<span class="pc-chip">${c}</span>`).join('')}
+                </div>
+                <div class="pc-footer">
+                    <div class="pc-cta-wrap">
+                        <span class="pc-cta-text">${ctaLabel}</span>
+                        <span class="pc-cta-btn">→</span>
+                    </div>
+                    <span class="pc-decor">${theme.decor}</span>
+                </div>
             </div>
-            ${liveBadge}
-            <span class="project-card-badge">${p.badge}</span>
-            <h3>${p.title}</h3>
-            <p>${p.desc}</p>
-        </a>
-    `;
+        </a>`;
     };
 
-    const visible = filtered.slice(0, VISIBLE_COUNT).map(p => buildCard(p, false)).join('');
-    const hidden = hasMore ? filtered.slice(VISIBLE_COUNT).map(p => buildCard(p, true)).join('') : '';
+    const visible = filtered.slice(0, VISIBLE_COUNT).map((p, i) => buildCard(p, false, i)).join('');
+    const hidden = hasMore ? filtered.slice(VISIBLE_COUNT).map((p, i) => buildCard(p, true, VISIBLE_COUNT + i)).join('') : '';
 
     projectGridEl.innerHTML = visible + hidden;
 
