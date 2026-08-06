@@ -107,15 +107,21 @@ const data = {
                 link: 'https://medium.com/@samarthjoshi1608/ux-case-study-concert-booking-app-c4a6dbf09ace'
             },
             {
-                category: 'Design Projects',
-                title: 'Mindflow — Mental Wellness App',
-                desc: 'High-fidelity UI for a hotel booking platform — clean listing pages, a frictionless checkout flow, and an intuitive property management dashboard.',
-                thumb: 'UI Design',
-                img: 'Images/Mindflow.png',
-                badge: 'Booking · PMS',
-                methods: ['UI Design', 'Interaction Design', 'Design Systems', 'Figma'],
-                color: '#1D55D3', decor: '◎',
-                link: 'https://www.behance.net/gallery/253857111/MindFlow-AI-Wellness-App-UIUX-Design'
+                    category: 'Design Projects',
+    title: 'MindFlow — AI Wellness App',
+    desc: 'An AI-powered mindfulness app focused on emotional wellbeing, featuring mood tracking, guided breathing, journaling, and a calming design system crafted for a seamless wellness experience.',
+    thumb: 'UI/UX Design',
+    img: 'Images/Mindflow.png',
+    badge: 'AI · Wellness',
+    methods: [
+        'UI/UX Design',
+        'Visual Design',
+        'Design System',
+        'Figma'
+    ],
+    color: '#1D55D3',
+    decor: '◎',
+    link: 'https://www.behance.net/gallery/253857111/MindFlow-AI-Wellness-App-UIUX-Design'
             },
             {
                 category: 'Design Projects',
@@ -130,14 +136,20 @@ const data = {
             },
             {
                 category: 'Design Projects',
-                title: 'Fincore — Finance Dashboard',
-                desc: 'A visually immersive travel website UI with full-screen hero imagery, smooth scroll transitions, and a destination-first browsing experience.',
-                thumb: 'UI Design',
-                img: 'Images/Fincore.png',
-                badge: 'Travel · TravelTech',
-                methods: ['UI Design', 'Visual Design', 'Responsive Layout', 'Figma'],
-                color: '#8934F6', decor: '◈',
-                link: 'https://www.behance.net/gallery/253727867/FinCore-Modern-Finance-Dashboard-UIUX-Design'
+    title: 'FinCore — Finance Dashboard',
+    desc: 'A modern fintech dashboard designed for financial management, analytics, budgeting, and transaction tracking with a scalable enterprise UI system.',
+    thumb: 'UI/UX Design',
+    img: 'Images/Fincore.png',
+    badge: 'FinTech · SaaS',
+    methods: [
+        'UI/UX Design',
+        'Dashboard Design',
+        'Design System',
+        'Figma'
+    ],
+    color: '#8934F6',
+    decor: '◈',
+    link: 'https://www.behance.net/gallery/253727867/FinCore-Modern-Finance-Dashboard-UIUX-Design'
             },
             {
                 category: 'UX Tools',
