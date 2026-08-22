@@ -49,7 +49,7 @@ const data = {
                 badge: 'Travel · UX Research',
                 methods: ['User Research', 'Journey Mapping', 'Wireframing', 'Prototyping', 'Figma'],
                 color: '#2563a8', decor: '◎',
-                link: 'eurovoyage-case-study (1).html'
+                link: 'eurovoyage-niva-style.html'
             },
             {
                 category: 'Case Studies',
