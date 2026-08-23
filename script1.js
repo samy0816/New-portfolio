@@ -60,7 +60,7 @@ const data = {
                 badge: 'HealthTech · UX Research',
                 methods: ['User Interviews', 'Affinity Mapping', 'Prototyping', 'Usability Testing', 'Figma'],
                 color: '#1d7a54', decor: '✦',
-                link: 'epa-companion-case-study.html'
+                link: 'epa-companion-niva-style-final.html'
             },
             {
                 category: 'Case Studies',
@@ -71,7 +71,7 @@ const data = {
                 badge: 'GovTech · UX Research',
                 methods: ['User Research', 'Service Design', 'Wireframing', 'Prototyping', 'Figma'],
                 color: '#b05c14', decor: '◈',
-                link: 'case-study.html'
+                link: 'easyburger-niva-style-final-refined.html'
             },
             {
                 category: 'Case Studies',
