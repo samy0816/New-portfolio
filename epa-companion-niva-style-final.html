@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EpaBuddy — ePA Companion UX Case Study</title>
+<meta name="description" content="A UX case study on EpaBuddy — an AI-powered mobile health companion that helps Germans understand their electronic patient record. Turning inaccessible medical PDFs into plain-language understanding. Solo product design project by Samarth Joshi.">
+<meta property="og:title" content="EpaBuddy — ePA Companion UX Case Study">
+<meta property="og:description" content="AI-powered health companion for Germany's electronic patient record. 6-week solo UX project by Samarth Joshi.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="niva-style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* ============================================================
+       EpaBuddy — niva-style page
+       Same design system / layout as the EuroVoyage niva page,
+       re-skinned with EpaBuddy's health-green accent pair.
+       ============================================================ */
+    :root {
+        --blue: #1B6B4A;        /* primary green */
+        --blue-soft: #E8F5EE;   /* soft green tint */
+        --coral: #E8703D;       /* warm accent retained for contrast */
+        --coral-soft: #FBE4D5;
+    }
+
+    /* Hero visual — EpaBuddy brand image */
+    .hero-visual {
+        background: url('Images/EpaBuddy.gif') center / cover no-repeat;
+        border-radius: var(--radius-lg);
+        height: 400px;
+        margin-bottom: 40px;
+    }
+
+    /* AI state cards (design-system section) */
+    .ai-state-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin: 26px 0; }
+    .ai-state {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        padding: 26px 22px;
+        box-shadow: var(--shadow-card);
+        text-align: center;
+        border-top: 3px solid var(--blue);
+    }
+    .ai-state .state-icon { font-size: 2rem; margin-bottom: 10px; }
+    .ai-state h4 { font-size: 1rem; margin-bottom: 6px; }
+    .ai-state p { font-size: 0.88rem; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+    .ai-state.loading  { border-top-color: #C7B44A; }
+    .ai-state.partial  { border-top-color: #E8A33D; }
+    .ai-state.error    { border-top-color: #C24E3A; }
+
+    /* Color palette swatches */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 22px 0; }
+    .color-swatch { background: var(--white); border-radius: var(--radius-sm); padding: 14px; box-shadow: var(--shadow-card); text-align: center; }
+    .color-swatch .swatch { height: 56px; border-radius: var(--radius-sm); margin-bottom: 10px; }
+    .color-swatch span { font-size: 0.85rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 2px; }
+    .color-swatch code { font-size: 0.75rem; color: var(--ink-faint); }
+
+    /* High-fidelity screens — small mockups, image covers full mockup */
+    .hifi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin: 32px 0; justify-items: center; }
+    .hifi-mockup {
+        width: 100%; max-width: 260px;
+        border-radius: 30px;
+        background: var(--ink);
+        padding: 10px;
+        box-shadow: var(--shadow-card);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .hifi-mockup:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+    .hifi-mockup img {
+        display: block;
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 20px;
+    }
+    @media (max-width: 560px) { .hifi-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span class="topbar-dot"></span> Samarth Joshi</div>
+
+<div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a href="#overview" class="back-btn" aria-label="Back to top">←</a>
+        <nav class="side-nav">
+            <a href="#overview">Overview</a>
+            <a href="#problem">Problem</a>
+            <a href="#research">Research</a>
+            <a href="#solution">Solution</a>
+            <a href="#prototype">Prototype</a>
+            <a href="#testing">Testing</a>
+            <a href="#impact">Impact</a>
+            <a href="#reflection">Reflection</a>
+        </nav>
+        <div class="sidebar-foot">EpaBuddy · 2026</div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- ================= OVERVIEW / HERO ================= -->
+        <section id="overview" class="block hero-block">
+            <div class="hero-visual reveal"></div>
+            <span class="eyebrow hero-eyebrow reveal">Product · UX · Research</span>
+            <h1 class="headline hero-headline reveal">EpaBuddy — an AI companion for your electronic patient record</h1>
+            <p class="hero-lede reveal">Germany's ePA went live in 2025. The data arrived. The understanding didn't. EpaBuddy turns inaccessible medical PDFs into plain-language understanding — without requiring medical literacy or German fluency.</p>
+            <div class="meta-row reveal">
+                <div class="meta-col"><div class="meta-label">Fields</div><div class="meta-value">Product Design<br>UX Research<br>AI Interaction Design<br>Usability Testing</div></div>
+                <div class="meta-col"><div class="meta-label">Role</div><div class="meta-value">Product Designer — End-to-End</div></div>
+                <div class="meta-col"><div class="meta-label">Timeline</div><div class="meta-value">6 Weeks</div></div>
+                <div class="meta-col"><div class="meta-label">Platform</div><div class="meta-value">iOS / Mobile-first</div></div>
+                <div class="meta-col"><div class="meta-label">Tools</div><div class="meta-value">Figma · Miro</div></div>
+            </div>
+        </section>
+
+        <!-- ================= 01 — PROBLEM ================= -->
+        <section id="problem" class="block">
+            <span class="eyebrow reveal">Problem</span>
+            <h2 class="headline reveal">The ePA was technically live. For many patients, it was still not useful.</h2>
+            <p class="body-text reveal">Germany rolled out electronic patient records (ePA) for statutory insurance members in 2025. By early 2026, awareness of the system had grown significantly, but active usage remained limited. For many patients, the experience still felt fragmented.</p>
+            <p class="body-text reveal">Medical information was often presented as disconnected PDFs and technical terminology with little contextual guidance. People had the data. They just couldn't do anything useful with it.</p>
+
+            <div class="panel reveal">
+                <p class="panel-note">Medical information arrives as disconnected PDFs.</p>
+                <p class="panel-note">Technical terminology with little contextual guidance.</p>
+                <p class="panel-note">German-only content — inaccessible to millions of residents.</p>
+                <p class="panel-note">No notification, no guidance, no reason to return.</p>
+            </div>
+
+            <p class="body-text reveal">Existing insurance apps answer: <strong>"Where is my data stored?"</strong></p>
+            <p class="body-text reveal">But there is another question underneath: <strong>"What does my data actually mean?"</strong></p>
+            <p class="body-text reveal">That comprehension gap became the focus of EpaBuddy.</p>
+
+            <!-- 02 — Opportunity -->
+            <div style="margin-top:64px;">
+                <span class="eyebrow reveal">Opportunity</span>
+                <h2 class="headline reveal">What if the record could explain itself?</h2>
+                <p class="body-text reveal">Rather than giving users more information about how to read medical German, I wanted to explore whether the product could interpret the document for them — with transparency, hedged language, and an explicit "not medical advice" boundary.</p>
+
+                <div class="panel reveal">
+                    <span class="eyebrow" style="margin-bottom:10px;">How might we</span>
+                    <p class="panel-note" style="font-style:italic;font-weight:400;font-size:1.1rem;">Help people understand what's in their health record — without requiring medical literacy or German fluency first?</p>
+                </div>
+
+                <p class="body-text reveal">This shifted the design goal from <strong>storage</strong> to <strong>interpretation</strong>. The experience should answer three questions as quickly as possible:</p>
+
+                <div class="card-grid card-grid--3 reveal">
+                    <div class="card mini-stat"><div class="mini-num">01</div><p>What does it say?</p><p style="font-weight:400;margin-top:6px;">A plain-language summary of every document.</p></div>
+                    <div class="card mini-stat"><div class="mini-num">02</div><p>Can I trust it?</p><p style="font-weight:400;margin-top:6px;">Transparency about when AI is speaking — and its limits.</p></div>
+                    <div class="card mini-stat"><div class="mini-num">03</div><p>What do I do next?</p><p style="font-weight:400;margin-top:6px;">Actionable guidance — without ever diagnosing.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= RESEARCH ================= -->
+        <section id="research" class="block">
+            <span class="eyebrow reveal">Research</span>
+            <h2 class="headline reveal">I wanted to understand where comprehension actually broke.</h2>
+
+            <div class="card-grid card-grid--2 reveal" style="align-items:start;">
+                <div>
+                    <h3 style="font-size:1.1rem;margin-bottom:14px;">What I did</h3>
+                    <div class="panel panel--tight" style="margin:0;">
+                        <p class="panel-note" style="font-weight:400;">5 semi-structured interviews — German nationals + international residents</p>
+                        <p class="panel-note" style="font-weight:400;">Competitive audit of TK App, AOK App, Ada Health, Vivy</p>
+                        <p class="panel-note" style="font-weight:400;">Secondary research into GEMEINSAM DIGITAL 2026 — adoption targets missed due to UX, not technology</p>
+                        <p class="panel-note" style="font-weight:400;">EU AI Act health provisions review — used as a design constraint, not a post-hoc check</p>
+                    </div>
+                    <h3 style="font-size:1.1rem;margin:24px 0 10px;">What I was looking for</h3>
+                    <p class="body-text">Rather than asking whether people "liked" their insurance app, I focused on the moments where they stopped: where a PDF defeated them, where a German word became a wall, where a red flag meant nothing. Every participant had tried their health insurance app. Every participant had stopped using it.</p>
+                </div>
+                <div>
+                    <h3 style="font-size:1.1rem;margin-bottom:14px;">Core user needs</h3>
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">Plain-language explanation of medical documents and lab results</div>
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">Transparency about when AI is speaking and what its limits are</div>
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">Multilingual support — medical German is inaccessible to many</div>
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">Proactive prompts to engage with health data, not passive storage</div>
+                    </div>
+                    <p style="margin-top:18px;font-size:0.88rem;color:var(--ink-faint);line-height:1.7;"><strong style="color:var(--ink-soft);">Research limitation:</strong> the interview sample was small and exploratory. The purpose wasn't to statistically represent all patients — it was to identify recurring behaviors and uncertainties that could be explored through prototyping and testing.</p>
+                </div>
+            </div>
+
+            <!-- Quantitative findings -->
+            <div style="margin-top:64px;">
+                <span class="eyebrow reveal">Quantitative signal</span>
+                <h2 class="headline reveal" style="max-width:none;">The numbers explained why the ePA felt empty.</h2>
+                <div class="stat-grid reveal">
+                    <div class="stat-card"><div class="stat-figure">&lt;1%</div><div class="stat-label"><strong>ePA active usage rate</strong> before the opt-out rollout. <a href="https://www.tagesschau.de/inland/gesellschaft/elektronische-patientenakte-120.html" target="_blank">Source</a></div></div>
+                    <div class="stat-card"><div class="stat-figure">73M</div><div class="stat-label"><strong>Germans now eligible for ePA</strong> under the opt-out system. <a href="https://www.bundesregierung.de/breg-de/service/fragen-und-anworten/faqs-zur-epa-fuer-alle-2315618" target="_blank">Source</a></div></div>
+                    <div class="stat-card"><div class="stat-figure">5%</div><div class="stat-label"><strong>of Germans accessed</strong> electronic health records
+online in 2024. <a href="https://health.ec.europa.eu/document/download/005d88cb-bab7-40c5-bd2f-24b7da88958c_en?filename=2025_chp_de_english.pdf" target="_blank">Source</a></div></div>
+                    <div class="stat-card"><div class="stat-figure">15M+</div><div class="stat-label"><strong>Residents with migration backgrounds</strong> excluded by German-only health apps. <a href="https://www.destatis.de/EN/Press/Census2022_press_releases/PM_census2022_47.html" target="_blank">Source</a></div></div>
+                </div>
+            </div>
+
+            <!-- What I learned — interviews -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">What I learned</span>
+                <h2 class="headline reveal">The problem wasn't data access. It was interpretation.</h2>
+                <p class="body-text reveal" style="font-size:1.12rem;">I spoke with 5 participants across Germany — an exchange student from India, a software engineer, a nurse, a Syrian undergraduate, and a marketing manager. Every single one had a story about opening their record and closing it again. Not because the data wasn't there, but because they couldn't make sense of it.</p>
+
+                <div class="reveal" style="margin-top:32px;">
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P1 — F, 24, Exchange Student from India</strong><span>Munich · TK Insurance · A2 German</span></div>
+                            <div class="interview-tag">INT / 01</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: Have you ever opened your health insurance app to look at your records?</div><div class="qa-a">"Yes once. I saw some files but they were all in German and I had no idea what they were. I just closed it."</div></div>
+                        <div class="qa"><div class="qa-q">Q: What would make you not trust an AI health explanation?</div><div class="qa-a">"If it sounded too confident. If it said 'you have this condition' I would be scared. But if it says 'this number is slightly low, worth asking your doctor' that feels okay."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Users want hedged, conversational AI tone — not diagnostic, not robotic. Framing certainty directly shapes emotional response.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P2 — M, 31, Software Engineer (German)</strong><span>Berlin · AOK Insurance · Native German</span></div>
+                            <div class="interview-tag">INT / 02</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: When did you last open your ePA?</div><div class="qa-a">"Maybe six months ago. There was a PDF from a specialist. I couldn't tell if it was a diagnosis or just notes from the visit."</div></div>
+                        <div class="qa"><div class="qa-q">Q: Would you want AI to summarize your documents?</div><div class="qa-a">"Yes but I'd want to know it's AI. I don't want to think I'm reading a doctor's summary and then find out it was generated."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Transparency about AI authorship is non-negotiable. Users don't resist AI — they resist AI that conceals itself.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P3 — F, 29, Nurse</strong><span>Hamburg · Clinical context · Native German</span></div>
+                            <div class="interview-tag">INT / 03</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: What do your patients struggle with around digital health records?</div><div class="qa-a">"They get a Befund after a specialist visit and have no idea what it says. If they had something that explained it simply, we'd get fewer anxious calls."</div></div>
+                        <div class="qa"><div class="qa-q">Q: Any concerns about AI explaining health data?</div><div class="qa-a">"The explanation has to be clearly not a diagnosis. If an AI says 'your iron is low' some patients immediately think cancer. Framing matters enormously."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>The "Not medical advice" label isn't legal cover — it actively manages emotional response. Design it as a first-class UI element, not a footnote.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P4 — M, 22, Undergraduate Student from Syria</strong><span>Saarbrücken · AOK Insurance · B1 German</span></div>
+                            <div class="interview-tag">INT / 04</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: Have you ever needed to share health records with a new doctor?</div><div class="qa-a">"Yes when I changed GP. They asked for my previous records. I didn't know how to get them so I just said I don't have them."</div></div>
+                        <div class="qa"><div class="qa-q">Q: What language do you want health information in?</div><div class="qa-a">"Arabic or English. My German isn't good enough for medical stuff."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Language barriers cause users to abandon health interactions entirely. Multilingual design isn't a feature addition — it's accessibility.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P5 — F, 38, Marketing Manager (German)</strong><span>Frankfurt · TK Insurance · Health-conscious</span></div>
+                            <div class="interview-tag">INT / 05</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: Have you ever looked at a lab result in the app?</div><div class="qa-a">"I tried. There was a table of numbers and some were flagged in red. I didn't know if red was serious or just a formatting thing. I closed it."</div></div>
+                        <div class="qa"><div class="qa-q">Q: What would a good experience look like?</div><div class="qa-a">"Like how banking apps say 'you spent more than usual this month.' Just tell me what I need to know."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Users want proactive surfacing of relevant information, not passive storage. The mental model is a smart assistant, not a filing cabinet.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personas -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Personas</span>
+                <h2 class="headline reveal" style="max-width:none;">Two motivated users. One shared wall.</h2>
+
+                <div class="persona reveal">
+                    <div class="persona-head">
+                        <div class="persona-avatar"><img src="Images/epaboy.jpg" alt="Asel"></div>
+                        <div>
+                            <div class="persona-name">Asel</div>
+                            <div class="persona-sub">International Master's Student</div>
+                        </div>
+                    </div>
+                    <p class="body-text">Asel moved from Kazakhstan 8 months ago for a Computer Science Master's. English fluent, German A2. She received the ePA opt-out notification and ignored it. She has a follow-up blood test coming up — and doesn't know what the results will mean.</p>
+                    <div class="persona-grid">
+                        <div class="persona-col pains">
+                            <h4>Pain Points</h4>
+                            <ul>
+                                <li>Opened the TK app once, saw German filenames, closed it immediately</li>
+                                <li>Doesn't know the difference between Befund, Rezept, Überweisung</li>
+                                <li>Anxious about doctor visits due to the language barrier</li>
+                                <li>Googles symptoms instead of consulting her own records</li>
+                            </ul>
+                        </div>
+                        <div class="persona-col values">
+                            <h4>Values</h4>
+                            <ul>
+                                <li>Plain language over medical jargon</li>
+                                <li>Multilingual accessibility</li>
+                                <li>Reassurance, not anxiety</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <p>"I have the app but I don't really know what's in it or if it matters. I just get nervous when I see all those German words."</p>
+                    </div>
+                    <div class="why-strip"><span class="why-label">Design implication</span><p>Reduce interpretation effort with plain-language explanations, multilingual access, and clear AI boundaries before asking users to trust the system.</p></div>
+                </div>
+
+                <div class="persona reveal">
+                    <div class="persona-head">
+                        <div class="persona-avatar"><img src="Images/epaboy2.png" alt="Jonas"></div>
+                        <div>
+                            <div class="persona-name">Jonas</div>
+                            <div class="persona-sub">UX Designer · Health-Conscious German</div>
+                        </div>
+                    </div>
+                    <p class="body-text">Jonas works at a Berlin agency, goes to the gym, tracks his nutrition, and considers himself health-literate — but not medically trained. He proactively opted into the ePA. He has 11 documents in his record. He has opened 3.</p>
+                    <div class="persona-grid">
+                        <div class="persona-col pains">
+                            <h4>Pain Points</h4>
+                            <ul>
+                                <li>Lab results show numbers with no ranges or context</li>
+                                <li>Saw a value flagged red — didn't know if it was critical</li>
+                                <li>Sharing records with a new specialist requires a phone call</li>
+                                <li>Nothing creates a reason to open the app again</li>
+                            </ul>
+                        </div>
+                        <div class="persona-col values">
+                            <h4>Values</h4>
+                            <ul>
+                                <li>Proactive health management</li>
+                                <li>Prepared doctor appointments</li>
+                                <li>Data transparency &amp; control</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <p>"I know my data is there. I just can't do anything useful with it. It's like a drawer I throw things into but never open."</p>
+                    </div>
+                    <div class="why-strip"><span class="why-label">Design implication</span><p>Turn passive storage into action by surfacing relevant context, prioritizing what matters now, and helping users prepare for the next healthcare interaction.</p></div>
+                </div>
+
+                <div class="panel reveal" style="margin-top:16px;">
+                    <p class="panel-note" style="color:var(--blue);font-weight:700;margin-bottom:12px;">A note on persona scope</p>
+                    <p class="panel-note" style="font-weight:400;">Asel and Jonas represent motivated users who want to understand their health data but can't. A third pattern — the actively resistant user — emerged during interviews, but the project scope didn't support a third persona. Instead, their perspectives (discomfort with invisible AI, concern about patient anxiety) directly shaped the trust layer: the transparency badge, the four confidence states, and the placement of the "Not medical advice" label all exist to design for the skeptic, not just the willing user.</p>
+                </div>
+            </div>
+
+            <!-- Shared job / context -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Shared Job</span>
+                <h2 class="headline reveal" style="max-width:none;">One shared need. Two contexts.</h2>
+                <div class="jtbd reveal">
+                    <div class="jtbd-label">Job To Be Done</div>
+                    <p>When something in my health record matters to me, help me understand what it means and what I should do next—without requiring medical expertise.</p>
+                </div>
+                <p class="body-text reveal" style="margin-top:18px;">Asel needs clarity and reassurance when unfamiliar information appears. Jonas needs speed and prioritization when preparing for care. The product therefore needed to support both <strong>understanding</strong> and <strong>action</strong> without creating separate experiences.</p>
+            </div>
+
+            <!-- Affinity mapping / clusters -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Affinity Mapping</span>
+                <h2 class="headline reveal">Four clusters. Every design decision traces back to one.</h2>
+                <p class="body-text reveal">Affinity mapping of all interview quotes collapsed into four research-defined clusters — comprehension, trust, language, and passivity. Each one maps directly to a design decision.</p>
+                <img class="section-image reveal" src="Epa/Comprehension.png" alt="Affinity Diagram — four research clusters: Comprehension, Trust, Language, Passivity — with participant quotes mapped to each">
+                <div class="card-grid card-grid--2 reveal">
+                    <div class="card"><div class="feature-icon">📖</div><h3>Cluster A — Comprehension</h3><p>Users cannot understand what their health documents say. Medical terminology, German-only content, and raw PDFs make data meaningless.</p><div class="why-strip"><span class="why-label">Product response</span><p>AI Document Reader + contextual Lab Results View.</p></div></div>
+                    <div class="card"><div class="feature-icon">🔒</div><h3>Cluster B — Trust</h3><p>Users are open to AI assistance but need to know when AI is speaking and what its limits are before they can rely on it.</p><div class="why-strip"><span class="why-label">Product response</span><p>Trust-first onboarding + transparency badge + visible confidence states.</p></div></div>
+                    <div class="card"><div class="feature-icon">🌍</div><h3>Cluster C — Language</h3><p>Even users with B2 German describe feeling illiterate when reading their own medical records. Language is a hard wall.</p><div class="why-strip"><span class="why-label">Product response</span><p>Multilingual settings and plain-language explanations.</p></div></div>
+                    <div class="card"><div class="feature-icon">🔔</div><h3>Cluster D — Passivity</h3><p>The app has no voice, no agency. No notification when a document arrives. Nothing creates a reason to return.</p><div class="why-strip"><span class="why-label">Product response</span><p>Health Timeline + proactive AI nudges + pre-visit preparation.</p></div></div>
+                </div>
+            </div>
+
+            <!-- The insight -->
+            <div style="margin-top:72px;max-width:640px;">
+                <span class="eyebrow reveal">The Insight</span>
+                <h2 class="headline reveal" style="max-width:20ch;">The barrier isn't data access. It's interpretation.</h2>
+                <p class="body-text reveal">The solution wasn't to expose more medical data. It was to <strong>reduce the amount of interpretation users had to do themselves.</strong></p>
+
+                <div class="panel-statement reveal">
+                    <p>Comprehension over collection.<br>Interpretation is the product.</p>
+                </div>
+
+                <p class="body-text reveal" style="font-size:0.95rem;">Every major product decision was evaluated against this principle. If something created more jargon, it could be removed. If something increased uncertainty, it needed a designed state.</p>
+            </div>
+        </section>
+
+        <!-- ================= SOLUTION ================= -->
+        <section id="solution" class="block">
+            <span class="eyebrow reveal">Competitive Landscape</span>
+            <h2 class="headline reveal">Existing products store the record. The opportunity was understanding it.</h2>
+            <p class="body-text reveal" style="font-size:1.1rem;">I reviewed existing health apps to understand where they were already strong and where patients still had to figure things out on their own.</p>
+
+            <div class="card-grid card-grid--2 reveal">
+                <div class="card">
+                    <h3>🥇 TK App</h3>
+                    <span class="competitor-pill">Competitor 1 · Most Used</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>One of Germany's largest insurers (~11M+ members). Official ePA integration (TK-Safe) with high institutional trust.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>ePA features buried behind multi-step navigation. Documents presented file-based with low interpretability. No AI layer. Primarily German-language.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Strong on infrastructure. Weak on usability + comprehension.</p></div>
+                </div>
+                <div class="card">
+                    <h3>🥈 AOK App</h3>
+                    <span class="competitor-pill">Competitor 2</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Largest public insurer group in Germany. Broad service ecosystem — appointments, claims, records — with ePA access integrated.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>Functions largely as a passive document repository. Limited guidance or interpretation of medical data. Sharing workflows can be fragmented.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>High reach, but low engagement due to a passive experience.</p></div>
+                </div>
+                <div class="card">
+                    <h3>🥉 Ada Health</h3>
+                    <span class="competitor-pill">Competitor 3 · AI Leader</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Globally recognized AI symptom checker. Strong trust framing, clinical credibility, multilingual consumer-friendly UX.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>No native ePA integration. Does not analyze existing medical documents. Focused on new assessments, not longitudinal records.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Answers "What could this be?" — not "What does my record mean?"</p></div>
+                </div>
+                <div class="card">
+                    <h3>⚠️ Vivy</h3>
+                    <span class="competitor-pill">Competitor 4 · Reference Case</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Early leader in centralized health record access. Clean, modern UX and a multi-insurer collaboration model.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>Struggled with retention and sustained engagement. Value proposition unclear beyond document storage. No strong interpretation layer.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Solved aggregation, but not user motivation or understanding.</p></div>
+                </div>
+            </div>
+
+            <div class="panel reveal" style="margin-top:16px;">
+                <p class="panel-note" style="color:var(--blue);font-weight:700;margin-bottom:12px;">The gap</p>
+                <p class="panel-note">Across the products and flows I reviewed, I found a gap between <strong>record access</strong> and <strong>document-level understanding</strong>. Existing strengths were distributed across infrastructure, AI interaction, and consumer UX rather than combined around this use case.</p>
+                <p class="panel-note" style="font-weight:400;margin-top:6px;">The opportunity suggested by this audit was an interpretation layer between the raw record and the user—while real implementation would still depend on technical access, partnerships, and clinical validation.</p>
+            </div>
+
+            <!-- Design strategy -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Design Strategy</span>
+                <h2 class="headline reveal">Three decisions shaped EpaBuddy.</h2>
+                <p class="lede reveal">Rather than starting with a long feature list, I defined three product responsibilities directly connected to the research. The resulting screens serve these responsibilities at different points in the user's journey—they are not eight separate product bets.</p>
+
+                <div class="decision-grid reveal">
+                       <div class="decision-chip"><span>01</span><p>Make trust a designed state, not a footnote.</p></div>
+                      <div class="decision-chip"><span>02</span><p>Proactively engage — don't passively wait.</p></div>
+                    <div class="decision-chip"><span>03</span><p>Interpret instead of store.</p></div>
+                  
+                </div>
+
+                <!-- Feature cards -->
+                <div class="feature-grid reveal">
+                    <div class="card feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Trust-First Onboarding</h3>
+                        <p>A 3-step explainer answering the question Vivy never did: "Why should I give you access?" The flow earns trust before asking for data — explaining what the ePA is, what the AI does, and what it cannot do.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Two participants declined to connect health apps because they didn't understand what the app would do with their data.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>Health Timeline</h3>
+                        <p>A chronological living feed of all health events with proactive AI nudge cards and filter-by-type. The ePA as a narrative, not a file drawer.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Passivity (Cluster D) — nothing created a reason to return. The timeline gives the record a voice.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI Document Reader</h3>
+                        <p>Plain-language AI summary with a transparency badge, confidence indicator, and "Not medical advice" label. Four designed states: loading, success, low confidence, fallback.</p>
+                        <div class="example-strip">"Your iron value is slightly below the reference range — worth asking your doctor."</div>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Hedged, conversational tone built more trust than precise clinical language (P1, P3).</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Lab Results View</h3>
+                        <p>Visual range indicators per result. Tap any value for an AI contextual explanation. Structured data deserves structured UI treatment.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>P5 saw a red flag and didn't know if it was critical. Ranges and plain-language framing turn panic into information.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">📅</div>
+                        <h3>Pre-Visit Prep</h3>
+                        <p>AI surfaces the 2–3 most relevant records before a doctor appointment and suggests questions to ask. One-tap record sharing with the upcoming provider.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Jonas's JTBD — "walk in prepared, not starting from zero." Curation beat full lists: 3 users felt overwhelmed.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Consent &amp; Sharing</h3>
+                        <p>Who has access to what, with per-provider toggle controls. GDPR-respectful, transparent, genuinely simple — no phone calls required.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>P4 couldn't share records with a new doctor and simply said he didn't have them. Sharing must be one tap.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">💊</div>
+                        <h3>Medication View</h3>
+                        <p>Active and past prescriptions. AI plain-language explanation of each medication's purpose and common side effects. Refill reminder toggles.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Medication is the most actionable part of a record — and the most jargon-heavy. Comprehension starts here.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Language &amp; Settings</h3>
+                        <p>Language selector (DE / EN / TR / AR), AI explanation preferences, per-event notification controls. Language is a core feature, not a preference.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Language (Cluster C) is a hard wall. Multilingual design isn't an addition — it's accessibility.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">✦</div>
+                        <h3>Empty State</h3>
+                        <p>The screen most designers forget — designed to reassure, explain, and convert, not just display a "no data" message.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>First impressions of a health record set the emotional tone. The empty state is the product's first impression.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User taskflows
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">User Taskflows</span>
+                <h2 class="headline reveal">Two scenarios. One clear path to understanding.</h2>
+                <p class="lede reveal">From notification to comprehension.</p>
+
+                <h3 style="font-size:1.25rem;margin:40px 0 8px;" class="reveal">Scenario 1 — Understanding a health document</h3>
+                <div class="process reveal">
+                    <div class="process-step"><div class="process-icon">🔔</div><strong>Notification</strong><span>AI nudge: "Your GP added a document"</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">🕐</div><strong>Health Timeline</strong><span>User taps the new document card</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">⏳</div><strong>AI Reading</strong><span>"Reading your document…"</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">💬</div><strong>Summary</strong><span>Plain language + trust badge</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">✅</div><strong>Informed</strong><span>"Was this helpful? Yes"</span></div>
+                </div>
+
+                <h3 style="font-size:1.25rem;margin:48px 0 8px;" class="reveal">Scenario 2 — Pre-visit preparation</h3>
+                <div class="process reveal">
+                    <div class="process-step"><div class="process-icon">📅</div><strong>Appointment</strong><span>Card surfaces on home screen</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">📂</div><strong>Pre-Visit Prep</strong><span>AI curates 2–3 relevant records</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">❓</div><strong>Questions</strong><span>AI suggests what to ask</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">📤</div><strong>Share Records</strong><span>One-tap send to the doctor</span></div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step"><div class="process-icon">🎯</div><strong>Prepared</strong><span>Walks in with context</span></div>
+                </div>
+            </div> -->
+
+            <!-- Tradeoff -->
+            <div style="margin-top:48px;max-width:640px;" class="reveal">
+                <span class="eyebrow">The Tradeoff</span>
+                <h2 class="headline" style="max-width:none;font-size:clamp(1.4rem,2.6vw,1.8rem);">Proactive AI vs. user agency.</h2>
+                <p class="body-text">Making the AI fully autonomous would simplify the experience — but it would remove control from the patient, which is unacceptable in health. That wasn't the goal.</p>
+                <div class="panel">
+                    <p class="panel-note" style="font-style:italic;font-weight:400;">Proactively surface what matters — but always show the source, always hedge the language, and let the user decide.</p>
+                </div>
+                <p class="body-text"><strong>Don't remove agency. Remove unnecessary effort.</strong></p>
+            </div>
+        </section>
+
+        <!-- ================= PROTOTYPE ================= -->
+        <section id="prototype" class="block">
+            <!-- Low fidelity -->
+            <div style="margin-top:0;">
+                <span class="eyebrow reveal">Low-Fidelity</span>
+                <h2 class="headline reveal">Paper first. Pixels second.</h2>
+                <p class="body-text reveal" style="font-size:1.1rem;">Before opening Figma, I sketched the three core user flows on paper to validate information architecture — focusing on hierarchy, flow logic, and where the AI should speak versus stay silent.</p>
+                <img class="section-image reveal" src="Epa/Lowfi.jpeg" alt="Low-fidelity wireframes — paper sketches of Home Dashboard, AI Document Summary with confidence indicator placement, and Appointment Pre-Visit Prep screens">
+            </div>
+
+            <!-- Design system -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Design System</span>
+                <h2 class="headline reveal">A calm palette for a stressful context.</h2>
+                <p class="body-text reveal" style="font-size:1.1rem;">Warm off-white base + deep forest green = trust, calm, health — without the cold clinical feeling of traditional healthcare apps.</p>
+
+                <div class="card reveal">
+                    <h3>Color Palette</h3>
+                    <p class="body-text" style="font-size:0.95rem;margin-bottom:6px;">Four core tokens carry the entire system.</p>
+                    <div class="color-grid">
+                        <div class="color-swatch"><div class="swatch" style="background:#1B6B4A;"></div><span>Primary Green</span><code>#1B6B4A</code></div>
+                        <div class="color-swatch"><div class="swatch" style="background:#1A1814;"></div><span>Deep Ink</span><code>#1A1814</code></div>
+                        <div class="color-swatch"><div class="swatch" style="background:#E8F5EE;"></div><span>Soft Green</span><code>#E8F5EE</code></div>
+                        <div class="color-swatch"><div class="swatch" style="background:#F7F4EF;border:1px solid #E2DDD6;"></div><span>Warm White</span><code>#F7F4EF</code></div>
+                    </div>
+                </div>
+
+                <div class="card reveal" style="margin-top:20px;">
+                    <h3>AI States — the most critical UI work in the project</h3>
+                    <p class="body-text" style="font-size:0.95rem;">Every AI output has four designed states. The experience never breaks — even when AI can't fully process a document.</p>
+                    <div class="ai-state-grid">
+                        <div class="ai-state loading"><div class="state-icon">⏳</div><h4>Loading</h4><p>"Reading your document…"</p></div>
+                        <div class="ai-state success"><div class="state-icon">✓</div><h4>Success</h4><p>Full summary + transparency badge</p></div>
+                        <div class="ai-state partial"><div class="state-icon">◑</div><h4>Low Confidence</h4><p>Partial summary + original linked</p></div>
+                        <div class="ai-state error"><div class="state-icon">○</div><h4>Fallback</h4><p>Can't read this type → original PDF</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major screens -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Major Screens</span>
+                <h2 class="headline reveal">Trust is earned before a single document is opened.</h2>
+
+                <!-- Onboarding -->
+                <div style="margin-top:40px;">
+                    <h3 style="font-size:1.3rem;margin-bottom:8px;" class="reveal">Onboarding — Trust Setup</h3>
+                    <p class="body-text reveal" style="font-size:1rem;">A 3-step explainer that answers the question Vivy never answered: "Why should I give you access?" It explains what the ePA is, what the AI does, and critically — what it does not do — before asking for any permissions.</p>
+                    <div class="thought-box reveal" style="max-width:640px;margin-bottom:24px;">
+                        <h5>Design Thought</h5>
+                        <p>The copy went through 3 revisions. Biggest change: removing "AI-powered" — which caused participants to skim — and replacing it with the plain-language benefit. "Limitations of AI" became "What the AI doesn't do" — same content, framing that acknowledges limits without leading with them.</p>
+                    </div>
+                    <div class="phone-row reveal">
+                        <div class="phone-col">
+                            <div class="phone-frame"><img src="Epa/Hifi/Onboarding%20%26%20Trust%20Setup.png" alt="Onboarding Step 1"></div>
+                            <div class="phone-caption"><strong>Step 1</strong><span>What the ePA is — in plain language</span></div>
+                        </div>
+                        <div class="phone-col">
+                            <div class="phone-frame"><img src="Epa/Hifi/Onboarding%20%26%20Trust%20Setup-1.png" alt="Onboarding Step 2"></div>
+                            <div class="phone-caption"><strong>Step 2</strong><span>What the AI does with your data</span></div>
+                        </div>
+                        <div class="phone-col">
+                            <div class="phone-frame"><img src="Epa/Hifi/Onboarding%20%26%20Trust%20Setup-2.png" alt="Onboarding Step 3"></div>
+                            <div class="phone-caption"><strong>Step 3</strong><span>What the AI doesn't do</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Document Reader -->
+                <div style="margin-top:72px;">
+                    <h3 style="font-size:1.3rem;margin-bottom:8px;" class="reveal">AI Document Reader — The Centrepiece</h3>
+                    <p class="body-text reveal" style="font-size:1rem;">Instead of a raw PDF, the user sees a plain-language AI summary with a transparency badge, confidence indicator, and a clearly visible "Not medical advice" label. Four designed states ensure the experience never breaks.</p>
+                    <div class="thought-box reveal" style="max-width:640px;margin-bottom:24px;">
+                        <h5>Design Thought</h5>
+                        <p>In early wireframes, "Not medical advice" sat at the bottom as a small footer. P3 (nurse) was explicit: patients emotionally anchor on the AI interpretation before reading anything below it. That moved the label to immediately below the summary header, at the same visual weight as the content itself. This also aligns with EU AI Act Article 13: disclosure at point of use, not buried in settings.</p>
+                    </div>
+                    <div class="phone-row reveal">
+                        <div class="phone-col">
+                            <div class="phone-frame"><img src="Epa/Hifi/AI%20Reader_%20Document%20Summary%20(High%20confident).png" alt="AI Reader — High Confidence"></div>
+                            <div class="phone-caption"><strong>High Confidence</strong><span>Full summary + transparency badge</span></div>
+                        </div>
+                        <div class="phone-col">
+                            <div class="phone-frame"><img src="Epa/Hifi/AI%20Reader_%20Document%20Summary(medium%20confident).png" alt="AI Reader — Medium Confidence"></div>
+                            <div class="phone-caption"><strong>Medium Confidence</strong><span>Hedged language, clear framing</span></div>
+                        </div>
+                        <div class="phone-col">
+                            <div class="phone-frame"><img src="Epa/Hifi/AI%20Reader_%20Document%20Summary%20(Low%20confidence).png" alt="AI Reader — Low Confidence"></div>
+                            <div class="phone-caption"><strong>Low Confidence</strong><span>Partial summary + original linked</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pre-Visit Prep -->
+                <div style="margin-top:72px;">
+                    <h3 style="font-size:1.3rem;margin-bottom:24px;" class="reveal">Pre-Visit Prep</h3>
+                    <div class="screen-pair reveal">
+                        <div class="phone"><div class="phone-frame"><img src="Epa/Hifi/Pre-Visit%20Prep.png" alt="Pre-Visit Prep"></div></div>
+                        <div class="screen-note">
+                            <div class="field"><div class="field-label">What's relevant?</div><div class="field-value" style="font-weight:400;">AI curates the 2–3 most relevant records for this visit type.</div></div>
+                            <div class="field"><div class="field-label">What should I ask?</div><div class="field-value" style="font-weight:400;">Questions suggested from recent health data.</div></div>
+                            <div class="field"><div class="field-label">What do I do?</div><div class="field-value">One-tap share with the doctor</div></div>
+                            <div class="thought-box"><h5>Design Thought</h5><p>Jonas's JTBD was "walk in prepared, not starting from zero." After testing, the default list was reduced from "all relevant records" to the AI-curated 2–3 — because 3 users felt overwhelmed by the full list and didn't know where to start.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MVP FOCUS -->
+            <div style="margin-top:72px;" class="reveal">
+                <span class="eyebrow">MVP Focus</span>
+                <h2 class="headline" style="max-width:none;">What I chose to validate first.</h2>
+                <p class="body-text">The product vision extends beyond a single interaction, but I would prioritize one core question first: can users safely understand an existing medical document and know what to do next?</p>
+                <div class="card-grid card-grid--2" style="align-items:start;">
+                    <div class="card"><h3>MVP focus</h3><ul class="steps"><li>Access an existing medical document</li><li>Plain-language interpretation</li><li>Transparency and confidence states</li><li>Preparation for the next healthcare interaction</li></ul></div>
+                    <div class="card"><h3>Later capabilities</h3><ul class="steps"><li>Full health timeline</li><li>Proactive AI nudges</li><li>Consent and sharing workflows</li><li>Medication management</li></ul></div>
+                </div>
+            </div>
+
+            <!-- High-fidelity gallery -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">High-Fidelity Screens</span>
+                <h2 class="headline reveal" style="max-width:none;">The full system, end to end.</h2>
+                <p class="body-text reveal" style="font-size:1.1rem;">Six additional screens that complete the product — from the living timeline to multilingual settings. <a href="https://www.figma.com/proto/v1VSkppznjcRLeAoy6hXxF/Untitled?node-id=27-2&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A2000" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">View all in Figma →</a></p>
+                <div class="hifi-grid reveal">
+                    <div class="hifi-mockup"><img src="Epa/Hifi/Home%20Health%20Timeline.png" alt="Home — Health Timeline"></div>
+                    <div class="hifi-mockup"><img src="Epa/Hifi/My%20documents.png" alt="My Documents"></div>
+                    <div class="hifi-mockup"><img src="Epa/Hifi/Consent%20%26%20Sharing.png" alt="Consent & Sharing"></div>
+                    <div class="hifi-mockup"><img src="Epa/Hifi/Consent%20%26%20Sharing-1.png" alt="Consent & Sharing Detail"></div>
+                    <div class="hifi-mockup"><img src="Epa/Hifi/Medication%20View.png" alt="Medication View"></div>
+                    <div class="hifi-mockup"><img src="Epa/Hifi/Language.png" alt="Language & Settings"></div>
+                </div>
+            </div>
+
+            <!-- Interactive prototype -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Interactive Prototype</span>
+                <h2 class="headline reveal">Tap through the full flow.</h2>
+                <p class="body-text reveal">Clickable Figma prototype covering onboarding, document reading, and pre-visit preparation. <a href="https://www.figma.com/proto/v1VSkppznjcRLeAoy6hXxF/Untitled?node-id=27-2&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=18%3A2000" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">Open directly in Figma →</a></p>
+                <div class="embed-wrap reveal">
+                    <iframe width="800" height="450" src="https://embed.figma.com/proto/v1VSkppznjcRLeAoy6hXxF/Untitled?node-id=225-1398&p=f&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=225%3A1180&embed-host=share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TESTING ================= -->
+        <section id="testing" class="block">
+            <span class="eyebrow reveal">Usability Testing</span>
+            <h2 class="headline reveal">The experience was promising. The trust details needed work.</h2>
+            <p class="body-text reveal" style="font-size:1.1rem;">I conducted <strong>5 task-based usability tests</strong> — 3 in-person, 2 remote via screen share. All participants used their own phones. Tasks were time-tracked; debrief interviews captured emotional feedback on confidence, clarity, and trust.</p>
+
+            <div class="card-grid card-grid--3 reveal">
+                <div class="card mini-stat"><div class="mini-num">01</div><p>Can users find and read an AI summary quickly?</p></div>
+                <div class="card mini-stat"><div class="mini-num">02</div><p>How do users respond to hedged language and visible uncertainty?</p></div>
+                <div class="card mini-stat"><div class="mini-num">03</div><p>Do users recognize when AI is speaking?</p></div>
+            </div>
+
+            <div class="stat-grid reveal">
+                <div class="stat-card"><div class="stat-figure">3/5</div><p style="font-size:0.88rem;color:var(--ink-soft);margin-top:12px;line-height:1.6;"><strong>What this meant:</strong> the primary task was understandable, but discoverability was weaker than intended: 2 of 5 participants needed assistance or took an unintended path. Improving discoverability would be a priority for the next iteration.</p><div class="stat-label"><strong> Completed the primary task without assistance.</strong> One user initially navigated to Settings before self-correcting.</div></div>
+                <div class="stat-card"><div class="stat-figure">3:40</div><div class="stat-label"><strong> Average time (min:sec) to locate and read the AI summary.</strong>  Range: 2:10 – 5:20.</div></div>
+                <div class="stat-card"><div class="stat-figure">4.2/5</div><div class="stat-label"><strong> Average trust rating of the AI explanation</strong>  across all participants.</div></div>
+                <div class="stat-card"><div class="stat-figure">4/5</div><div class="stat-label"><strong> Identified AI authorship without prompting.</strong>  The fifth noticed only after reading the transparency badge.</div></div>
+            </div>
+
+            <div class="reveal" style="margin-top:48px;">
+                <h3 style="text-align:center;font-size:1.6rem;margin-bottom:28px;">What users said</h3>
+                <div class="card-grid card-grid--3">
+                    <div class="quote-card"><p>"This is the first time I actually understood what a lab result meant. The 'slightly below normal' framing didn't scare me — it informed me."</p></div>
+                    <div class="quote-card"><p>"I knew it was AI before I even saw the badge. The tone gave it away — and I mean that as a compliment. It felt helpful, not authoritative."</p></div>
+                    <div class="quote-card"><p>"I wasn't sure if I should tap the confidence badge or if it was just decorative. I tapped it and nothing happened."</p></div>
+                </div>
+            </div>
+
+            <!-- The moment -->
+            <div style="margin-top:72px;max-width:620px;">
+                <span class="eyebrow reveal">The Moment</span>
+                <div class="panel reveal" style="text-align:center;">
+                    <p class="panel-note" style="font-style:italic;font-weight:400;font-size:1.15rem;">"If it says 'this number is slightly low, worth asking your doctor' that feels okay."</p>
+                </div>
+                <p class="body-text reveal">Participants formed trust judgments from the language and framing they encountered during the test. The sessions did not ask them to clinically verify the underlying medical content.</p>
+                <p class="headline reveal" style="font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:24ch;">Users judged trust before they could judge accuracy.</p>
+            </div>
+
+            <div class="panel reveal" style="margin-top:32px;max-width:760px;">
+                <p class="panel-note" style="color:var(--blue);font-weight:700;margin-bottom:10px;">Scope of validation</p>
+                <p class="panel-note" style="font-weight:400;">These sessions evaluated the user experience of receiving AI-generated explanations—comprehension, perceived trust, transparency, and interaction behavior. They did <strong>not</strong> validate the medical accuracy or clinical safety of the underlying interpretations. A production system would require separate clinical review and safety validation with qualified experts.</p>
+            </div>
+
+            <!-- Iteration -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Iteration</span>
+                <h2 class="headline reveal">Finding → Learning → Change</h2>
+                <p class="body-text reveal">The most useful changes came from moments where the prototype exposed a mismatch between what users expected and what the interface communicated.</p>
+
+                <div class="reveal" style="background:var(--blue-soft);border-radius:var(--radius-md);padding:32px;margin-top:24px;">
+                    <h3 style="color:var(--blue);font-size:1.15rem;margin-bottom:16px;">Confidence Indicator — colour-only → colour + icon + label</h3>
+                    <div class="compare-grid">
+                        <div class="compare-cell"><div class="compare-tag">Before</div><p style="font-style:italic;font-size:0.95rem;color:var(--ink);">Colour-only green / amber / red pill. Two of five users didn't notice it at all; a third found the red state "scary".</p></div>
+                        <div class="compare-cell after"><div class="compare-tag">After</div><p style="font-weight:600;font-size:0.95rem;color:var(--ink);margin-bottom:6px;">High confidence · Based on structured data</p><p style="font-size:0.85rem;color:var(--ink-soft);">✓ Icon + short text label<br>✓ Colour supports, not carries, the meaning<br>✓ Impossible to miss, legible without a legend</p></div>
+                    </div>
+                    <p style="margin-top:16px;color:var(--ink);font-size:0.95rem;"><strong>Finding:</strong> Two users missed the signal and one found the red state scary.<br><strong>Learning:</strong> Colour alone was carrying too much meaning and emotional weight.<br><strong>Change:</strong> Add an icon and explicit label so the state is understandable without a legend.</p>
+                </div>
+
+                <!-- <div class="card reveal" style="margin-top:20px;"><h3>"Not Medical Advice" — Footer → Below the Summary Header</h3><p>Originally appeared at the bottom, scrolled past without reading. Moved to immediately below the AI summary header — the first thing a user sees after the explanation title. Always in view, always first.</p></div> -->
+                <div class="card reveal" style="margin-top:16px;"><h3>Pre-Visit Record Curation — All Records → 2–3 Most Relevant</h3><p><strong>Finding:</strong> 3 users felt overwhelmed by the full relevant-record list.<br><strong>Learning:</strong> Relevance alone does not reduce cognitive load when users still have to decide where to start.<br><strong>Change:</strong> AI now surfaces only the 2–3 most relevant records for the appointment type, with the full list behind "See all records".</p></div>
+                <div class="card reveal" style="margin-top:16px;background:var(--coral-soft);"><h3 style="color:#B4502A;">Confidence Badge Interaction <span class="status-pill">Unresolved — V2</span></h3><p style="color:#8A3D1F;"><strong>Finding:</strong> One participant tapped the badge expecting an explanation, and nothing happened.<br><strong>Learning:</strong> A confidence state needs an understandable rationale, not just a visible label.<br><strong>Change:</strong> A tooltip or expandable explanation is the intended V2 behavior. It was <strong>not implemented or formally retested within the project timeline</strong>.</p></div>
+            </div>
+
+            <!-- What testing validated -->
+            <div style="margin-top:72px;max-width:640px;">
+                <span class="eyebrow reveal">What Testing Validated</span>
+                <h2 class="headline reveal" style="max-width:none;">The interpretation model worked — with trust by design.</h2>
+                <p class="body-text reveal">Participants generally understood the interpretation flow and responded positively to hedged, transparent language. Testing also showed that <strong>trust is a designed state, not a byproduct</strong>—and that the rationale behind confidence still needed stronger interaction design.</p>
+                <div class="panel-statement reveal" style="padding:32px 36px;">
+                    <p style="font-size:1.15rem;font-style:italic;">A promising interaction model for interpretation—validated for UX behavior, not for clinical accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= IMPACT ================= -->
+        <section id="impact" class="block">
+            <span class="eyebrow reveal">Constraints &amp; MVP</span>
+            <h2 class="headline reveal">A good concept also needs to survive reality.</h2>
+
+            <div class="card-grid card-grid--4 reveal">
+                <div class="constraint"><div class="constraint-icon">🔌</div><h4>Insurance API Access</h4><p>Requires official TK/AOK ePA API integration and GesundheitsID authentication for real patient data.</p></div>
+                <div class="constraint"><div class="constraint-icon">⚖️</div><h4>EU AI Act Compliance</h4><p>Health AI is classified high-risk — transparency, confidence, and override decisions were made with this in mind.</p></div>
+                <div class="constraint"><div class="constraint-icon">🔒</div><h4>DSGVO / GDPR</h4><p>End-to-end encryption, minimal data collection, and explicit per-provider consent for all shared data.</p></div>
+                <div class="constraint"><div class="constraint-icon">🏥</div><h4>Medical Accuracy</h4><p>AI copy needs clinical review before production — shaping hedged language and the four confidence states.</p></div>
+            </div>
+
+            <div style="margin-top:56px;max-width:640px;" class="reveal">
+                <h3 style="font-size:1.3rem;margin-bottom:16px;">Potential Reach</h3>
+                <div class="stat-grid">
+                    <div class="stat-card"><div class="stat-figure">15M+</div><div class="stat-label"><strong>Potential audience context:</strong> residents with migration backgrounds who may face language barriers in German-first health experiences.</div></div>
+                    <div class="stat-card"><div class="stat-figure">73M</div><div class="stat-label"><strong>Eligible-user context:</strong> the scale of people for whom a more understandable health-record experience could matter.</div></div>
+                </div>
+                <p style="font-size:0.92rem;color:var(--ink-faint);margin-top:12px;">Design rationale grounded in secondary research — not test outcomes.</p>
+            </div>
+
+            <div style="margin-top:56px;" class="reveal">
+                <h3 style="font-size:1.3rem;margin-bottom:16px;">What I would validate next</h3>
+                <ul class="steps">
+                    <li><strong>Trust interaction:</strong> implement the confidence-badge explanation and formally retest whether visible evidence improves understanding.</li>
+                    <li><strong>Real product infrastructure:</strong> explore official ePA access and authentication to understand what a live integration would realistically require.</li>
+                    <li><strong>Safe interpretation:</strong> establish a clinical review and evaluation process before testing whether AI-generated explanations are medically accurate and safe enough for production.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================= REFLECTION ================= -->
+        <section id="reflection" class="block">
+            <span class="eyebrow reveal">Reflection</span>
+            <h2 class="headline reveal" style="max-width:none;font-size:clamp(1.5rem,2.8vw,2rem);">The biggest surprise: users judged <em>trust</em> before they could judge <em>accuracy</em>.</h2>
+            <p class="body-text reveal">Participants did not clinically verify the summaries; their trust judgments came from the language, framing, and transparency they encountered. Hedged, conversational phrasing helped the AI feel informative rather than overly authoritative—a UX finding that should be followed by separate clinical validation.</p>
+            <p class="body-text reveal">I also cut an early symptom-checking flow because it diluted the product's purpose. The stronger direction was narrower: help people understand and act on the health information they already have.</p>
+
+            <div class="reveal" style="max-width:600px;margin:88px auto 0;text-align:center;">
+                <p class="headline" style="font-size:clamp(1.6rem,3.2vw,2.1rem);max-width:16ch;margin:0 auto 28px;">Comprehension is the product.<br>Trust must be designed.</p>
+                <p class="body-text" style="max-width:44ch;margin:0 auto;">The goal isn't to make patients medical experts. <strong>The goal is to help them understand their own health.</strong></p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer-block reveal">
+            <h2>Thank you for reading</h2>
+            <p>© 2026 EpaBuddy Case Study · Samarth Joshi</p>
+        </footer>
+
+    </main>
+</div>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="niva-style.js"></script>
+</body>
+</html>

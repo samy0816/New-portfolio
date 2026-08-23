@@ -489,15 +489,33 @@ img { max-width: 100%; display: block; }
 @media (max-width: 980px) {
     .page { grid-template-columns: 1fr; }
     .sidebar { display: none; }
-    .main { padding: 90px 24px 100px; max-width: 100%; }
+    .main { padding: 90px 24px 100px; max-width: 100%; min-width: 0; }
     .card-grid--2, .card-grid--3, .card-grid--4 { grid-template-columns: 1fr; }
     .screen-pair { grid-template-columns: 1fr; }
     .phone-row { grid-template-columns: repeat(2, 1fr); }
     .compare-grid { grid-template-columns: 1fr; }
     .panel, .panel-statement { padding: 28px 26px; }
     .meta-row { gap: 24px 36px; }
+    .hero-visual { height: 320px; }
+
+    /* Let inline max-width images shrink on smaller screens */
+    .section-image { max-width: 100% !important; }
+
+    /* Stop grid / flex children from blowing out past the viewport */
+    .block, .card-grid > *, .card, .persona, .persona-grid, .phone,
+    .phone-col, .screen-note, .process, .process-step, .feature-card,
+    .decision-chip, .stat-card, .compare-cell, .thought-box, .jtbd,
+    .interview, .quote-card, .constraint, .steps li, .type-sample,
+    .color-swatch, .gallery-cell, .embed-wrap { min-width: 0; }
+
+    .persona-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
-    .phone-row { grid-template-columns: 1fr 1fr; }
+    .phone-row { grid-template-columns: 1fr; justify-items: center; }
+    .phone, .phone-col { max-width: 260px; }
+    .phone-col .phone-frame { height: 420px; }
+    .decision-grid, .feature-grid { flex-direction: column; }
+    .feature-card { width: 100%; }
+    .steps li { padding-left: 44px; }
 }
