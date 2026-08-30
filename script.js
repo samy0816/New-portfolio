@@ -124,6 +124,16 @@ const data = {
         ],
         filters: ['Full Stack', 'Frontend', 'Data'],
         projects: [
+
+            {
+    category: 'Full Stack',
+    title: 'RentWise — GenAI Rental Document Platform',
+    desc: 'A full-stack GenAI platform built with Next.js, TypeScript, FastAPI, and Python, using LangChain and RAG for document processing, semantic retrieval, grounded answers, and contract comparison.',
+    thumb: 'Full Stack',
+    img: 'Images/Rentwise.png',
+    badge: 'Next.js · TypeScript · FastAPI · RAG · LangChain · PostgreSQL ·',
+    link: 'https://rentwise-peach.vercel.app/'
+},
             {
                 category: 'Full Stack',
                 title: 'Proconnect — AI Networking Platform',
