@@ -191,10 +191,10 @@ const data = {
     title: 'RentWise — GenAI Rental Document Platform',
     desc: 'A full-stack GenAI platform that helps tenants understand complex German rental contracts, find important information, compare documents, and get grounded answers using Next.js, FastAPI, PostgreSQL, LangChain, and RAG.',
     thumb: 'Full Stack',
-    img: 'Images/rentwise.webp',
+    img: 'Images/Rentwise.png',
     badge: 'Full Stack · GenAI',
     tech: ['Next.js', 'TypeScript', 'FastAPI', 'Python', 'LangChain', 'RAG', 'LLMs', 'PostgreSQL'],
-    color: '#1c50a0', decor: '◎',
+    color: '#1fceb6', decor: '◎',
     link: 'https://rentwise-peach.vercel.app/',
     deployed: true
 },
