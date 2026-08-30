@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EuroVoyage — UX Case Study</title>
+<link rel="stylesheet" href="niva-style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* ============================================================
+       EuroVoyage — Design System (Typography + Color Palette)
+       ============================================================ */
+    .type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 22px 0; }
+    .type-sample { background: var(--white); border-radius: var(--radius-sm); padding: 26px 24px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 8px; }
+    .type-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); }
+    .type-display { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--ink); line-height: 1.1; }
+    .type-body { font-family: Arial, Helvetica, sans-serif; font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--ink); line-height: 1.1; }
+    .type-meta { font-size: 0.82rem; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+    .type-meta strong { color: var(--ink); font-weight: 600; }
+
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 22px 0; }
+    .color-swatch { background: var(--white); border-radius: var(--radius-sm); padding: 14px; box-shadow: var(--shadow-card); text-align: center; }
+    .color-swatch .swatch { height: 56px; border-radius: var(--radius-sm); margin-bottom: 10px; }
+    .color-swatch span { font-size: 0.85rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 2px; }
+    .color-swatch code { font-size: 0.75rem; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span class="topbar-dot"></span> Samarth Joshi</div>
+
+<div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a href="#overview" class="back-btn" aria-label="Back to top">←</a>
+        <nav class="side-nav">
+            <a href="#overview">Overview</a>
+            <a href="#problem">Problem</a>
+            <a href="#research">Research</a>
+            <a href="#solution">Solution</a>
+            <a href="#prototype">Prototype</a>
+            <a href="#testing">Testing</a>
+            <a href="#impact">Impact</a>
+            <a href="#reflection">Reflection</a>
+        </nav>
+        <div class="sidebar-foot">EuroVoyage · 2026</div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- ================= OVERVIEW / HERO ================= -->
+        <section id="overview" class="block hero-block">
+            <div class="hero-visual reveal"></div>
+            <span class="eyebrow hero-eyebrow reveal">Product · UX · Research</span>
+            <h1 class="headline hero-headline reveal">EuroVoyage — a decision-first transit experience</h1>
+            <p class="hero-lede reveal">The problem isn't finding the train. It's knowing you're doing it right. A decision-first transit experience for travelers navigating unfamiliar European cities.</p>
+            <div class="meta-row reveal">
+                <div class="meta-col"><div class="meta-label">Fields</div><div class="meta-value">Product Design<br>UX Research<br>Interaction Design<br>Usability Testing</div></div>
+                <div class="meta-col"><div class="meta-label">Role</div><div class="meta-value">Product Designer — End-to-End</div></div>
+                <div class="meta-col"><div class="meta-label">Timeline</div><div class="meta-value">6 Weeks</div></div>
+                <div class="meta-col"><div class="meta-label">Platform</div><div class="meta-value">iOS / Mobile-first</div></div>
+                <div class="meta-col"><div class="meta-label">Tools</div><div class="meta-value">Figma · Miro</div></div>
+            </div>
+        </section>
+
+        <!-- ================= 01 — PROBLEM ================= -->
+        <section id="problem" class="block">
+            <span class="eyebrow reveal">Problem</span>
+            <h2 class="headline reveal">Finding a route is easy. Knowing how to use the transit system is not.</h2>
+            <p class="body-text reveal">When travelers arrive in an unfamiliar city, they often already know where they want to go. What they don't know is how the local transit system works.</p>
+            <p class="body-text reveal">Different cities use different ticket types, fare zones, validation rules, terminology, payment systems, and transfer rules. For someone unfamiliar with the system, even a simple journey becomes a series of uncertain decisions.</p>
+
+            <div class="panel reveal">
+                <p class="panel-note">Which ticket do I need?</p>
+                <p class="panel-note">Does it cover my entire journey?</p>
+                <p class="panel-note">Do I need to validate it?</p>
+                <p class="panel-note">What happens if I change trains?</p>
+            </div>
+
+            <p class="body-text reveal">Existing products are good at answering: <strong>"How do I get there?"</strong></p>
+            <p class="body-text reveal">But there is another question underneath: <strong>"Am I doing this correctly?"</strong></p>
+            <p class="body-text reveal">That confidence gap became the focus of EuroVoyage.</p>
+
+            <!-- 02 — Opportunity -->
+            <div style="margin-top:64px;">
+                <span class="eyebrow reveal">Opportunity</span>
+                <h2 class="headline reveal">What if the traveler didn't have to learn the system?</h2>
+                <p class="body-text reveal">Rather than giving users more information about how local transit works, I wanted to explore whether the product could make the decision for them.</p>
+
+                <div class="panel reveal">
+                    <span class="eyebrow" style="margin-bottom:10px;">How might we</span>
+                    <p class="panel-note" style="font-style:italic;font-weight:400;font-size:1.1rem;">Help travelers make the right transit decision for one journey without requiring them to understand the local transit system first?</p>
+                </div>
+
+                <p class="body-text reveal">This shifted the design goal from <strong>information delivery</strong> to <strong>decision support</strong>. The experience should answer three questions as quickly as possible:</p>
+
+                <div class="card-grid card-grid--3 reveal">
+                    <div class="card mini-stat"><div class="mini-num">01</div><p>What should I buy?</p><p style="font-weight:400;margin-top:6px;">Recommend the appropriate ticket.</p></div>
+                    <div class="card mini-stat"><div class="mini-num">02</div><p>Why is this right?</p><p style="font-weight:400;margin-top:6px;">Explain what it covers in plain language.</p></div>
+                    <div class="card mini-stat"><div class="mini-num">03</div><p>What do I do next?</p><p style="font-weight:400;margin-top:6px;">Guide through validation and boarding.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= RESEARCH ================= -->
+        <section id="research" class="block">
+            <span class="eyebrow reveal">Research</span>
+            <h2 class="headline reveal">I wanted to understand where the uncertainty actually happened.</h2>
+
+         
+            <div class="card-grid card-grid--2 reveal" style="align-items:start;">
+                <div>
+                    <h3 style="font-size:1.1rem;margin-bottom:14px;">What I did</h3>
+                    <div class="panel panel--tight" style="margin:0;">
+                        <p class="panel-note" style="font-weight:400;">4 semi-structured interviews with travelers experienced with European transit</p>
+                        <p class="panel-note" style="font-weight:400;">Competitive audit of Google Maps, Citymapper, Moovit, Rome2Rio</p>
+                        <p class="panel-note" style="font-weight:400;">Secondary research into transit UX patterns across EU cities</p>
+                        <p class="panel-note" style="font-weight:400;">Contextual observation notes from first-arrival scenarios</p>
+                    </div>
+                    <h3 style="font-size:1.1rem;margin:24px 0 10px;">What I was looking for</h3>
+                    <p class="body-text">Rather than asking whether people "liked" existing transit apps, I focused on the moments where they hesitated: where they stop and think, what information they struggle to interpret, what decisions they feel unsure about, and what happens after they purchase a ticket.</p>
+                </div>
+                <div>
+                    <h3 style="font-size:1.1rem;margin-bottom:14px;">Core user needs</h3>
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">One clear ticket recommendation — no comparison, no zone math</div>
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">Reassurance that the ticket is valid before and after purchase</div>
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">Step-by-step guidance through purchase and boarding</div>
+                        <div class="card" style="padding:16px 20px;box-shadow:none;border:1px solid var(--line);">One app — not three — to get from arrival to destination</div>
+                    </div>
+                    <p style="margin-top:18px;font-size:0.88rem;color:var(--ink-faint);line-height:1.7;"><strong style="color:var(--ink-soft);">Research limitation:</strong> the interview sample was small and exploratory. The purpose wasn't to statistically represent all travelers — it was to identify recurring behaviors and uncertainties that could be explored through prototyping and testing.</p>
+                </div>
+            </div>
+
+            <!-- 04 What I learned -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">What I learned</span>
+                <h2 class="headline reveal">The problem wasn't really route planning.</h2>
+                <p class="body-text reveal" style="font-size:1.12rem;">I spoke with 4 travelers — a first-time backpacker, a budget traveler, a frequent business traveler, and an anxious first-timer. Every single one had a story about getting it wrong. Not because they weren't trying, but because the systems gave them no real guidance at the moment they needed it.</p>
+
+                <div class="reveal" style="margin-top:32px;">
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P1 — F, 24, First-Time Backpacker</strong><span>Prague · First solo trip abroad · Relies on Google Maps at home</span></div>
+                            <div class="interview-tag">INT / 01</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: Tell me about the last time you needed to use public transport in a new city.</div><div class="qa-a">"I landed in Prague and had no idea where to even buy a ticket. I downloaded an app, it was in Czech, I gave up and took a taxi. Way more expensive."</div></div>
+                        <div class="qa"><div class="qa-q">Q: What would have helped in that moment?</div><div class="qa-a">"Just tell me: here's your stop, here's the ticket, here's what to do. I don't need to understand the whole system. Just this one trip."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Users don't want to learn the system. They want one answer for one trip.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P2 — M, 31, Budget Traveler</strong><span>Lisbon · Weekend trip · Travels 4–5 times/year across Europe</span></div>
+                            <div class="interview-tag">INT / 02</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: How do you usually figure out which ticket to buy?</div><div class="qa-a">"I just pick something and hope it works. Usually I go for the cheapest option and then stress about whether I got the right one the entire ride."</div></div>
+                        <div class="qa"><div class="qa-q">Q: Have you ever been fined or had a problem?</div><div class="qa-a">"Once in Rome. I had a valid ticket but hadn't stamped it correctly. Cost me €50. I didn't even know stamping was a thing."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Buying the right ticket isn't the end — validation rules are equally invisible and equally punishing.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P3 — M, 38, Frequent Business Traveler</strong><span>Amsterdam · Conference trip · Travels 10+ times/year</span></div>
+                            <div class="interview-tag">INT / 03</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: Do you use public transport when traveling for work?</div><div class="qa-a">"Rarely. I know I should but every city feels different and I don't have time to figure it out. I usually just take a cab and expense it."</div></div>
+                        <div class="qa"><div class="qa-q">Q: What would it take for you to actually use transit instead?</div><div class="qa-a">"If something just told me exactly what to do. One screen. I don't want to learn anything. Just get me to my meeting."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Even experienced travelers avoid transit when it feels complex. The barrier isn't capability — it's perceived effort.</p></div>
+                    </div>
+
+                    <div class="interview">
+                        <div class="interview-head">
+                            <div><strong>P4 — F, 27, Anxious First-Timer</strong><span>Vienna · Solo trip · Rarely travels, avoids transit when abroad</span></div>
+                            <div class="interview-tag">INT / 04</div>
+                        </div>
+                        <div class="qa"><div class="qa-q">Q: How do you feel about using public transport in a city you've never been to?</div><div class="qa-a">"Honestly, I'm scared of getting it wrong. I'm worried I'll get fined, or board the wrong train, and then I'm stuck somewhere with my suitcase not knowing what to do."</div></div>
+                        <div class="qa"><div class="qa-q">Q: Even after you buy a ticket, does the anxiety go away?</div><div class="qa-a">"Not really. I keep second-guessing it. Like, is this the right one? Does it cover all the stops? I won't relax until I'm actually there."</div></div>
+                        <div class="insight-strip"><div class="insight-label">Key Insight</div><p>Buying a ticket doesn't end the anxiety — it just shifts it. The design needed to close the confidence gap after purchase, not just before it.</p></div>
+                    </div>
+                </div>
+
+                <div class="reveal" style="margin-top:56px;">
+                    <h3 style="font-size:1.25rem;margin-bottom:16px;">Four consistent themes emerged</h3>
+                    <p class="body-text">Across all research methods — interviews, competitive audit, and contextual observation — the same patterns appeared. Each cluster directly shaped a design decision.</p>
+                    <img class="section-image" src="EuroVoyage/Thematic Analysis.png" alt="Thematic Analysis — Research Clusters from User Interviews">
+                </div>
+            </div>
+
+            <!-- Personas -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Personas</span>
+                <h2 class="headline reveal" style="max-width:none;">Two travelers. Two very different relationships with transit.</h2>
+
+                <div class="persona reveal">
+                    <div class="persona-head">
+                        <div class="persona-avatar"><img src="Images/portfolio girl.jpg" alt="Maya persona"></div>
+                        <div>
+                            <div class="persona-name">Maya</div>
+                            <div class="persona-sub">Solo Budget Traveler · First-Time Visitor</div>
+                        </div>
+                    </div>
+                    <p class="body-text">Maya is a first-time traveler who wants affordable public transport without needing to understand unfamiliar ticketing systems or local transit rules.</p>
+                    <div class="persona-grid">
+                        <div class="persona-col pains">
+                            <h4>Pain Points</h4>
+                            <ul>
+                                <li>Has no idea what "Zone 1" or "T-Casual" means</li>
+                                <li>Installed 2 apps at the airport — neither helped her buy a ticket</li>
+                                <li>Asked a local for help, still wasn't sure she got the right one</li>
+                                <li>Anxious about being fined — still uncertain even after buying</li>
+                            </ul>
+                        </div>
+                        <div class="persona-col values">
+                            <h4>Values</h4>
+                            <ul>
+                                <li>Saving money — doesn't want to overpay</li>
+                                <li>Independence — hates having to ask for help</li>
+                                <li>Clarity — just tell me what to do</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <p>"I don't know which ticket to buy. I just pick something and hope it works."</p>
+                    </div>
+                </div>
+
+                <div class="persona reveal">
+                    <div class="persona-head">
+                        <div class="persona-avatar"><img src="Images/man portfolio.avif" alt="Daniel persona"></div>
+                        <div>
+                            <div class="persona-name">Daniel</div>
+                            <div class="persona-sub">Frequent Business Traveler · Time-Pressured</div>
+                        </div>
+                    </div>
+                    <p class="body-text">Daniel travels frequently for work and values speed, clarity, and low-effort navigation when arriving in unfamiliar cities.</p>
+                    <div class="persona-grid">
+                        <div class="persona-col pains">
+                            <h4>Pain Points</h4>
+                            <ul>
+                                <li>Every city feels different — can't build habits across trips</li>
+                                <li>No time to research — figures it out at the machine, stressed</li>
+                                <li>Has taken taxis to avoid the confusion, despite costing 4× more</li>
+                                <li>Feels embarrassed asking locals for help with a basic task</li>
+                            </ul>
+                        </div>
+                        <div class="persona-col values">
+                            <h4>Values</h4>
+                            <ul>
+                                <li>Speed — needs to be somewhere, now</li>
+                                <li>Reliability — can't afford to board the wrong train</li>
+                                <li>Low effort — one less thing to think about</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="persona-quote">
+                        <p>"Every city feels different. I never know if what worked in Vienna will work in Amsterdam."</p>
+                    </div>
+                </div>
+
+               
+            </div>
+
+            <!-- Jobs To Be Done -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Jobs To Be Done</span>
+                <h2 class="headline reveal" style="max-width:none;">What each traveler is really hiring for.</h2>
+                <div class="jtbd reveal">
+                    <div class="jtbd-label">Job To Be Done</div>
+                    <div class="jtbd-persona">Maya — First-Time Backpacker</div>
+                    <p>"When I arrive in a new city and need to get to my hostel, I want to know exactly which ticket to buy and how to use it — so I don't overpay, get fined, or feel like I'm doing something wrong."</p>
+                </div>
+                <div class="jtbd reveal">
+                    <div class="jtbd-label">Job To Be Done</div>
+                    <div class="jtbd-persona">Daniel — Frequent Business Traveler</div>
+                    <p>"When I land for a work trip and have 30 minutes to get to my meeting, I want to take transit without spending any mental energy figuring out how — so I can just get there and not think about it."</p>
+                </div>
+            </div>
+
+            <!-- 05 Insight -->
+            <div style="margin-top:72px;max-width:640px;">
+                <span class="eyebrow reveal">The Insight</span>
+                <h2 class="headline reveal" style="max-width:20ch;">Users don't want to learn the transit system. They want confidence about one journey.</h2>
+                <p class="body-text reveal">The solution wasn't to expose more fare information. It was to <strong>reduce the amount of information users had to interpret themselves.</strong></p>
+
+                <div class="panel-statement reveal">
+                    <p>Reduce decisions.<br>Increase confidence.</p>
+                </div>
+
+                <p class="body-text reveal" style="font-size:0.95rem;">Every major product decision was evaluated against this principle. If something created unnecessary comparison, it could be removed. If something increased uncertainty, it needed clarification.</p>
+            </div>
+        </section>
+
+        <!-- ================= SOLUTION ================= -->
+        <section class="block">
+            <span class="eyebrow reveal">Competitive Landscape</span>
+            <h2 class="headline reveal">Existing products solve the route. The opportunity was the decision.</h2>
+            <p class="body-text reveal" style="font-size:1.1rem;">I reviewed existing transit products to understand where they were already strong and where travelers still needed to figure things out on their own.</p>
+
+            <div class="card-grid card-grid--2 reveal">
+                <div class="card">
+                    <h3>🗺️ Google Maps</h3>
+                    <span class="competitor-pill">Route Planning</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Familiar route planning and directions with near-universal adoption and global coverage.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>The experience does not primarily focus on simplifying local ticket decisions — no purchase, no zone guidance, no recommendation layer.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Excellent for routing. Silent on ticket selection — leaves the hardest decision to the user.</p></div>
+                </div>
+                <div class="card">
+                    <h3>🏙️ Citymapper</h3>
+                    <span class="competitor-pill">Transit Specialist</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Detailed transit planning with multi-modal journeys and smart alerts for disruptions.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>Users may still need to understand local ticketing and fare rules; ticket purchasing not integrated in most cities.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Great for regular city users — not designed for the first-time traveler who doesn't know the system.</p></div>
+                </div>
+                <div class="card">
+                    <h3>🚌 Moovit</h3>
+                    <span class="competitor-pill">Wide Coverage</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Broad EU city coverage with step-by-step navigation and accessible route visualization.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>Ticket selection and local fare understanding can still require additional interpretation; no single-recommendation model.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Useful mid-journey, but doesn't solve the pre-purchase decision problem.</p></div>
+                </div>
+                <div class="card">
+                    <h3>🌍 Rome2Rio</h3>
+                    <span class="competitor-pill">Cross-City Planning</span>
+                    <div class="pros-cons pros"><h5>Strength</h5><p>Multi-city and cross-country journey planning with price estimates across transport modes.</p></div>
+                    <div class="pros-cons cons"><h5>Opportunity</h5><p>More focused on getting between destinations than onboarding a traveler into a local urban transit system.</p></div>
+                    <div class="insight-strip"><div class="insight-label">Gap</div><p>Solves getting between cities — not getting around within them.</p></div>
+                </div>
+            </div>
+
+            <div class="panel reveal" style="margin-top:16px;">
+                <p class="panel-note" style="color:var(--blue);font-weight:700;margin-bottom:12px;">The gap</p>
+                <p class="panel-note">Existing products largely answer: <strong>"Where should I go?"</strong></p>
+                <p class="panel-note">EuroVoyage focuses on: <strong>"What should I buy, why is it correct, and what do I do next?"</strong></p>
+            </div>
+
+                <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Journey Map</span>
+                <h2 class="headline reveal">The highest friction lives between purchase and boarding.</h2>
+                <p class="lede reveal">From arrival to confident boarding.</p>
+                <p class="body-text reveal" style="font-size:1.1rem;">The journey map revealed that the highest-friction moment occurs between arriving at the station and boarding — where uncertainty and cognitive load are highest.</p>
+                <img class="section-image reveal" src="EuroVoyage/userJourney.png" alt="User Journey Map">
+            </div>
+
+   
+            <!-- 07 Design strategy -->
+            <div id="solution" style="margin-top:72px;">
+                <span class="eyebrow reveal">Design Strategy</span>
+                <h2 class="headline reveal">Three decisions shaped EuroVoyage.</h2>
+                <p class="lede reveal">Rather than designing dozens of features, I focused the product around three decisions directly connected to the research.</p>
+
+                <!-- The three decisions — compact summary -->
+                <div class="decision-grid reveal">
+                    <div class="decision-chip"><span>01</span><p>Recommend instead of compare.</p></div>
+                    <div class="decision-chip"><span>02</span><p>Make confidence part of the transaction.</p></div>
+                    <div class="decision-chip"><span>03</span><p>The journey doesn't end at purchase.</p></div>
+                </div>
+
+                <!-- Feature cards — 3 on top, 2 on the bottom -->
+                <div class="feature-grid reveal">
+                    <div class="card feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>City Detection & Onboarding</h3>
+                        <p>Instead of asking users to configure the app or select their location manually, the experience detects the current city and immediately introduces the local transit system.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Research showed users wanted to begin solving their journey immediately — not spend time setting up an app. Eliminating onboarding reduced initial friction and helped users transition directly from arrival to action.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🎟️</div>
+                        <h3>Smart Ticket Recommendation</h3>
+                        <p>Rather than presenting a list of unfamiliar ticket types, the interface recommends a single ticket supported by a short explanation.</p>
+                        <div class="example-strip">"This ticket covers your entire journey, including transfers."</div>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Interview participants consistently described guessing when selecting tickets. The product makes a recommendation first — the user doesn't have to become a transit expert first.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Confidence Reassurance Layer</h3>
+                        <p>Throughout the purchase flow, the interface reassures users that the selected ticket is valid, reducing uncertainty before it becomes hesitation. Instead of simply displaying a ticket name, the experience provides context about what it covers, which zones are included, and whether transfers are covered.</p>
+                        <div class="example-strip">"Don't worry about the zones — we've handled that for you."</div>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Research showed that anxiety continued even after users purchased a ticket. The goal wasn't to add more information — it was to provide the specific information needed to trust the recommendation.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🚇</div>
+                        <h3>Step-by-Step Boarding Guide</h3>
+                        <p>After purchase, the experience shifts from transaction to navigation. Users receive guidance on which platform to use, how to validate the ticket, what to expect before boarding, and what to do next. The interface gradually surfaces only the information needed for the next action.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Existing products often end support after payment. Interviews revealed that uncertainty actually peaks between buying the ticket and boarding, making this one of the most critical moments to support users.</p></div>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="feature-icon">🔁</div>
+                        <h3>Alternative Options (Collapsed)</h3>
+                        <p>Alternative ticket options remain available but hidden behind a collapsed section. Users who want to compare can expand it, while everyone else continues without interruption.</p>
+                        <div class="why-strip"><span class="why-label">Why</span><p>Removing alternatives entirely limits flexibility. Showing every option by default recreates the same decision overload. Progressive disclosure balances simplicity with user control.</p></div>
+                    </div>
+                </div>
+         <!-- User Flow -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">User Flow</span>
+                <h2 class="headline reveal">One recommendation. One clear path.</h2>
+                <p class="lede reveal">The core journey was designed around reducing unnecessary choices.</p>
+                <p class="body-text reveal" style="font-size:1.1rem;">The flow is deliberately short: enter destination → see recommended ticket → pay → get boarding guidance. It removes every optional step that doesn't directly help the user get on the right train.</p>
+                <img class="section-image reveal" src="EuroVoyage/Userflow.png" alt="User Flow Diagram" style="max-width:640px;margin-left:auto;margin-right:auto;">
+                <p class="image-caption reveal">At every stage, show the information needed for the next decision — not everything the system knows.</p>
+            </div>
+
+                <!-- 11 Tradeoff -->
+                <div style="margin-top:48px;max-width:640px;" class="reveal">
+                    <span class="eyebrow">The Tradeoff</span>
+                    <h2 class="headline" style="max-width:none;font-size:clamp(1.4rem,2.6vw,1.8rem);">Simplicity vs. control.</h2>
+                    <p class="body-text">Removing every alternative would make the experience simpler. But it would also remove user control. That wasn't the goal.</p>
+                    <div class="panel">
+                        <p class="panel-note" style="font-style:italic;font-weight:400;">Show one recommendation by default and make alternatives available on demand.</p>
+                    </div>
+                    <p class="body-text"><strong>Don't remove control. Remove unnecessary decisions.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROTOTYPE ================= -->
+        <section id="prototype" class="block">
+         
+
+            <!-- 10 Recommendation screen -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">The Recommendation Screen</span>
+                <h2 class="headline reveal">The recommendation became the centerpiece.</h2>
+                <p class="lede reveal">From sketch to production-ready screens.</p>
+                <p class="body-text reveal" style="font-size:1.1rem;">The visual design prioritises legibility under stress: high contrast, large tap targets, and minimal decoration.</p>
+
+                <div class="reveal" style="margin-top:32px;">
+                    <p class="divider-label" style="text-align:center;font-size:1.1rem;">Early Concept Exploration</p>
+                    <img class="section-image" src="EuroVoyage/Iteration1.jpeg" alt="Lo-fi Early Concept" style="max-width:520px;margin-left:auto;margin-right:auto;">
+                </div>
+                <p class="body-text reveal" style="text-align:center;margin:20px auto 0;max-width:600px;">Moved from multiple route choices to a single guided recommendation.</p>
+                <div class="reveal" style="margin-top:20px;">
+                    <p class="divider-label" style="text-align:center;font-size:1.1rem;">Refined Flow</p>
+                    <img class="section-image" src="EuroVoyage/iteration2.jpeg" alt="Lo-fi Refined Flow" style="max-width:520px;margin-left:auto;margin-right:auto;">
+                </div>
+
+                
+
+                     <!-- Design System -->
+                <div style="margin-top:72px;">
+                    <span class="eyebrow reveal">Design System</span>
+                    <h2 class="headline reveal">A calm, legible system for a stressful context.</h2>
+                    <p class="body-text reveal" style="font-size:1.1rem;">The visual design prioritises legibility under stress: high contrast, large tap targets, and minimal decoration. Everything is designed to be readable in a bright station, with one hand, while holding luggage.</p>
+
+                    <!-- Typography -->
+                    <div class="card reveal">
+                        <h3>Typography</h3>
+                        <p class="body-text" style="font-size:0.95rem;margin-bottom:6px;">The app runs on a single, universal sans — Arial — for maximum clarity and legibility on a phone screen.</p>
+                        <div class="type-grid">
+                            <div class="type-sample">
+                                <span class="type-label">Display</span>
+                                <div class="type-display">Arial</div>
+                                <p class="type-meta"><strong>Arial</strong> — headlines &amp; statement lines<br>Bold · clean and universally legible</p>
+                            </div>
+                            <div class="type-sample">
+                                <span class="type-label">Body &amp; UI</span>
+                                <div class="type-body">Arial</div>
+                                <p class="type-meta"><strong>Arial</strong> — body copy &amp; interface<br>Regular–Bold · highly legible at small sizes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Color palette -->
+                    <div class="card reveal" style="margin-top:20px;">
+                        <h3>Color Palette</h3>
+                        <p class="body-text" style="font-size:0.95rem;margin-bottom:6px;">The app runs on white, with a confident action-blue, a fresh mint for status and reassurance, and a warm amber for highlights. Extracted directly from the final screens.</p>
+                        <div class="color-grid">
+                            <div class="color-swatch"><div class="swatch" style="background:#0D4BC5;border:1px solid #E1DACC;"></div><span>Primary Blue</span><code>#0D4BC5</code></div>
+                            <div class="color-swatch"><div class="swatch" style="background:#86EDE0;"></div><span>Mint</span><code>#86EDE0</code></div>
+                            <div class="color-swatch"><div class="swatch" style="background:#FBBF24;"></div><span>Amber</span><code>#FBBF24</code></div>
+                            <div class="color-swatch"><div class="swatch" style="background:#252828;"></div><span>Ink</span><code>#252828</code></div>
+                            <div class="color-swatch"><div class="swatch" style="background:#888E92;"></div><span>Slate</span><code>#888E92</code></div>
+                            <div class="color-swatch"><div class="swatch" style="background:#FFFFFF;border:1px solid #E1DACC;"></div><span>White</span><code>#FFFFFF</code></div>
+                        </div>
+                    </div>
+                </div>
+
+                   <!-- 09 City Detection & Onboarding -->
+            <div style="margin-top:0;">
+                <span class="eyebrow reveal">City Detection &amp; Onboarding</span>
+                <h2 class="headline reveal">Open the app — it's already ready.</h2>
+                <p class="body-text reveal" style="font-size:1.1rem;">No setup or onboarding required. The app auto-detects the city the moment you arrive and surfaces the next relevant transit action based on the traveler's location.</p>
+
+                <div class="screen-pair reveal">
+                    <div class="phone"><div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 11.png" alt="City Arrival Splash — Benvenuti a Milano!"></div></div>
+                    <div class="phone"><div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 20.png" alt="Home Screen — Milan"></div></div>
+                </div>
+                <p class="image-caption reveal">The app auto-detects your location the moment you land — whether it's Milan, Barcelona, Paris, or Berlin. No setup needed. Prefer to enter manually? You can do that too.</p>
+            </div>
+
+               
+
+
+                <div class="reveal" style="margin-top:72px;">
+                    <h3 style="font-size:1.3rem;margin-bottom:24px;">The recommendation answers three questions immediately.</h3>
+                    <div class="screen-pair">
+                        <div class="phone"><div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 15 (1).png" alt="Ticket Recommendation"></div></div>
+                        <div class="screen-note">
+                            <div class="field"><div class="field-label">What should I buy?</div><div class="field-value">FEX Express · 28 min · Fastest path</div></div>
+                            <div class="field"><div class="field-label">Why is it right?</div><div class="field-value" style="font-weight:400;">Direct to Alexanderplatz — the quickest way home.</div></div>
+                            <div class="field"><div class="field-label">What do I do?</div><div class="field-value">Book Single Trip</div></div>
+                            <div class="thought-box"><h5>Design Thought</h5><p>The interface surfaces only the information needed at each stage. The recommendation is intentionally more prominent than alternatives.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phone-row reveal">
+                    <div class="phone-col">
+                        <div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 16.png" alt="Buy & Activate"></div>
+                        <div class="phone-caption"><strong>Buy &amp; Activate</strong><span>Berlin ABC Single · €4.00 — one tap to confirm</span></div>
+                    </div>
+
+                    
+                    <div class="phone-col">
+                        <div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 17.png" alt="Boarding"></div>
+                        <div class="phone-caption"><strong>Go to Platform 3</strong><span>FEX Train arriving in 2 min — next action always visible</span></div>
+                    </div>
+                    <div class="phone-col">
+                        <div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 18.png" alt="Live Tracking"></div>
+                        <div class="phone-caption"><strong>You're on the Correct Route</strong><span>"You are on the correct route" — the anxiety-resolving line</span></div>
+                    </div>
+                    <div class="phone-col">
+                        <div class="phone-frame"><img src="EuroVoyage/iPhone 16 Plus - 19 (1).png" alt="Arrival"></div>
+                        <div class="phone-caption"><strong>You've Arrived</strong><span>Hotel navigation + helpful nearby — journey doesn't end at the stop</span></div>
+                    </div>
+                </div>
+
+                <div class="reveal" style="margin-top:56px;">
+                    <h3 style="font-size:1.2rem;margin-bottom:8px;">Interactive Prototype</h3>
+                    <div class="embed-wrap">
+                        <iframe width="800" height="450" src="https://embed.figma.com/proto/8D6jqtUurW4jNp9Jqt9XXW/Interface-Handbook?node-id=106-3&p=f&scaling=scale-down&content-scaling=fixed&page-id=106%3A2&embed-host=share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= TESTING ================= -->
+        <section id="testing" class="block">
+            <span class="eyebrow reveal">Usability Testing</span>
+            <h2 class="headline reveal">The first prototype challenged some of my assumptions.</h2>
+            <p class="body-text reveal" style="font-size:1.1rem;">I conducted usability testing with <strong>8 participants</strong>. Each was given: <em>"You've just landed in a new city. Use this app to get to your destination."</em></p>
+
+            <div class="card-grid card-grid--3 reveal">
+                <div class="card mini-stat"><div class="mini-num">01</div><p>Would users trust a single recommended ticket?</p></div>
+                <div class="card mini-stat"><div class="mini-num">02</div><p>Would reassurance reduce hesitation?</p></div>
+                <div class="card mini-stat"><div class="mini-num">03</div><p>Would users know what to do after purchasing?</p></div>
+            </div>
+
+            <div class="stat-grid reveal">
+                <div class="stat-card"><div class="stat-figure">5/8</div><div class="stat-label"><strong>Trusted the recommended route immediately.</strong></div></div>
+                <div class="stat-card"><div class="stat-figure">4/8</div><div class="stat-label"><strong>Reassurance messaging reduced hesitation.</strong></div></div>
+                <div class="stat-card"><div class="stat-figure">6/8</div><div class="stat-label"><strong>Users hesitated before payment.</strong> More reassurance needed.</div></div>
+                <div class="stat-card"><div class="stat-figure">3/8</div><div class="stat-label"><strong>Alternative options distracted users.</strong></div></div>
+            </div>
+
+            <div class="reveal" style="margin-top:48px;">
+                <h3 style="text-align:center;font-size:1.6rem;margin-bottom:28px;">What users said</h3>
+                <div class="card-grid card-grid--3">
+                    <div class="quote-card"><p>"I didn't even think about zones. It just told me what to get and I trusted it."</p></div>
+                    <div class="quote-card"><p>"'Book Single Trip' — I wasn't sure if single meant one way or return."</p></div>
+                    <div class="quote-card"><p>"So this definitely covers everything, right? Even if I change lines?"</p></div>
+                </div>
+            </div>
+
+            <!-- 13 The moment -->
+            <div style="margin-top:72px;max-width:620px;">
+                <span class="eyebrow reveal">The Moment</span>
+                <div class="panel reveal" style="text-align:center;">
+                    <p class="panel-note" style="font-style:italic;font-weight:400;font-size:1.15rem;">"So this definitely covers everything, right? Even if I change lines?"</p>
+                </div>
+                <p class="body-text reveal">The reassurance message was already visible. But the user still wasn't convinced.</p>
+                <p class="headline reveal" style="font-size:clamp(1.3rem,2.6vw,1.7rem);max-width:22ch;">The issue wasn't that the interface needed to reassure. It needed to show evidence.</p>
+            </div>
+
+            <!-- 14 Iteration -->
+            <div style="margin-top:72px;">
+                <span class="eyebrow reveal">Iteration</span>
+                <h2 class="headline reveal">From reassurance to proof.</h2>
+
+                <div class="reveal" style="background:var(--blue-soft);border-radius:var(--radius-md);padding:32px;margin-top:24px;">
+                    <h3 style="color:var(--blue);font-size:1.15rem;margin-bottom:16px;">Reassurance → Evidence</h3>
+                    <div class="compare-grid">
+                        <div class="compare-cell"><div class="compare-tag">Before</div><p style="font-style:italic;font-size:0.95rem;color:var(--ink);">"Don't worry about the zones — we've handled that for you."</p></div>
+                        <div class="compare-cell after"><div class="compare-tag">After</div><p style="font-weight:600;font-size:0.95rem;color:var(--ink);margin-bottom:6px;">Valid for your planned journey</p><p style="font-size:0.85rem;color:var(--ink-soft);">✓ Covers your route<br>✓ Includes required zones<br>✓ Transfers included</p></div>
+                    </div>
+                    <p style="margin-top:16px;color:var(--ink);font-style:italic;font-size:0.95rem;">Trust isn't created by saying "don't worry." It's created by making the recommendation understandable.</p>
+                </div>
+
+                <div class="card reveal" style="margin-top:20px;"><h3>CTA Copy — "Book Single Trip" → "Get This Ticket"</h3><p>Users paused at "Book Single Trip" — unsure whether "single" meant one-way or a day pass. Changed to "Get This Ticket": action-clear, outcome-obvious.</p></div>
+                <div class="card reveal" style="margin-top:16px;"><h3>"Show Other Options" — Moved Out of Focus</h3><p>Even users who didn't want alternatives clicked out of curiosity, then felt confused. Reduced to low-visibility text below the primary CTA.</p></div>
+                <div class="card reveal" style="margin-top:16px;background:var(--coral-soft);"><h3 style="color:#B4502A;">Confidence Gap at Boarding <span class="status-pill">Unresolved — V2</span></h3><p style="color:#8A3D1F;">One participant remained uncertain until they physically boarded. The reassurance worked at the decision point — but there was no persistent signal during boarding itself. A live validation indicator would address this.</p></div>
+            </div>
+
+            <!-- 15 What testing validated -->
+            <div style="margin-top:72px;max-width:640px;">
+                <span class="eyebrow reveal">What Testing Validated</span>
+                <h2 class="headline reveal" style="max-width:none;">The recommendation concept worked — partially.</h2>
+                <p class="body-text reveal">Reducing choice helped users move forward. But testing also showed <strong>recommendation alone isn't enough.</strong></p>
+                <div class="panel-statement reveal" style="padding:32px 36px;">
+                    <p style="font-size:1.15rem;font-style:italic;">A promising recommendation model with a remaining confidence problem.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= IMPACT ================= -->
+        <section id="impact" class="block">
+            <span class="eyebrow reveal">Constraints & MVP</span>
+            <h2 class="headline reveal">A good concept also needs to survive reality.</h2>
+
+            <div class="card-grid card-grid--4 reveal">
+                <div class="constraint"><div class="constraint-icon">🔌</div><h4>Transit API Fragmentation</h4><p>Every European city runs its own transit API — some open, many proprietary.</p></div>
+                <div class="constraint"><div class="constraint-icon">💶</div><h4>Ticketing Licensing</h4><p>Selling tickets in-app requires agreements with each city's operator.</p></div>
+                <div class="constraint"><div class="constraint-icon">🔒</div><h4>GDPR & Location</h4><p>Auto-detection requires location permission with clear consent.</p></div>
+                <div class="constraint"><div class="constraint-icon">📵</div><h4>Offline Reliability</h4><p>Tickets and boarding info must work without connectivity.</p></div>
+            </div>
+
+            <div style="margin-top:56px;max-width:640px;" class="reveal">
+                <h3 style="font-size:1.3rem;margin-bottom:16px;">Scoping the MVP</h3>
+                <div class="panel">
+                    <p class="panel-note">One city + one ticketing ecosystem + one clearly defined traveler scenario.</p>
+                </div>
+                <p style="font-size:0.92rem;color:var(--ink-faint);margin-top:12px;">The product becomes more believable when the scope matches the complexity of the system.</p>
+            </div>
+
+            <div style="margin-top:56px;" class="reveal">
+                <h3 style="font-size:1.3rem;margin-bottom:16px;">What I would do next</h3>
+                <ul class="steps">
+                    <li>Real-time disruption guidance</li>
+                    <li>Persistent boarding confidence indicator</li>
+                    <li>Offline-first city packs</li>
+                    <li>Accessibility mode</li>
+                </ul>
+            </div>
+
+        
+        </section>
+
+        <!-- ================= REFLECTION ================= -->
+        <section id="reflection" class="block">
+            <span class="eyebrow reveal">Reflection</span>
+            <h2 class="headline reveal" style="max-width:none;font-size:clamp(1.5rem,2.8vw,2rem);">The biggest lesson wasn't about simplifying the interface. It was about simplifying the <em>decision</em>.</h2>
+            <p class="body-text reveal">Research showed travelers didn't need more information — they needed confidence they were making the right choice. That led to EuroVoyage's core decision: recommend the right ticket and explain why.</p>
+            <p class="body-text reveal">Testing showed this approach reduces decision friction, but reassurance alone isn't enough. If I continued, I'd focus on carrying confidence from purchase all the way to boarding.</p>
+
+            <div class="reveal" style="max-width:600px;margin:88px auto 0;text-align:center;">
+                <p class="headline" style="font-size:clamp(1.6rem,3.2vw,2.1rem);max-width:16ch;margin:0 auto 28px;">Reduce decisions.<br>Increase confidence.</p>
+                <p class="body-text" style="max-width:44ch;margin:0 auto;">The goal isn't to make travelers understand the transit system. <strong>The goal is to help them use it confidently.</strong></p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer-block reveal">
+            <h2>Thank you for reading</h2>
+            <p>© 2026 EuroVoyage Case Study · Samarth Joshi</p>
+        </footer>
+
+    </main>
+</div>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="niva-style.js"></script>
+</body>
+</html>

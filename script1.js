@@ -38,7 +38,7 @@ const data = {
             'Wireframing', 'Prototyping', 'User Research', 'Usability Testing',
             'Interaction Design', 'Design Systems', 'Accessibility (a11y)'
         ],
-        filters: ['Case Studies', 'UX Tools', 'Design Projects'],
+        filters: ['Case Studies', 'UX Tools', 'UI Design'],
         projects: [
             {
                 category: 'Case Studies',
@@ -49,7 +49,7 @@ const data = {
                 badge: 'Travel · UX Research',
                 methods: ['User Research', 'Journey Mapping', 'Wireframing', 'Prototyping', 'Figma'],
                 color: '#2563a8', decor: '◎',
-                link: 'eurovoyage-case-study (1).html'
+                link: 'eurovoyage-niva-style-final-refined.html'
             },
             {
                 category: 'Case Studies',
@@ -60,7 +60,7 @@ const data = {
                 badge: 'HealthTech · UX Research',
                 methods: ['User Interviews', 'Affinity Mapping', 'Prototyping', 'Usability Testing', 'Figma'],
                 color: '#1d7a54', decor: '✦',
-                link: 'epa-companion-case-study.html'
+                link: 'epa-companion-niva-style-final.html'
             },
             {
                 category: 'Case Studies',
@@ -71,7 +71,7 @@ const data = {
                 badge: 'GovTech · UX Research',
                 methods: ['User Research', 'Service Design', 'Wireframing', 'Prototyping', 'Figma'],
                 color: '#b05c14', decor: '◈',
-                link: 'case-study.html'
+                link: 'easyburger-niva-style-final-refined.html'
             },
             {
                 category: 'Case Studies',
@@ -107,7 +107,7 @@ const data = {
                 link: 'https://medium.com/@samarthjoshi1608/ux-case-study-concert-booking-app-c4a6dbf09ace'
             },
             {
-                    category: 'Design Projects',
+                    category: 'UI Design',
     title: 'MindFlow — AI Wellness App',
     desc: 'An AI-powered mindfulness app focused on emotional wellbeing, featuring mood tracking, guided breathing, journaling, and a calming design system crafted for a seamless wellness experience.',
     thumb: 'UI/UX Design',
@@ -125,7 +125,7 @@ const data = {
             },
      
             {
-                category: 'Design Projects',
+                category: 'UI Design',
     title: 'FinCore — Finance Dashboard',
     desc: 'A modern fintech dashboard designed for financial management, analytics, budgeting, and transaction tracking with a scalable enterprise UI system.',
     thumb: 'UI/UX Design',
@@ -154,7 +154,7 @@ const data = {
                 deployed: true
             },
                    {
-                category: 'Design Projects',
+                category: 'UI Design',
                 title: 'YogaX — Meditation App UI',
                 desc: 'A calming, minimal UI for a wellness app covering guided meditation, yoga session booking, and mindfulness tracking — designed to reduce cognitive load.',
                 thumb: 'UI Design',

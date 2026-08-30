@@ -37,7 +37,7 @@ const data = {
                 thumb: 'Case Study',
                 img: 'Images/EpaBuddy.png',
                 badge: 'HealthTech · UX Research',
-                link: 'epa-companion-case-study.html'
+                link: 'epa-companion-niva-style-final.html'
             },
             {
                 category: 'Case Studies',
@@ -46,7 +46,7 @@ const data = {
                 thumb: 'Case Study',
                 img: 'Images/Easyburger.png',
                 badge: 'GovTech · UX Research',
-                link: 'case-study.html'
+                link: 'easyburger-niva-style-final-refined.html'
             },
             {
                 category: 'Case Studies',
