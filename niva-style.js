@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Lazy-load & async-decode all images (perf)
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+        if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+    });
+
     // Scroll-reveal
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
