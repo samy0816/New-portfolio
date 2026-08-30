@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samarth Joshi — Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- SVG Filters for torn paper effect -->
+    <svg style="position:absolute;width:0;height:0;pointer-events:none;" aria-hidden="true">
+        <defs>
+            <filter id="tornPaper" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" seed="2" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+                <feDropShadow in="displaced" dx="2" dy="3" stdDeviation="3" flood-color="#8b7355" flood-opacity="0.12" />
+            </filter>
+            <filter id="tornPaper2" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" seed="7" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="B" result="displaced" />
+                <feDropShadow in="displaced" dx="2" dy="3" stdDeviation="3" flood-color="#8b7355" flood-opacity="0.12" />
+            </filter>
+            <filter id="tornPaper3" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" result="noise" seed="12" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="B" yChannelSelector="R" result="displaced" />
+                <feDropShadow in="displaced" dx="2" dy="3" stdDeviation="3" flood-color="#8b7355" flood-opacity="0.12" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- CURSOR TRAIL -->
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- NAV OVERLAY (mobile) -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">SJ</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#blogs">Blogs</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <div class="toggle-container">
+                <span class="toggle-label left active" data-role="designer">Designer</span>
+                <button class="toggle-switch" id="roleToggle" aria-label="Toggle between Designer and Developer">
+                    <span class="toggle-knob"></span>
+                </button>
+                <span class="toggle-label right" data-role="developer">Developer</span>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <!-- Animated Avatar -->
+        <div class="hero-avatar" id="heroAvatar">
+            <div class="avatar-face">
+                <div class="avatar-eyes">
+                    <div class="avatar-eye left"><div class="eye-pupil"></div></div>
+                    <div class="avatar-eye right"><div class="eye-pupil"></div></div>
+                </div>
+                <div class="avatar-mouth"></div>
+                <div class="avatar-blush left"></div>
+                <div class="avatar-blush right"></div>
+            </div>
+            <div class="avatar-shadow"></div>
+        </div>
+        <div class="floating-orbit" id="floatingOrbit"></div>
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name">Samarth Joshi</h1>
+        <p class="hero-role" id="heroRole">UX Designer</p>
+        <p class="hero-tagline">
+            I <em>design intuitive experiences</em>, bridge code & creativity,<br>
+            <span id="roleDescriptor">research what users need & make technology feel effortless.</span>
+        </p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn-primary">View my work</a>
+            <a href="#contact" class="btn-secondary">Get in touch</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+        <div class="section-container">
+            <h2 class="section-title"><span class="section-number">01</span> About</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I like making <span class="highlight">technology</span> feel less like "technology" and more like something you just get. My background's in Computer Engineering, but along the way I got hooked on the human side of things — why some products feel effortless while others feel like a fight.
+                    </p>
+                    <p>
+                        That curiosity brought me to <span class="highlight">Saarland University</span>, where I'm doing my MSc in Informatics, exploring human–computer interaction. Most of my projects start the same way: a vague idea, a pile of data, or a problem that hasn't been solved yet. I enjoy untangling all that, figuring out what really matters, and building something that's clear, quick, and easy to use.
+                    </p>
+                </div>
+                <div class="tech-stack" id="techStack">
+                    <!-- Populated by JS based on toggle -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+        <div class="section-container">
+            <h2 class="section-title"><span class="section-number">02</span> Projects</h2>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs" id="filterTabs">
+                <!-- Populated by JS based on toggle -->
+            </div>
+
+            <!-- Project Grid -->
+            <div class="project-grid" id="projectGrid">
+                <!-- Populated by JS based on toggle & active filter -->
+            </div>
+
+            <!-- Show More Button -->
+            <div class="show-more-wrap" id="showMoreWrap">
+                <button class="btn-secondary show-more-btn" id="showMoreBtn">Show more</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOGS -->
+    <section id="blogs" class="section blogs">
+        <div class="section-container">
+            <h2 class="section-title"><span class="section-number">03</span> Writings</h2>
+            <div class="blog-list stagger-children">
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-date">Medium</span>
+                        <span class="blog-tag">AI + Design</span>
+                    </div>
+                    <h3 class="blog-title">AI and UI: A beneficial ally for UI</h3>
+                    <p class="blog-excerpt">
+                        How AI can be a useful tool for UX designers — not a replacement, but a creative companion.
+                    </p>
+                    <a href="https://medium.com/@samarthjoshi1608/ai-and-ui-a-beneficial-ally-for-ui-14fa29f9d7f6" target="_blank" class="blog-link">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-date">Medium</span>
+                        <span class="blog-tag">Design Tools</span>
+                    </div>
+                    <h3 class="blog-title">Figma vs Adobe XD: A Design War</h3>
+                    <p class="blog-excerpt">
+                        A comparison between two of the most popular design tools — strengths, weaknesses, and which one fits your workflow.
+                    </p>
+                    <a href="https://medium.com/@samarthjoshi1608/figma-vs-adobe-xd-a-design-war-c8dd481e9f0b" target="_blank" class="blog-link">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-date">Medium</span>
+                        <span class="blog-tag">UX History</span>
+                    </div>
+                    <h3 class="blog-title">How UX has evolved over time</h3>
+                    <p class="blog-excerpt">
+                        Tracing the history of UI/UX — from command lines to conversational interfaces and what it means for tomorrow.
+                    </p>
+                    <a href="https://medium.com/@samarthjoshi1608/how-ux-has-evolved-over-time-274c6830c965" target="_blank" class="blog-link">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-date">Medium</span>
+                        <span class="blog-tag">UX Case Study</span>
+                    </div>
+                    <h3 class="blog-title">PantryPal — Cooking, Budgeting & Smart Recipe Assistant</h3>
+                    <p class="blog-excerpt">
+                        A food-tech app that helps users cook smarter, stay on budget, and reduce waste through guided recipes and gamified learning.
+                    </p>
+                    <a href="https://medium.com/@samarthjoshi1608/ux-case-study-pantrypal-cooking-budgeting-smart-recipe-assistant-7d09d4a78a9b" target="_blank" class="blog-link">Read more →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+        <div class="section-container">
+            <h2 class="section-title"><span class="section-number">04</span> Contact</h2>
+            <div class="contact-content reveal">
+                <p class="contact-intro">
+                    Currently open to <span class="highlight">freelance projects</span> and 
+                    <span class="highlight">full‑time opportunities</span>. <br>
+                    Whether you have a project in mind or just want to say hello — I'd love to hear from you.
+                </p>
+                <a href="mailto:samarthjoshi1608@gmail.com" class="btn-primary btn-large">samarthjoshi1608@gmail.com</a>
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/samarth-joshi-3b1a7218b/" target="_blank" class="contact-link">LinkedIn</a>
+                    <span class="contact-divider">/</span>
+                    <a href="https://github.com/samy0816" target="_blank" class="contact-link">GitHub</a>
+                    <span class="contact-divider">/</span>
+                    <a href="https://www.behance.net/samarthjoshi8" target="_blank" class="contact-link">Behance</a>
+                    <span class="contact-divider">/</span>
+                    <a href="https://www.instagram.com/uidude_0816/" target="_blank" class="contact-link">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Samarth Joshi. Crafted with care.</p>
+        <p class="footer-quiet">Design + Code = Magic</p>
+    </footer>
+
+    <script src="script1.js"></script>
+</body>
+</html>

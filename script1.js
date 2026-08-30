@@ -519,61 +519,146 @@ function renderProjects(role, filter) {
 
     projectsExpanded = false;
 
-    const buildCard = (p, hidden, idx) => {
-        const theme = themeFromColor(p.color || '#555555', p.decor);
-        const num = String(idx + 1).padStart(2, '0');
+    const buildSlide = (p, idx) => {
         const [mainTitle, subTitle] = p.title.includes(' — ') ? p.title.split(' — ') : [p.title, ''];
         const chips = (role === 'developer' ? (p.tech || []) : (p.methods || []));
         const ctaLabel = role === 'developer' ? 'View project' : 'View case study';
         const imgContent = p.img
-            ? `<img src="${p.img}" alt="${p.title}" class="pc-img" loading="lazy" onerror="this.style.display='none'">`
-            : `<div class="pc-img-placeholder">${p.thumb}</div>`;
-        const liveBadge = p.deployed
-            ? `<span class="pc-live-badge">⬤ Live</span>`
+            ? `<img src="${p.img}" alt="${p.title}" class="fc-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
+            : `<div class="fc-img-placeholder">${p.thumb}</div>`;
+        const liveBadge = p.deployed ? `<span class="fc-live">⬤ Live</span>` : '';
+        const chipsHtml = chips.length
+            ? `<div class="fc-chips">${chips.map(c => `<span class="fc-chip">${c}</span>`).join('')}</div>`
             : '';
 
         return `
         <a href="${p.link || '#'}" target="_blank"
-           class="project-card portfolio-card reveal-scale${hidden ? ' project-hidden' : ''}"
-           style="--pc-bg:${theme.bg};--pc-border:${theme.border};--pc-accent:${theme.accent};--pc-chip-bg:${theme.chipBg};--pc-chip-border:${theme.chipBorder};--pc-chip-color:${theme.chipColor};">
-            <span class="pc-num">${num}</span>
-            <div class="pc-image-wrap">${imgContent}</div>
-            <div class="pc-content">
-                <div class="pc-top-row">
-                    <span class="pc-badge">${p.badge}</span>
+           class="project-card fc-card fc-slide"
+           data-logical="${idx}">
+            <div class="fc-media">
+                ${imgContent}
+                <div class="fc-media-overlay">
+                    <span class="fc-cat">${p.thumb}</span>
                     ${liveBadge}
                 </div>
-                <div class="pc-heading">
-                    <h3 class="pc-title">${mainTitle}</h3>
-                    ${subTitle ? `<p class="pc-subtitle">${subTitle}</p>` : ''}
+            </div>
+            <div class="fc-body">
+                <div class="fc-meta"><span class="fc-badge">${p.badge}</span></div>
+                <div class="fc-heading">
+                    <h3 class="fc-title">${mainTitle}</h3>
+                    ${subTitle ? `<p class="fc-subtitle">${subTitle}</p>` : ''}
                 </div>
-                <p class="pc-desc">${p.desc}</p>
-                <div class="pc-chips">
-                    ${chips.map(c => `<span class="pc-chip">${c}</span>`).join('')}
-                </div>
-                <div class="pc-footer">
-                    <div class="pc-cta-wrap">
-                        <span class="pc-cta-text">${ctaLabel}</span>
-                        <span class="pc-cta-btn">→</span>
-                    </div>
-                    <span class="pc-decor">${theme.decor}</span>
+                <p class="fc-desc">${p.desc}</p>
+                ${chipsHtml}
+                <div class="fc-footer">
+                    <span class="fc-cta">${ctaLabel}</span>
+                    <span class="fc-arrow">→</span>
                 </div>
             </div>
         </a>`;
     };
 
-    const visible = filtered.slice(0, VISIBLE_COUNT).map((p, i) => buildCard(p, false, i)).join('');
-    const hidden = hasMore ? filtered.slice(VISIBLE_COUNT).map((p, i) => buildCard(p, true, VISIBLE_COUNT + i)).join('') : '';
+    const N = filtered.length;
+    const slidesHtml = (() => {
+        if (N <= 1) return buildSlide(filtered[0], 0);
+        // Infinite loop: [clone of last] [real cards] [clone of first]
+        const slots = [];
+        slots.push(buildSlide(filtered[N - 1], N - 1));
+        filtered.forEach((p, i) => slots.push(buildSlide(p, i)));
+        slots.push(buildSlide(filtered[0], 0));
+        return slots.join('');
+    })();
+    const dotsHtml = filtered.map((_, i) => `<button class="fc-dot" data-index="${i}" aria-label="Go to project ${i + 1}"></button>`).join('');
 
-    projectGridEl.innerHTML = visible + hidden;
+    projectGridEl.innerHTML = `
+        <div class="fc-viewport" id="fcViewport">
+            ${N > 1 ? '<button class="fc-nav fc-prev" aria-label="Previous project">‹</button>' : ''}
+            <div class="fc-track">${slidesHtml}</div>
+            ${N > 1 ? '<button class="fc-nav fc-next" aria-label="Next project">›</button>' : ''}
+        </div>
+        ${N > 1 ? `<div class="fc-dots">${dotsHtml}</div>` : ''}
+    `;
 
-    // Show/hide the button
-    if (hasMore && showMoreWrap && showMoreBtn) {
-        showMoreWrap.style.display = 'block';
-        showMoreBtn.textContent = `Show more (${filtered.length - VISIBLE_COUNT})`;
-    } else if (showMoreWrap) {
-        showMoreWrap.style.display = 'none';
+    const viewport = projectGridEl.querySelector('#fcViewport');
+    const track = projectGridEl.querySelector('.fc-track');
+    const slides = Array.from(track.querySelectorAll('.fc-slide'));
+    const dots = projectGridEl.querySelectorAll('.fc-dot');
+    const prevBtn = projectGridEl.querySelector('.fc-prev');
+    const nextBtn = projectGridEl.querySelector('.fc-next');
+    const logicalOf = (slot) => ((slot - 1) % N + N) % N;
+    const slideW = () => (slides[0] ? slides[0].offsetWidth : 1);
+    const gap = 24;
+    let carouselSlot = N > 1 ? 1 : 0;
+
+    function positionTrack(slot, animate = true) {
+        if (N <= 1) {
+            // Single card: just center it in the track
+            if (!animate) track.style.transition = 'none';
+            track.style.justifyContent = 'center';
+            track.style.transform = 'translateX(0)';
+            if (!animate) { void track.offsetWidth; track.style.transition = ''; }
+            return;
+        }
+        track.style.justifyContent = '';
+        if (!animate) track.style.transition = 'none';
+        const offset = viewport.clientWidth / 2 - slideW() / 2 - slot * (slideW() + gap);
+        track.style.transform = `translateX(${offset}px)`;
+        if (!animate) { void track.offsetWidth; track.style.transition = ''; }
     }
+
+    function applyStates(logical) {
+        slides.forEach(el => {
+            const li = parseInt(el.dataset.logical, 10);
+            el.classList.toggle('is-active', li === logical);
+            if (N > 1) {
+                el.classList.toggle('is-prev', li === ((logical - 1 + N) % N));
+                el.classList.toggle('is-next', li === ((logical + 1) % N));
+            } else {
+                el.classList.remove('is-prev', 'is-next');
+            }
+        });
+        dots.forEach((d, di) => d.classList.toggle('is-active', di === logical));
+    }
+
+    function goTo(slot) {
+        carouselSlot = Math.max(0, Math.min(N + 1, slot));
+        positionTrack(carouselSlot, true);
+        applyStates(logicalOf(carouselSlot));
+    }
+
+    // Snap back to the real card after reaching a clone (seamless infinite)
+    track.addEventListener('transitionend', () => {
+        if (carouselSlot === N + 1) {
+            carouselSlot = 1;
+            positionTrack(1, false);
+        } else if (carouselSlot === 0) {
+            carouselSlot = N;
+            positionTrack(N, false);
+        }
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(carouselSlot - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(carouselSlot + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index, 10) + 1)));
+
+    // Swipe / drag to navigate
+    let startX = 0, dragging = false;
+    track.addEventListener('pointerdown', (e) => { startX = e.clientX; dragging = true; });
+    window.addEventListener('pointerup', () => { dragging = false; });
+    track.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 40) {
+            goTo(carouselSlot + (dx < 0 ? 1 : -1));
+            dragging = false;
+        }
+    });
+
+    goTo(N > 1 ? 1 : 0);
+    window.addEventListener('resize', () => goTo(carouselSlot));
+
+    // Hide show-more (carousel navigates all cards)
+    if (showMoreWrap) showMoreWrap.style.display = 'none';
 
     setTimeout(reObserveProjects, 50);
 }
